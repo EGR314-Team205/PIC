@@ -18,28 +18,6 @@
         Driver Version    :  2.00
 */
 
-/*
-    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
-    
-    Subject to your compliance with these terms, you may use Microchip software and any 
-    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
-    license terms applicable to your use of third party software (including open source software) that 
-    may accompany Microchip software.
-    
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
-    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
-    FOR A PARTICULAR PURPOSE.
-    
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
-    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
-    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
-    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
-    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
-    SOFTWARE.
-*/
 
 #include "mcc_generated_files/mcc.h"
 #include "mcc_generated_files/examples/i2c1_master_example.h"
@@ -77,6 +55,8 @@
 uint16_t hall_pos[HALL_DATALENGTH];
 uint16_t hall_time[HALL_DATALENGTH];
 
+   bool deployStatus = false;
+
 
 void motorController(uint8_t address, uint8_t speed, uint8_t dir){
     uint8_t data = speed << 2 | dir;
@@ -94,12 +74,12 @@ void motorDeploy(){
 }
 
 void motorStow(){
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor pivots umbrella backwards
+    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor pivots umbrella forward
     __delay_ms(2000);
     motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_FWD); //solenoid activates
     motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);//solenoid deactivates
     
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor pivots umbrella forward
+    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor pivots umbrella backward
     __delay_ms(2000);  
 }
 
@@ -136,8 +116,36 @@ void system_init(){
     hall_pos[1] = hallRead(); //populate half the array
     hall_time[1] = TMR2_ReadTimer(); //populate half the array
     
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_BREAK);
+    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);
+    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);
     
+}
+
+uint16_t timer_us = 0;
+uint16_t timer_ms = 0;
+
+void timer_callback(void){
+    timer_us++;
+    if (timer_us>=1000){
+        timer_us=timer_us-1000;
+        timer_ms++;
+//        IO_RE0_Toggle();
+    } 
+}
+
+float t_update(void){
+    return (float)timer_ms + (float)timer_us /1000;
+}
+
+void motor_trigger(void){
+    if(deployStatus){
+        motorDeploy();
+        deployStatus = true;
+    }
+    else{
+        motorStow();
+        deployStatus = false;
+    }
 }
 
 void main(void)
@@ -148,6 +156,9 @@ void main(void)
     
     INTERRUPT_GlobalInterruptEnable();     // Enable the Global Interrupts
     INTERRUPT_PeripheralInterruptEnable();     // Enable the Peripheral Interrupts
+    
+    TMR2_SetInterruptHandler(timer_callback);
+    IOCAF0_SetInterruptHandler(motor_trigger);
    
     uint8_t temp_data;
     uint16_t hall_raw;
@@ -155,7 +166,6 @@ void main(void)
     int readCount = 0;
     
     int threshCount = 0;
-    bool deployStatus = false;
     
     uint8_t motor1_fault;
     uint8_t motor2_fault;
@@ -175,14 +185,7 @@ void main(void)
         if(wind_speed>10 && threshCount<5)
             threshCount++;
         else if (wind_speed>10 && threshCount>=5){
-            if(deployStatus){
-                motorDeploy();
-                deployStatus = true;
-            }
-            else{
-                motorStow();
-                deployStatus = false;
-            }
+            motor_trigger();
             threshCount = 0;
         }
         else
@@ -192,7 +195,12 @@ void main(void)
         
         
         if(EUSART1_is_tx_ready()){
-            printf("Reading%i:\n\r\tTemp=%uC\n\r\tHall=%u\n\r\tWind Speed=%5.5d\n\r\tMotor 1 Fault Code=%u\n\r\tMotor 2 Fault Code=%u", ++readCount, temp_data, hall_raw, wind_speed, motor1_fault, motor2_fault);
+            printf("Reading%i: \n\r",++readCount);
+                    printf("\tTemp=%uC \n\r", temp_data);
+                    printf("\tHall=%u \n\r", hall_raw);
+                    printf("\tWind Speed=%5.5d \n\r", wind_speed);
+                    printf("\tMotor 1 Fault Code=%u \n\r", motor1_fault);
+                    printf("\tMotor 2 Fault Code=%u\n\r", motor2_fault);
             GPIO_OUT6_Toggle();
             __delay_ms(10);
         }
@@ -201,6 +209,3 @@ void main(void)
     motor1_fault = 0;
     motor2_fault = 0;
 }
-/**
- End of File
-*/
