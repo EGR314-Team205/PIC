@@ -12,7 +12,11 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
 #include <math.h>
+#include "mcc_generated_files/mcc.h"
+#include "mcc_generated_files/examples/i2c1_master_example.h"
+#include "mcc_generated_files/i2c1_master.h"
        
 #define HALL_ADDRESS 0x36
 #define HALL_ANGLE1 0x0E

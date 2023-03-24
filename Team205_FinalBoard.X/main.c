@@ -92,7 +92,7 @@ void main(void)
         if(wind_speed>10 && threshCount<5)
             threshCount++;
         else if (wind_speed>10 && threshCount>=5){
-            motor_trigger();
+            motorTrigger();
             threshCount = 0;
         }
         else

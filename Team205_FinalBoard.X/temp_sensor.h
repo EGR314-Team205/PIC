@@ -12,6 +12,11 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
+#include "mcc_generated_files/mcc.h"
+#include "mcc_generated_files/examples/i2c1_master_example.h"
+#include "mcc_generated_files/i2c1_master.h"
+    
 #define TEMP_ADDRESS 0x48
 #define TEMP_CONFIG 0x01
 #define TEMP_REG 0x00

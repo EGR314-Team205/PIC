@@ -12,6 +12,12 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
+#include <stdbool.h>
+#include "mcc_generated_files/mcc.h"
+#include "mcc_generated_files/examples/i2c1_master_example.h"
+#include "mcc_generated_files/i2c1_master.h"
+    
 //MOTOR 1 = SOLENOID
 #define MOTOR1_WRITE 0xD0
 #define MOTOR1_READ 0xD1
@@ -27,8 +33,6 @@ extern "C" {
 #define MOTOR_FWD 0b10
 #define MOTOR_BREAK 0b11
     
-#include <stdbool.h>
-    
 bool deployStatus;
     
 void motorController(uint8_t, uint8_t, uint8_t);
@@ -37,11 +41,11 @@ void motorDeploy(void);
 
 void motorStow(void);
 
-uint8_t motorFaultRead(uint8_t);
+uint8_t motorFaultRead(int);
 
-void motor_trigger(void);
+void motorTrigger(void);
 
-void motor_stop(void);
+void motorStop(void);
 
 #ifdef	__cplusplus
 }
