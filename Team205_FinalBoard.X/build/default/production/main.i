@@ -7,7 +7,7 @@
 # 1 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 44 "main.c"
+# 22 "main.c"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\xc.h" 1 3
@@ -16078,6 +16078,14 @@ unsigned char __t3rd16on(void);
 void PIN_MANAGER_Initialize (void);
 # 358 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 371 "./mcc_generated_files/pin_manager.h"
+void IOCAF0_ISR(void);
+# 394 "./mcc_generated_files/pin_manager.h"
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 418 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCAF0_InterruptHandler)(void);
+# 442 "./mcc_generated_files/pin_manager.h"
+void IOCAF0_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
 
@@ -16493,8 +16501,14 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 753 "./mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 791 "./mcc_generated_files/tmr2.h"
-_Bool TMR2_HasOverflowOccured(void);
+# 771 "./mcc_generated_files/tmr2.h"
+void TMR2_ISR(void);
+# 789 "./mcc_generated_files/tmr2.h"
+ void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
+# 807 "./mcc_generated_files/tmr2.h"
+extern void (*TMR2_InterruptHandler)(void);
+# 825 "./mcc_generated_files/tmr2.h"
+void TMR2_DefaultInterruptHandler(void);
 # 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart1.h" 1
@@ -16535,7 +16549,7 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 99 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 44 "main.c" 2
+# 22 "main.c" 2
 
 # 1 "./mcc_generated_files/examples/i2c1_master_example.h" 1
 # 54 "./mcc_generated_files/examples/i2c1_master_example.h"
@@ -16546,7 +16560,10 @@ void I2C1_Write2ByteRegister(i2c1_address_t address, uint8_t reg, uint16_t data)
 void I2C1_WriteNBytes(i2c1_address_t address, uint8_t *data, size_t len);
 void I2C1_ReadNBytes(i2c1_address_t address, uint8_t *data, size_t len);
 void I2C1_ReadDataBlock(i2c1_address_t address, uint8_t reg, uint8_t *data, size_t len);
-# 45 "main.c" 2
+# 23 "main.c" 2
+
+
+
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\math.h" 1 3
@@ -16918,7 +16935,7 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 47 "main.c" 2
+# 28 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\string.h" 3
@@ -16975,10 +16992,12 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 48 "main.c" 2
-# 77 "main.c"
-uint16_t hall_pos[2];
-uint16_t hall_time[2];
+# 29 "main.c" 2
+# 51 "main.c"
+uint16_t hall_pos[HALL_DATALENGTH];
+uint16_t hall_time[HALL_DATALENGTH];
+
+   _Bool deployStatus = 0;
 
 
 void motorController(uint8_t address, uint8_t speed, uint8_t dir){
@@ -17010,24 +17029,6 @@ uint8_t motorFaultRead(uint8_t address){
     return I2C1_Read1ByteRegister(address, 0x01);
 }
 
-uint16_t hallRead(){
-    return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
-}
-
-void hallRecord(){
-    hall_pos[0] = hall_pos[1];
-    hall_time[0] = hall_time[1];
-
-    hall_pos[1] = hallRead();
-    hall_time[1] = TMR2_ReadTimer();
-}
-
-double windSpeedCalc(){
-   hallRecord();
-   double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
-   double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / 4096 ;
-   return linearVel;
-}
 
 uint8_t tempRead(){
     return I2C1_Read1ByteRegister(0x48, 0x00);
@@ -17039,8 +17040,36 @@ void system_init(){
     hall_pos[1] = hallRead();
     hall_time[1] = TMR2_ReadTimer();
 
-    motorController(0xD0, 0x3F, 0b11);
+    motorController(0xD0, 0x3F, 0b00);
+    motorController(0xC0, 0x3F, 0b00);
 
+}
+
+uint16_t timer_us = 0;
+uint16_t timer_ms = 0;
+
+void timer_callback(void){
+    timer_us++;
+    if (timer_us>=1000){
+        timer_us=timer_us-1000;
+        timer_ms++;
+
+    }
+}
+
+float t_update(void){
+    return (float)timer_ms + (float)timer_us /1000;
+}
+
+void motor_trigger(void){
+    if(deployStatus){
+        motorDeploy();
+        deployStatus = 1;
+    }
+    else{
+        motorStow();
+        deployStatus = 0;
+    }
 }
 
 void main(void)
@@ -17052,13 +17081,15 @@ void main(void)
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
 
+    TMR2_SetInterruptHandler(timer_callback);
+    IOCAF0_SetInterruptHandler(motor_trigger);
+
     uint8_t temp_data;
     uint16_t hall_raw;
     double wind_speed;
     int readCount = 0;
 
     int threshCount = 0;
-    _Bool deployStatus = 0;
 
     uint8_t motor1_fault;
     uint8_t motor2_fault;
@@ -17078,14 +17109,7 @@ void main(void)
         if(wind_speed>10 && threshCount<5)
             threshCount++;
         else if (wind_speed>10 && threshCount>=5){
-            if(deployStatus){
-                motorDeploy();
-                deployStatus = 1;
-            }
-            else{
-                motorStow();
-                deployStatus = 0;
-            }
+            motor_trigger();
             threshCount = 0;
         }
         else
@@ -17095,7 +17119,12 @@ void main(void)
 
 
         if(EUSART1_is_tx_ready()){
-            printf("Reading%i:\n\r\tTemp=%uC\n\r\tHall=%u\n\r\tWind Speed=%5.5d\n\r\tMotor 1 Fault Code=%u\n\r\tMotor 2 Fault Code=%u", ++readCount, temp_data, hall_raw, wind_speed, motor1_fault, motor2_fault);
+            printf("Reading%i: \n\r",++readCount);
+                    printf("\tTemp=%uC \n\r", temp_data);
+                    printf("\tHall=%u \n\r", hall_raw);
+                    printf("\tWind Speed=%5.5d \n\r", wind_speed);
+                    printf("\tMotor 1 Fault Code=%u \n\r", motor1_fault);
+                    printf("\tMotor 2 Fault Code=%u\n\r", motor2_fault);
             do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
             _delay((unsigned long)((10)*(16000000/4000.0)));
         }

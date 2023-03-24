@@ -16073,11 +16073,21 @@ unsigned char __t3rd16on(void);
 void PIN_MANAGER_Initialize (void);
 # 358 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 371 "mcc_generated_files/pin_manager.h"
+void IOCAF0_ISR(void);
+# 394 "mcc_generated_files/pin_manager.h"
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 418 "mcc_generated_files/pin_manager.h"
+extern void (*IOCAF0_InterruptHandler)(void);
+# 442 "mcc_generated_files/pin_manager.h"
+void IOCAF0_DefaultInterruptHandler(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
 
 
 
+
+void (*IOCAF0_InterruptHandler)(void);
 
 
 void PIN_MANAGER_Initialize(void)
@@ -16132,7 +16142,25 @@ void PIN_MANAGER_Initialize(void)
     INLVLB = 0xFF;
     INLVLC = 0xFF;
     INLVLE = 0x08;
-# 115 "mcc_generated_files/pin_manager.c"
+
+
+
+
+
+
+    IOCAFbits.IOCAF0 = 0;
+
+    IOCANbits.IOCAN0 = 1;
+
+    IOCAPbits.IOCAP0 = 0;
+
+
+
+
+    IOCAF0_SetInterruptHandler(IOCAF0_DefaultInterruptHandler);
+
+
+
     SSP1CLKPPS = 0x13;
     RX1PPS = 0x17;
     RC3PPS = 0x0F;
@@ -16143,4 +16171,39 @@ void PIN_MANAGER_Initialize(void)
 
 void PIN_MANAGER_IOC(void)
 {
+
+    if(IOCAFbits.IOCAF0 == 1)
+    {
+        IOCAF0_ISR();
+    }
+}
+
+
+
+
+void IOCAF0_ISR(void) {
+
+
+
+
+    if(IOCAF0_InterruptHandler)
+    {
+        IOCAF0_InterruptHandler();
+    }
+    IOCAFbits.IOCAF0 = 0;
+}
+
+
+
+
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCAF0_InterruptHandler = InterruptHandler;
+}
+
+
+
+
+void IOCAF0_DefaultInterruptHandler(void){
+
+
 }

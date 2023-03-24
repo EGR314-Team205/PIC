@@ -16078,6 +16078,14 @@ unsigned char __t3rd16on(void);
 void PIN_MANAGER_Initialize (void);
 # 358 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 371 "mcc_generated_files/pin_manager.h"
+void IOCAF0_ISR(void);
+# 394 "mcc_generated_files/pin_manager.h"
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 418 "mcc_generated_files/pin_manager.h"
+extern void (*IOCAF0_InterruptHandler)(void);
+# 442 "mcc_generated_files/pin_manager.h"
+void IOCAF0_DefaultInterruptHandler(void);
 # 51 "mcc_generated_files/mcc.h" 2
 
 
@@ -16493,8 +16501,14 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 753 "mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 791 "mcc_generated_files/tmr2.h"
-_Bool TMR2_HasOverflowOccured(void);
+# 771 "mcc_generated_files/tmr2.h"
+void TMR2_ISR(void);
+# 789 "mcc_generated_files/tmr2.h"
+ void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
+# 807 "mcc_generated_files/tmr2.h"
+extern void (*TMR2_InterruptHandler)(void);
+# 825 "mcc_generated_files/tmr2.h"
+void TMR2_DefaultInterruptHandler(void);
 # 57 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart1.h" 1
