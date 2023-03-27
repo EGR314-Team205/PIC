@@ -31,7 +31,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void system_init(){
+void PROJECT_INIT(){
     TMR2_StartTimer();
     GPIO_OUT5_SetOpenDrain();
     hallInit();
@@ -57,22 +57,22 @@ float t_update(void){
 
 void main(void)
 {
-
     SYSTEM_Initialize();     // Initialize the device
-    system_init();
+    PROJECT_INIT();
     
     INTERRUPT_GlobalInterruptEnable();     // Enable the Global Interrupts
     INTERRUPT_PeripheralInterruptEnable();     // Enable the Peripheral Interrupts
     
     TMR2_SetInterruptHandler(timer_callback);
-    IOCAF0_SetInterruptHandler(motorTrigger);
-   
+    IOCAF0_SetInterruptHandler(motorTrigger); //button triggers manual override
+    
     uint8_t temp_data;
     uint16_t hall_raw;
     double wind_speed;
     int readCount = 0;
     
     int threshCount = 0;
+    const int THRESH_CUTOFF = 5;
     
     uint8_t motor1_fault;
     uint8_t motor2_fault;
@@ -89,9 +89,9 @@ void main(void)
         if (MOTOR_FAULT2_GetValue()==0)
             motor2_fault = motorFaultRead(2);
         
-        if(wind_speed>10 && threshCount<5)
+        if(wind_speed>10 && threshCount<THRESH_CUTOFF)
             threshCount++;
-        else if (wind_speed>10 && threshCount>=5){
+        else if (wind_speed>10 && threshCount>=THRESH_CUTOFF){
             motorTrigger();
             threshCount = 0;
         }
