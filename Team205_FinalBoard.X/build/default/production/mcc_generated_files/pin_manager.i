@@ -16111,7 +16111,7 @@ void PIN_MANAGER_Initialize(void)
 
     ANSELC = 0x27;
     ANSELB = 0xC0;
-    ANSELA = 0xF8;
+    ANSELA = 0xE0;
 
 
 
@@ -16159,6 +16159,8 @@ void PIN_MANAGER_Initialize(void)
 
     IOCAF0_SetInterruptHandler(IOCAF0_DefaultInterruptHandler);
 
+
+    PIE0bits.IOCIE = 1;
 
 
     SSP1CLKPPS = 0x13;

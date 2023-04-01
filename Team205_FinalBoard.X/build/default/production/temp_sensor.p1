@@ -1317,8 +1317,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _tempRead ]
 [f ]
 "5
-[; ;temp_sensor.c: 5:     return I2C1_Read1ByteRegister(0x48, 0x00);
-[e ) ( _I2C1_Read1ByteRegister (2 , -> -> 72 `i `uc -> -> 0 `i `uc ]
+[; ;temp_sensor.c: 5:     return I2C1_Read1ByteRegister(0x4C, 0x00);
+[e ) ( _I2C1_Read1ByteRegister (2 , -> -> 76 `i `uc -> -> 0 `i `uc ]
 [e $UE 1451  ]
 "6
 [; ;temp_sensor.c: 6: }

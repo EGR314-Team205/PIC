@@ -74,8 +74,8 @@ void TMR2_Initialize(void)
     // T2RSEL T2CKIPPS pin; 
     T2RST = 0x00;
 
-    // PR2 0; 
-    T2PR = 0x00;
+    // PR2 249; 
+    T2PR = 0xF9;
 
     // TMR2 0; 
     T2TMR = 0x00;
@@ -89,8 +89,8 @@ void TMR2_Initialize(void)
     // Set Default Interrupt Handler
     TMR2_SetInterruptHandler(TMR2_DefaultInterruptHandler);
 
-    // T2CKPS 1:4; T2OUTPS 1:4; TMR2ON on; 
-    T2CON = 0xA3;
+    // T2CKPS 1:16; T2OUTPS 1:4; TMR2ON on; 
+    T2CON = 0xC3;
 }
 
 void TMR2_ModeSet(TMR2_HLT_MODE mode)

@@ -16895,26 +16895,48 @@ typedef union {
     };
     uint8_t status;
 }eusart1_status_t;
-# 111 "./mcc_generated_files/eusart1.h"
+
+
+
+
+extern volatile uint8_t eusart1TxBufferRemaining;
+extern volatile uint8_t eusart1RxCount;
+
+
+
+
+extern void (*EUSART1_TxDefaultInterruptHandler)(void);
+extern void (*EUSART1_RxDefaultInterruptHandler)(void);
+# 118 "./mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 159 "./mcc_generated_files/eusart1.h"
+# 166 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 207 "./mcc_generated_files/eusart1.h"
+# 214 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 254 "./mcc_generated_files/eusart1.h"
+# 261 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 302 "./mcc_generated_files/eusart1.h"
+# 309 "./mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 322 "./mcc_generated_files/eusart1.h"
+# 329 "./mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 342 "./mcc_generated_files/eusart1.h"
+# 349 "./mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 362 "./mcc_generated_files/eusart1.h"
+# 370 "./mcc_generated_files/eusart1.h"
+void EUSART1_Transmit_ISR(void);
+# 391 "./mcc_generated_files/eusart1.h"
+void EUSART1_Receive_ISR(void);
+# 412 "./mcc_generated_files/eusart1.h"
+void EUSART1_RxDataHandler(void);
+# 430 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "./mcc_generated_files/eusart1.h"
+# 448 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "./mcc_generated_files/eusart1.h"
+# 466 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
+# 486 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 506 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 # 58 "./mcc_generated_files/mcc.h" 2
 # 73 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
@@ -16940,34 +16962,34 @@ uint16_t hall_time[2];
 
 void hallInit(void);
 
-uint16_t hallRead();
+uint16_t hallRead(void);
 
-void hallRecord();
+void hallRecord(double*);
 
-double windSpeedCalc();
+double windSpeedCalc(double, float);
 # 1 "hall_effect.c" 2
 
 
-void hallInit(void){
-    hall_pos[1] = hallRead();
-    hall_time[1] = 0;
-}
-
-uint16_t hallRead(){
+uint16_t hallRead(void){
     return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
 }
 
-void hallRecord(){
+void hallRecord(double *time){
     hall_pos[0] = hall_pos[1];
     hall_time[0] = hall_time[1];
 
     hall_pos[1] = hallRead();
-    hall_time[1] = TMR2_ReadTimer();
+    hall_time[1] = (uint16_t)(*time);
 }
 
-double windSpeedCalc(){
-   hallRecord();
+double windSpeedCalc(double time, float power){
+   hallRecord(&time);
    double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
-   double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / 4096 ;
+   double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / (4096*powf(10,power)) ;
    return linearVel;
+}
+
+void hallInit(void){
+    hall_pos[1] = hallRead();
+    hall_time[1] = 0;
 }

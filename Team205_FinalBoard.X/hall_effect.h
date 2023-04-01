@@ -31,11 +31,11 @@ uint16_t hall_time[HALL_DATALENGTH];
 
 void hallInit(void);
 
-uint16_t hallRead();
+uint16_t hallRead(void);
 
-void hallRecord();
+void hallRecord(double*);
 
-double windSpeedCalc();
+double windSpeedCalc(double, float);
 
 #ifdef	__cplusplus
 }

@@ -1341,157 +1341,228 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1451 ]
 }
 "9
-[; ;motor_control.c: 9: void motorDeploy(){
-[v _motorDeploy `(v ~T0 @X0 1 ef ]
+[; ;motor_control.c: 9: void solTrigger(void){
+[v _solTrigger `(v ~T0 @X0 1 ef ]
 {
-[e :U _motorDeploy ]
+[e :U _solTrigger ]
 [f ]
 "10
-[; ;motor_control.c: 10:     motorController(0xC0, 0x3F, 0b01);
-[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 1 `i `uc ]
-"11
-[; ;motor_control.c: 11:     _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"12
-[; ;motor_control.c: 12:     motorController(0xD0, 0x3F, 0b10);
+[; ;motor_control.c: 10:         motorController(0xD0, 0x3F, 0b10);
 [e ( _motorController (3 , , -> -> 208 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
-"13
-[; ;motor_control.c: 13:     motorController(0xD0, 0x3F, 0b00);
+"11
+[; ;motor_control.c: 11:         motorController(0xD0, 0x3F, 0b00);
 [e ( _motorController (3 , , -> -> 208 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
-"15
-[; ;motor_control.c: 15:     motorController(0xC0, 0x3F, 0b10);
-[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
-"16
-[; ;motor_control.c: 16:     _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"17
-[; ;motor_control.c: 17: }
+"12
+[; ;motor_control.c: 12: }
 [e :UE 1452 ]
 }
-"19
-[; ;motor_control.c: 19: void motorStow(){
-[v _motorStow `(v ~T0 @X0 1 ef ]
+"13
+[; ;motor_control.c: 13: void motorFWDStep(void){
+[v _motorFWDStep `(v ~T0 @X0 1 ef ]
 {
-[e :U _motorStow ]
+[e :U _motorFWDStep ]
 [f ]
-"20
-[; ;motor_control.c: 20:     motorController(0xC0, 0x3F, 0b10);
+"14
+[; ;motor_control.c: 14:         motorController(0xC0, 0x3F, 0b10);
 [e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
-"21
-[; ;motor_control.c: 21:     _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"22
-[; ;motor_control.c: 22:     motorController(0xD0, 0x3F, 0b10);
-[e ( _motorController (3 , , -> -> 208 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
-"23
-[; ;motor_control.c: 23:     motorController(0xD0, 0x3F, 0b00);
-[e ( _motorController (3 , , -> -> 208 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
-"25
-[; ;motor_control.c: 25:     motorController(0xC0, 0x3F, 0b01);
-[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 1 `i `uc ]
-"26
-[; ;motor_control.c: 26:     _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"27
-[; ;motor_control.c: 27: }
+"15
+[; ;motor_control.c: 15:         motorController(0xC0, 0x3F, 0b00);
+[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
+"16
+[; ;motor_control.c: 16: }
 [e :UE 1453 ]
 }
-"29
-[; ;motor_control.c: 29: void motorTrigger(void){
-[v _motorTrigger `(v ~T0 @X0 1 ef ]
+"17
+[; ;motor_control.c: 17: void motorFWD(void){
+[v _motorFWD `(v ~T0 @X0 1 ef ]
 {
-[e :U _motorTrigger ]
+[e :U _motorFWD ]
 [f ]
-"30
-[; ;motor_control.c: 30:     if(deployStatus){
-[e $ ! != -> _deployStatus `i -> 0 `i 1455  ]
-{
-"31
-[; ;motor_control.c: 31:         motorDeploy();
-[e ( _motorDeploy ..  ]
-"32
-[; ;motor_control.c: 32:         deployStatus = 1;
-[e = _deployStatus -> -> 1 `i `a ]
-"33
-[; ;motor_control.c: 33:     }
-}
-[e $U 1456  ]
-"34
-[; ;motor_control.c: 34:     else{
-[e :U 1455 ]
-{
-"35
-[; ;motor_control.c: 35:         motorStow();
-[e ( _motorStow ..  ]
-"36
-[; ;motor_control.c: 36:         deployStatus = 0;
-[e = _deployStatus -> -> 0 `i `a ]
-"37
-[; ;motor_control.c: 37:     }
-}
-[e :U 1456 ]
-"38
-[; ;motor_control.c: 38: }
+"18
+[; ;motor_control.c: 18:         motorController(0xC0, 0x3F, 0b10);
+[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
+"19
+[; ;motor_control.c: 19: }
 [e :UE 1454 ]
 }
+"21
+[; ;motor_control.c: 21: void motorRVR(void){
+[v _motorRVR `(v ~T0 @X0 1 ef ]
+{
+[e :U _motorRVR ]
+[f ]
+"22
+[; ;motor_control.c: 22:         motorController(0xC0, 0x3F, 0b01);
+[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 1 `i `uc ]
+"23
+[; ;motor_control.c: 23: }
+[e :UE 1455 ]
+}
+"25
+[; ;motor_control.c: 25: void motorOFF(void){
+[v _motorOFF `(v ~T0 @X0 1 ef ]
+{
+[e :U _motorOFF ]
+[f ]
+"26
+[; ;motor_control.c: 26:         motorController(0xC0, 0x3F, 0b00);
+[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
+"27
+[; ;motor_control.c: 27: }
+[e :UE 1456 ]
+}
+"29
+[; ;motor_control.c: 29: void umbDeploy(){
+[v _umbDeploy `(v ~T0 @X0 1 ef ]
+{
+[e :U _umbDeploy ]
+[f ]
+"30
+[; ;motor_control.c: 30:     motorRVR();
+[e ( _motorRVR ..  ]
+"31
+[; ;motor_control.c: 31:     _delay((unsigned long)((2000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"32
+[; ;motor_control.c: 32:     motorOFF();
+[e ( _motorOFF ..  ]
+"33
+[; ;motor_control.c: 33:     solTrigger();
+[e ( _solTrigger ..  ]
+"34
+[; ;motor_control.c: 34:     motorFWD();
+[e ( _motorFWD ..  ]
+"35
+[; ;motor_control.c: 35:     _delay((unsigned long)((2000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"36
+[; ;motor_control.c: 36: }
+[e :UE 1457 ]
+}
+"38
+[; ;motor_control.c: 38: void umbStow(){
+[v _umbStow `(v ~T0 @X0 1 ef ]
+{
+[e :U _umbStow ]
+[f ]
+"39
+[; ;motor_control.c: 39:     motorFWD();
+[e ( _motorFWD ..  ]
 "40
-[; ;motor_control.c: 40: uint8_t motorFaultRead(int motor_num){
+[; ;motor_control.c: 40:     _delay((unsigned long)((2000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"41
+[; ;motor_control.c: 41:     motorOFF();
+[e ( _motorOFF ..  ]
+"42
+[; ;motor_control.c: 42:     solTrigger();
+[e ( _solTrigger ..  ]
+"43
+[; ;motor_control.c: 43:     motorRVR();
+[e ( _motorRVR ..  ]
+"44
+[; ;motor_control.c: 44:     _delay((unsigned long)((2000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"45
+[; ;motor_control.c: 45: }
+[e :UE 1458 ]
+}
+"47
+[; ;motor_control.c: 47: void actionTrigger(void){
+[v _actionTrigger `(v ~T0 @X0 1 ef ]
+{
+[e :U _actionTrigger ]
+[f ]
+"48
+[; ;motor_control.c: 48:     if(deployStatus){
+[e $ ! != -> _deployStatus `i -> 0 `i 1460  ]
+{
+"49
+[; ;motor_control.c: 49:         umbDeploy();
+[e ( _umbDeploy ..  ]
+"50
+[; ;motor_control.c: 50:         deployStatus = 1;
+[e = _deployStatus -> -> 1 `i `a ]
+"51
+[; ;motor_control.c: 51:     }
+}
+[e $U 1461  ]
+"52
+[; ;motor_control.c: 52:     else{
+[e :U 1460 ]
+{
+"53
+[; ;motor_control.c: 53:         umbStow();
+[e ( _umbStow ..  ]
+"54
+[; ;motor_control.c: 54:         deployStatus = 0;
+[e = _deployStatus -> -> 0 `i `a ]
+"55
+[; ;motor_control.c: 55:     }
+}
+[e :U 1461 ]
+"56
+[; ;motor_control.c: 56: }
+[e :UE 1459 ]
+}
+"58
+[; ;motor_control.c: 58: uint8_t motorFaultRead(int motor_num){
 [v _motorFaultRead `(uc ~T0 @X0 1 ef1`i ]
 {
 [e :U _motorFaultRead ]
 [v _motor_num `i ~T0 @X0 1 r1 ]
 [f ]
-"41
-[; ;motor_control.c: 41:     switch(motor_num){
-[e $U 1459  ]
+"59
+[; ;motor_control.c: 59:     switch(motor_num){
+[e $U 1464  ]
 {
-"42
-[; ;motor_control.c: 42:         case 1:
-[e :U 1460 ]
-"43
-[; ;motor_control.c: 43:             return I2C1_Read1ByteRegister(0xD1, 0x01);
+"60
+[; ;motor_control.c: 60:         case 1:
+[e :U 1465 ]
+"61
+[; ;motor_control.c: 61:             return I2C1_Read1ByteRegister(0xD1, 0x01);
 [e ) ( _I2C1_Read1ByteRegister (2 , -> -> 209 `i `uc -> -> 1 `i `uc ]
-[e $UE 1457  ]
-"44
-[; ;motor_control.c: 44:         case 2:
-[e :U 1461 ]
-"45
-[; ;motor_control.c: 45:             return I2C1_Read1ByteRegister(0xD1, 0x01);
+[e $UE 1462  ]
+"62
+[; ;motor_control.c: 62:         case 2:
+[e :U 1466 ]
+"63
+[; ;motor_control.c: 63:             return I2C1_Read1ByteRegister(0xD1, 0x01);
 [e ) ( _I2C1_Read1ByteRegister (2 , -> -> 209 `i `uc -> -> 1 `i `uc ]
-[e $UE 1457  ]
-"46
-[; ;motor_control.c: 46:         default:
-[e :U 1462 ]
-"47
-[; ;motor_control.c: 47:             return 0x0;
+[e $UE 1462  ]
+"64
+[; ;motor_control.c: 64:         default:
+[e :U 1467 ]
+"65
+[; ;motor_control.c: 65:             return 0x0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 1457  ]
-"48
-[; ;motor_control.c: 48:     }
+[e $UE 1462  ]
+"66
+[; ;motor_control.c: 66:     }
 }
-[e $U 1458  ]
-[e :U 1459 ]
-[e [\ _motor_num , $ -> 1 `i 1460
- , $ -> 2 `i 1461
- 1462 ]
-[e :U 1458 ]
-"50
-[; ;motor_control.c: 50: }
-[e :UE 1457 ]
+[e $U 1463  ]
+[e :U 1464 ]
+[e [\ _motor_num , $ -> 1 `i 1465
+ , $ -> 2 `i 1466
+ 1467 ]
+[e :U 1463 ]
+"68
+[; ;motor_control.c: 68: }
+[e :UE 1462 ]
 }
-"52
-[; ;motor_control.c: 52: void motorStop(void){
+"70
+[; ;motor_control.c: 70: void motorStop(void){
 [v _motorStop `(v ~T0 @X0 1 ef ]
 {
 [e :U _motorStop ]
 [f ]
-"53
-[; ;motor_control.c: 53:     motorController(0xD0, 0x3F, 0b00);
+"71
+[; ;motor_control.c: 71:     motorController(0xD0, 0x3F, 0b00);
 [e ( _motorController (3 , , -> -> 208 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
-"54
-[; ;motor_control.c: 54:     motorController(0xC0, 0x3F, 0b00);
-[e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
-"55
-[; ;motor_control.c: 55: }
-[e :UE 1463 ]
+"72
+[; ;motor_control.c: 72:     motorOFF();
+[e ( _motorOFF ..  ]
+"73
+[; ;motor_control.c: 73: }
+[e :UE 1468 ]
 }

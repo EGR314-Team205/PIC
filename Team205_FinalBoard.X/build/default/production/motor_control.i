@@ -16519,26 +16519,48 @@ typedef union {
     };
     uint8_t status;
 }eusart1_status_t;
-# 111 "./mcc_generated_files/eusart1.h"
+
+
+
+
+extern volatile uint8_t eusart1TxBufferRemaining;
+extern volatile uint8_t eusart1RxCount;
+
+
+
+
+extern void (*EUSART1_TxDefaultInterruptHandler)(void);
+extern void (*EUSART1_RxDefaultInterruptHandler)(void);
+# 118 "./mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 159 "./mcc_generated_files/eusart1.h"
+# 166 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 207 "./mcc_generated_files/eusart1.h"
+# 214 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 254 "./mcc_generated_files/eusart1.h"
+# 261 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 302 "./mcc_generated_files/eusart1.h"
+# 309 "./mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 322 "./mcc_generated_files/eusart1.h"
+# 329 "./mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 342 "./mcc_generated_files/eusart1.h"
+# 349 "./mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 362 "./mcc_generated_files/eusart1.h"
+# 370 "./mcc_generated_files/eusart1.h"
+void EUSART1_Transmit_ISR(void);
+# 391 "./mcc_generated_files/eusart1.h"
+void EUSART1_Receive_ISR(void);
+# 412 "./mcc_generated_files/eusart1.h"
+void EUSART1_RxDataHandler(void);
+# 430 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "./mcc_generated_files/eusart1.h"
+# 448 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "./mcc_generated_files/eusart1.h"
+# 466 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
+# 486 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 506 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 # 58 "./mcc_generated_files/mcc.h" 2
 # 73 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
@@ -16563,13 +16585,23 @@ _Bool deployStatus;
 
 void motorController(uint8_t, uint8_t, uint8_t);
 
-void motorDeploy(void);
+void solTrigger(void);
 
-void motorStow(void);
+void motorFWDStep(void);
+
+void motorFWD(void);
+
+void motorRVR(void);
+
+void motorOFF(void);
+
+void umbDeploy(void);
+
+void umbStow(void);
 
 uint8_t motorFaultRead(int);
 
-void motorTrigger(void);
+void actionTrigger(void);
 
 void motorStop(void);
 # 1 "motor_control.c" 2
@@ -16581,33 +16613,51 @@ void motorController(uint8_t address, uint8_t speed, uint8_t dir){
     I2C1_Write1ByteRegister(address, 0x00, data);
 }
 
-void motorDeploy(){
-    motorController(0xC0, 0x3F, 0b01);
-    _delay((unsigned long)((2000)*(16000000/4000.0)));
-    motorController(0xD0, 0x3F, 0b10);
-    motorController(0xD0, 0x3F, 0b00);
+void solTrigger(void){
+        motorController(0xD0, 0x3F, 0b10);
+        motorController(0xD0, 0x3F, 0b00);
+}
+void motorFWDStep(void){
+        motorController(0xC0, 0x3F, 0b10);
+        motorController(0xC0, 0x3F, 0b00);
+}
+void motorFWD(void){
+        motorController(0xC0, 0x3F, 0b10);
+}
 
-    motorController(0xC0, 0x3F, 0b10);
+void motorRVR(void){
+        motorController(0xC0, 0x3F, 0b01);
+}
+
+void motorOFF(void){
+        motorController(0xC0, 0x3F, 0b00);
+}
+
+void umbDeploy(){
+    motorRVR();
+    _delay((unsigned long)((2000)*(16000000/4000.0)));
+    motorOFF();
+    solTrigger();
+    motorFWD();
     _delay((unsigned long)((2000)*(16000000/4000.0)));
 }
 
-void motorStow(){
-    motorController(0xC0, 0x3F, 0b10);
+void umbStow(){
+    motorFWD();
     _delay((unsigned long)((2000)*(16000000/4000.0)));
-    motorController(0xD0, 0x3F, 0b10);
-    motorController(0xD0, 0x3F, 0b00);
-
-    motorController(0xC0, 0x3F, 0b01);
+    motorOFF();
+    solTrigger();
+    motorRVR();
     _delay((unsigned long)((2000)*(16000000/4000.0)));
 }
 
-void motorTrigger(void){
+void actionTrigger(void){
     if(deployStatus){
-        motorDeploy();
+        umbDeploy();
         deployStatus = 1;
     }
     else{
-        motorStow();
+        umbStow();
         deployStatus = 0;
     }
 }
@@ -16626,5 +16676,5 @@ uint8_t motorFaultRead(int motor_num){
 
 void motorStop(void){
     motorController(0xD0, 0x3F, 0b00);
-    motorController(0xC0, 0x3F, 0b00);
+    motorOFF();
 }

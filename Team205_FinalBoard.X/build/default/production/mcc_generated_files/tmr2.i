@@ -16286,7 +16286,7 @@ void TMR2_Initialize(void)
     T2RST = 0x00;
 
 
-    T2PR = 0x00;
+    T2PR = 0xF9;
 
 
     T2TMR = 0x00;
@@ -16301,7 +16301,7 @@ void TMR2_Initialize(void)
     TMR2_SetInterruptHandler(TMR2_DefaultInterruptHandler);
 
 
-    T2CON = 0xA3;
+    T2CON = 0xC3;
 }
 
 void TMR2_ModeSet(TMR2_HLT_MODE mode)

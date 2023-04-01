@@ -6,33 +6,51 @@ void motorController(uint8_t address, uint8_t speed, uint8_t dir){
     I2C1_Write1ByteRegister(address, MOTOR_CONTROL, data);
 }
 
-void motorDeploy(){
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor pivots umbrella backwards
+void solTrigger(void){
+        motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_FWD); //solenoid activates
+        motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);//solenoid deactivates
+}
+void motorFWDStep(void){
+        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
+        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
+}
+void motorFWD(void){
+        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
+}
+
+void motorRVR(void){
+        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor backwards
+}
+
+void motorOFF(void){
+        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
+}
+
+void umbDeploy(){
+    motorRVR(); //motor pivots umbrella backwards
     __delay_ms(2000);
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_FWD); //solenoid activates
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);//solenoid deactivates
-    
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor pivots umbrella forward
+    motorOFF();
+    solTrigger();
+    motorFWD(); //motor pivots umbrella forward
     __delay_ms(2000);  
 }
 
-void motorStow(){
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor pivots umbrella forward
+void umbStow(){
+    motorFWD(); //motor pivots umbrella forward
     __delay_ms(2000);
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_FWD); //solenoid activates
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);//solenoid deactivates
-    
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor pivots umbrella backward
+    motorOFF();
+    solTrigger();
+    motorRVR(); //motor pivots umbrella backward
     __delay_ms(2000);  
 }
 
-void motorTrigger(void){
+void actionTrigger(void){
     if(deployStatus){
-        motorDeploy();
+        umbDeploy();
         deployStatus = true;
     }
     else{
-        motorStow();
+        umbStow();
         deployStatus = false;
     }
 }
@@ -51,5 +69,5 @@ uint8_t motorFaultRead(int motor_num){
 
 void motorStop(void){
     motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);
-    motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);
+    motorOFF();
 }

@@ -75,7 +75,7 @@ void PIN_MANAGER_Initialize(void)
     */
     ANSELC = 0x27;
     ANSELB = 0xC0;
-    ANSELA = 0xF8;
+    ANSELA = 0xE0;
 
     /**
     WPUx registers
@@ -123,6 +123,8 @@ void PIN_MANAGER_Initialize(void)
     // register default IOC callback functions at runtime; use these methods to register a custom function
     IOCAF0_SetInterruptHandler(IOCAF0_DefaultInterruptHandler);
    
+    // Enable IOCI interrupt 
+    PIE0bits.IOCIE = 1; 
     
 	
     SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCL1;    

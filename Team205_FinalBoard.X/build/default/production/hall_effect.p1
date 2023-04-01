@@ -1,14 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F10459 `(v ~T0 @X0 0 tf ]
-"34 ./hall_effect.h
-[; ;./hall_effect.h: 34: uint16_t hallRead();
-[v _hallRead `(us ~T0 @X0 0 e? ]
 "54 ./mcc_generated_files/examples/i2c1_master_example.h
 [; ;./mcc_generated_files/examples/i2c1_master_example.h: 54: uint8_t I2C1_Read1ByteRegister(i2c1_address_t address, uint8_t reg);
 [v _I2C1_Read1ByteRegister `(uc ~T0 @X0 0 ef2`uc`uc ]
-"571 ./mcc_generated_files/tmr2.h
-[; ;./mcc_generated_files/tmr2.h: 571: uint8_t TMR2_ReadTimer(void);
-[v _TMR2_ReadTimer `(uc ~T0 @X0 0 ef ]
+[v F665 `(f ~T0 @X0 1 tf2`f`f ]
+"324 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\math.h
+[; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\math.h: 324: __attribute__((nonreentrant)) float powf(float, float);
+[v _powf `JF665 ~T0 @X0 0 e ]
 "54 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 54: __asm("RX2PPS equ 0E8Dh");
 [; <" RX2PPS equ 0E8Dh ;# ">
@@ -1323,78 +1321,81 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hall_effect.h: 30: uint16_t hall_time[2];
 [v _hall_time `us ~T0 @X0 -> 2 `i e ]
 "3 hall_effect.c
-[; ;hall_effect.c: 3: void hallInit(void){
-[v _hallInit `(v ~T0 @X0 1 ef ]
-{
-[e :U _hallInit ]
-[f ]
-"4
-[; ;hall_effect.c: 4:     hall_pos[1] = hallRead();
-[e = *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
-"5
-[; ;hall_effect.c: 5:     hall_time[1] = 0;
-[e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
-"6
-[; ;hall_effect.c: 6: }
-[e :UE 1451 ]
-}
-"8
-[; ;hall_effect.c: 8: uint16_t hallRead(){
+[; ;hall_effect.c: 3: uint16_t hallRead(void){
 [v _hallRead `(us ~T0 @X0 1 ef ]
 {
 [e :U _hallRead ]
 [f ]
-"9
-[; ;hall_effect.c: 9:     return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
+"4
+[; ;hall_effect.c: 4:     return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
 [e ) -> | << -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 14 `i `uc `i -> 8 `i -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 15 `i `uc `i `us ]
-[e $UE 1452  ]
-"10
-[; ;hall_effect.c: 10: }
-[e :UE 1452 ]
+[e $UE 1451  ]
+"5
+[; ;hall_effect.c: 5: }
+[e :UE 1451 ]
 }
-"12
-[; ;hall_effect.c: 12: void hallRecord(){
-[v _hallRecord `(v ~T0 @X0 1 ef ]
+"7
+[; ;hall_effect.c: 7: void hallRecord(double *time){
+[v _hallRecord `(v ~T0 @X0 1 ef1`*d ]
 {
 [e :U _hallRecord ]
+[v _time `*d ~T0 @X0 1 r1 ]
 [f ]
-"13
-[; ;hall_effect.c: 13:     hall_pos[0] = hall_pos[1];
+"8
+[; ;hall_effect.c: 8:     hall_pos[0] = hall_pos[1];
 [e = *U + &U _hall_pos * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ]
-"14
-[; ;hall_effect.c: 14:     hall_time[0] = hall_time[1];
+"9
+[; ;hall_effect.c: 9:     hall_time[0] = hall_time[1];
 [e = *U + &U _hall_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_time `ui `ux *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux ]
-"16
-[; ;hall_effect.c: 16:     hall_pos[1] = hallRead();
+"11
+[; ;hall_effect.c: 11:     hall_pos[1] = hallRead();
 [e = *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
-"17
-[; ;hall_effect.c: 17:     hall_time[1] = TMR2_ReadTimer();
-[e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> ( _TMR2_ReadTimer ..  `us ]
-"18
-[; ;hall_effect.c: 18: }
-[e :UE 1453 ]
+"12
+[; ;hall_effect.c: 12:     hall_time[1] = (uint16_t)(*time);
+[e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> *U _time `us ]
+"13
+[; ;hall_effect.c: 13: }
+[e :UE 1452 ]
 }
-"20
-[; ;hall_effect.c: 20: double windSpeedCalc(){
-[v _windSpeedCalc `(d ~T0 @X0 1 ef ]
+"15
+[; ;hall_effect.c: 15: double windSpeedCalc(double time, float power){
+[v _windSpeedCalc `(d ~T0 @X0 1 ef2`d`f ]
 {
 [e :U _windSpeedCalc ]
+[v _time `d ~T0 @X0 1 r1 ]
+[v _power `f ~T0 @X0 1 r2 ]
 [f ]
-"21
-[; ;hall_effect.c: 21:    hallRecord();
-[e ( _hallRecord ..  ]
-"22
-[; ;hall_effect.c: 22:    double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
+"16
+[; ;hall_effect.c: 16:    hallRecord(&time);
+[e ( _hallRecord (1 &U _time ]
+"17
+[; ;hall_effect.c: 17:    double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
 [v _dw_dt `d ~T0 @X0 1 a ]
 [e = _dw_dt -> / - -> *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui -> *U + &U _hall_pos * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui - -> *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui -> *U + &U _hall_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui `d ]
-"23
-[; ;hall_effect.c: 23:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / 4096 ;
+"18
+[; ;hall_effect.c: 18:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / (4096*powf(10,power)) ;
 [v _linearVel `d ~T0 @X0 1 a ]
-[e = _linearVel / * * * _dw_dt .2.0 .3.14159265358979323846 .0.015 -> -> 4096 `i `d ]
-"24
-[; ;hall_effect.c: 24:    return linearVel;
+[e = _linearVel / * * * _dw_dt .2.0 .3.14159265358979323846 .0.015 -> * -> -> 4096 `i `f ( _powf (2 , -> -> 10 `i `f _power `d ]
+"19
+[; ;hall_effect.c: 19:    return linearVel;
 [e ) _linearVel ]
-[e $UE 1454  ]
+[e $UE 1453  ]
+"20
+[; ;hall_effect.c: 20: }
+[e :UE 1453 ]
+}
+"22
+[; ;hall_effect.c: 22: void hallInit(void){
+[v _hallInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _hallInit ]
+[f ]
+"23
+[; ;hall_effect.c: 23:     hall_pos[1] = hallRead();
+[e = *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
+"24
+[; ;hall_effect.c: 24:     hall_time[1] = 0;
+[e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
 "25
 [; ;hall_effect.c: 25: }
 [e :UE 1454 ]

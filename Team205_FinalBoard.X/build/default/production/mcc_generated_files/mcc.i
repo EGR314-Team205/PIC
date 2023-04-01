@@ -16522,26 +16522,48 @@ typedef union {
     };
     uint8_t status;
 }eusart1_status_t;
-# 111 "mcc_generated_files/eusart1.h"
+
+
+
+
+extern volatile uint8_t eusart1TxBufferRemaining;
+extern volatile uint8_t eusart1RxCount;
+
+
+
+
+extern void (*EUSART1_TxDefaultInterruptHandler)(void);
+extern void (*EUSART1_RxDefaultInterruptHandler)(void);
+# 118 "mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 159 "mcc_generated_files/eusart1.h"
+# 166 "mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 207 "mcc_generated_files/eusart1.h"
+# 214 "mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 254 "mcc_generated_files/eusart1.h"
+# 261 "mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 302 "mcc_generated_files/eusart1.h"
+# 309 "mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 322 "mcc_generated_files/eusart1.h"
+# 329 "mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 342 "mcc_generated_files/eusart1.h"
+# 349 "mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 362 "mcc_generated_files/eusart1.h"
+# 370 "mcc_generated_files/eusart1.h"
+void EUSART1_Transmit_ISR(void);
+# 391 "mcc_generated_files/eusart1.h"
+void EUSART1_Receive_ISR(void);
+# 412 "mcc_generated_files/eusart1.h"
+void EUSART1_RxDataHandler(void);
+# 430 "mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "mcc_generated_files/eusart1.h"
+# 448 "mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "mcc_generated_files/eusart1.h"
+# 466 "mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
+# 486 "mcc_generated_files/eusart1.h"
+void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 506 "mcc_generated_files/eusart1.h"
+void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 # 58 "mcc_generated_files/mcc.h" 2
 # 73 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);

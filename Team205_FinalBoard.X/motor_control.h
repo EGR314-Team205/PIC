@@ -37,13 +37,23 @@ bool deployStatus;
     
 void motorController(uint8_t, uint8_t, uint8_t);
 
-void motorDeploy(void);
+void solTrigger(void);
 
-void motorStow(void);
+void motorFWDStep(void);
+
+void motorFWD(void);
+
+void motorRVR(void);
+
+void motorOFF(void);
+
+void umbDeploy(void);
+
+void umbStow(void);
 
 uint8_t motorFaultRead(int);
 
-void motorTrigger(void);
+void actionTrigger(void);
 
 void motorStop(void);
 

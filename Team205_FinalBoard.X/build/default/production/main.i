@@ -16522,26 +16522,48 @@ typedef union {
     };
     uint8_t status;
 }eusart1_status_t;
-# 111 "./mcc_generated_files/eusart1.h"
+
+
+
+
+extern volatile uint8_t eusart1TxBufferRemaining;
+extern volatile uint8_t eusart1RxCount;
+
+
+
+
+extern void (*EUSART1_TxDefaultInterruptHandler)(void);
+extern void (*EUSART1_RxDefaultInterruptHandler)(void);
+# 118 "./mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 159 "./mcc_generated_files/eusart1.h"
+# 166 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 207 "./mcc_generated_files/eusart1.h"
+# 214 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 254 "./mcc_generated_files/eusart1.h"
+# 261 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 302 "./mcc_generated_files/eusart1.h"
+# 309 "./mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 322 "./mcc_generated_files/eusart1.h"
+# 329 "./mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 342 "./mcc_generated_files/eusart1.h"
+# 349 "./mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 362 "./mcc_generated_files/eusart1.h"
+# 370 "./mcc_generated_files/eusart1.h"
+void EUSART1_Transmit_ISR(void);
+# 391 "./mcc_generated_files/eusart1.h"
+void EUSART1_Receive_ISR(void);
+# 412 "./mcc_generated_files/eusart1.h"
+void EUSART1_RxDataHandler(void);
+# 430 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "./mcc_generated_files/eusart1.h"
+# 448 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "./mcc_generated_files/eusart1.h"
+# 466 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
+# 486 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 506 "./mcc_generated_files/eusart1.h"
+void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 # 58 "./mcc_generated_files/mcc.h" 2
 # 73 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
@@ -16942,11 +16964,11 @@ uint16_t hall_time[2];
 
 void hallInit(void);
 
-uint16_t hallRead();
+uint16_t hallRead(void);
 
-void hallRecord();
+void hallRecord(double*);
 
-double windSpeedCalc();
+double windSpeedCalc(double, float);
 # 26 "main.c" 2
 
 # 1 "./motor_control.h" 1
@@ -16955,19 +16977,29 @@ _Bool deployStatus;
 
 void motorController(uint8_t, uint8_t, uint8_t);
 
-void motorDeploy(void);
+void solTrigger(void);
 
-void motorStow(void);
+void motorFWDStep(void);
+
+void motorFWD(void);
+
+void motorRVR(void);
+
+void motorOFF(void);
+
+void umbDeploy(void);
+
+void umbStow(void);
 
 uint8_t motorFaultRead(int);
 
-void motorTrigger(void);
+void actionTrigger(void);
 
 void motorStop(void);
 # 27 "main.c" 2
 
 # 1 "./temp_sensor.h" 1
-# 24 "./temp_sensor.h"
+# 23 "./temp_sensor.h"
 uint8_t tempRead(void);
 # 28 "main.c" 2
 
@@ -17032,41 +17064,54 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
-void system_init(){
+void PROJECT_INIT(){
     TMR2_StartTimer();
-    do { ODCONBbits.ODCB4 = 1; } while(0);
     hallInit();
     motorStop();
 }
 
-uint16_t timer_us = 0;
 uint16_t timer_ms = 0;
+uint16_t timer_s = 0;
 
 void timer_callback(void){
-    timer_us++;
-    if (timer_us>=1000){
-        timer_us=timer_us-1000;
-        timer_ms++;
+    timer_ms++;
+    if (timer_ms>=1000){
+        timer_ms-=1000;
+        timer_s++;
 
     }
 }
 
-float t_update(void){
-    return (float)timer_ms + (float)timer_us /1000;
+double t_update(void){
+    return (double)timer_s + (double)timer_ms /1000;
+}
+
+volatile uint8_t rxData;
+void Rx1_ISR(void){
+    EUSART1_Receive_ISR();
+    if(EUSART1_is_rx_ready()){
+        rxData = EUSART1_Read();
+
+
+
+
+        do { ODCONBbits.ODCB4 = 1; } while(0);
+        do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
+    }
 }
 
 
 void main(void)
 {
-
     SYSTEM_Initialize();
-    system_init();
+
 
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
 
     TMR2_SetInterruptHandler(timer_callback);
-    IOCAF0_SetInterruptHandler(motorTrigger);
+
+    EUSART1_SetRxInterruptHandler(Rx1_ISR);
 
     uint8_t temp_data;
     uint16_t hall_raw;
@@ -17074,44 +17119,55 @@ void main(void)
     int readCount = 0;
 
     int threshCount = 0;
+    const int THRESH_CUTOFF = 5;
 
-    uint8_t motor1_fault;
-    uint8_t motor2_fault;
+    uint8_t motor1_fault = 0;
+    uint8_t motor2_fault = 0;
 
-
+    printf("Staring...\n\r");
     while (1){
+
 
         temp_data = tempRead();
         hall_raw = hallRead();
-        wind_speed = windSpeedCalc();
+        wind_speed = windSpeedCalc(t_update(),3);
+
 
         if (PORTAbits.RA1==0)
             motor1_fault = motorFaultRead(1);
         if (PORTAbits.RA2==0)
             motor2_fault = motorFaultRead(2);
 
-        if(wind_speed>10 && threshCount<5)
+        if(wind_speed>2 && threshCount<THRESH_CUTOFF)
             threshCount++;
-        else if (wind_speed>10 && threshCount>=5){
-            motorTrigger();
+        else if (wind_speed>2 && threshCount>=THRESH_CUTOFF){
+            actionTrigger();
             threshCount = 0;
         }
         else
             threshCount = 0;
 
-
         if(EUSART1_is_tx_ready()){
-            printf("Reading%i(t=%.6u): \n\r", ++readCount, timer_ms);
-                    printf("\tTemp=%uC \n\r", temp_data);
-                    printf("\tHall=%u \n\r", hall_raw);
-                    printf("\tWind Speed=%5.5d \n\r", wind_speed);
-                    printf("\tMotor 1 Fault Code=%u \n\r", motor1_fault);
-                    printf("\tMotor 2 Fault Code=%u\n\r", motor2_fault);
-            do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
-            _delay((unsigned long)((10)*(16000000/4000.0)));
+            printf("Reading %i (t=%.3f): \n\r", ++readCount, t_update());
+                    printf("\tTemp: %u C \n\r", temp_data);
+                    printf("\tHall Effect Position: %u \n\r", hall_raw);
+                    printf("\tWind Speed: %5.5f m/s \n\r", wind_speed);
+                    printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
+                    printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, THRESH_CUTOFF, deployStatus);
+                    printf("\tEUSART Data: %u \n\r",rxData);
+            _delay((unsigned long)((500)*(16000000/4000.0)));
         }
-    }
+        if(hall_raw>2048)
+            do { LATAbits.LATA4 = 1; } while(0);
+        else
+            do { LATAbits.LATA4 = 0; } while(0);
 
-    motor1_fault = 0;
-    motor2_fault = 0;
+        if(temp_data>=25)
+            do { LATAbits.LATA3 = 1; } while(0);
+        else
+            do { LATAbits.LATA3 = 0; } while(0);
+
+        motor1_fault = 0;
+        motor2_fault = 0;
+    }
 }
