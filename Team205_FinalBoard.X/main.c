@@ -67,6 +67,12 @@ void Rx1_ISR(void){
     }          
 }
 
+bool manualMode = false;
+void manual_bypass(){
+    manualMode = !manualMode;
+    actionTrigger();
+}
+
 
 void main(void)
 {
@@ -77,27 +83,29 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();     // Enable the Peripheral Interrupts
 //    
     TMR2_SetInterruptHandler(timer_callback);
-//    IOCAF0_SetInterruptHandler(actionTrigger); //button triggers manual override
+    IOCAF0_SetInterruptHandler(manual_bypass); //button triggers manual override
     EUSART1_SetRxInterruptHandler(Rx1_ISR);
     
-    uint8_t temp_data;
-    uint16_t hall_raw;
-    double wind_speed;
+    uint8_t tempData;
+    uint16_t hallRaw;
+    double windSpeed;
     int readCount = 0;
     
     int threshCount = 0;
     const int THRESH_CUTOFF = 5;
     
-    uint8_t motor1_fault = 0;
-    uint8_t motor2_fault = 0;
+    uint8_t motor1_fault;
+    uint8_t motor2_fault;
     
     printf("Staring...\n\r");
     while (1){
 
         
-        temp_data = tempRead();
-        hall_raw = hallRead();
-        wind_speed = windSpeedCalc(t_update(),3); // ms = s * 10^-3
+        tempData = tempRead();
+        hallRaw = hallRead();
+        windSpeed = windSpeedCalc(t_update(),3); // ms = s * 10^-3
+        motor1_fault = 0;
+        motor2_fault = 0;
 //        motorFWD(); //debug motor
 //    
         if (MOTOR_FAULT1_GetValue()==0)
@@ -105,36 +113,44 @@ void main(void)
         if (MOTOR_FAULT2_GetValue()==0)
             motor2_fault = motorFaultRead(2);
         
-        if(wind_speed>2 && threshCount<THRESH_CUTOFF)
-            threshCount++;
-        else if (wind_speed>2 && threshCount>=THRESH_CUTOFF){
-            actionTrigger();
-            threshCount = 0;
+        if(manualMode != true){
+            if(windSpeed>2 && threshCount<THRESH_CUTOFF)
+                threshCount++;
+            else if (windSpeed>2 && threshCount>=THRESH_CUTOFF){
+                actionTrigger();
+                threshCount = 0;
+            }
+            else
+                threshCount = 0;
         }
         else
             threshCount = 0;
         
         if(EUSART1_is_tx_ready()){
-            printf("Reading %i (t=%.3f): \n\r", ++readCount, t_update());
-                    printf("\tTemp: %u C \n\r", temp_data);
-                    printf("\tHall Effect Position: %u \n\r", hall_raw);
-                    printf("\tWind Speed: %5.5f m/s \n\r", wind_speed);
+            printf("Reading %i (t = %%0.3f"
+                    ".3f s): \n\r", ++readCount, t_update());
+                    printf("\tTemp: %u C \n\r", tempData);
+                    printf("\tHall Effect Position: %u \n\r", hallRaw);
+                    printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, THRESH_CUTOFF, deployStatus);
                     printf("\tEUSART Data: %u \n\r",rxData);
             __delay_ms(500);
         }
-        if(hall_raw>2048)
+  
+        if(tempData>=25)
+            LED_DEBUG1_SetHigh();
+        else 
+            LED_DEBUG1_SetLow();
+        
+        if(hallRaw>2048)
             LED_DEBUG2_SetHigh();
         else
             LED_DEBUG2_SetLow();
-//        
-        if(temp_data>=25)
-            LED_DEBUG1_SetHigh();
-        else
-            LED_DEBUG1_SetLow();
-//        
-        motor1_fault = 0;
-        motor2_fault = 0;
+        
+        if(PUSH_BUTTON_GetValue()!=1)
+            LED_DEBUG2_SetHigh();
+        else 
+            LED_DEBUG2_SetLow();
     }
 }
