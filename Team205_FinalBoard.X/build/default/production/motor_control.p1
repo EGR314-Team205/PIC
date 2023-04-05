@@ -1330,7 +1330,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dir `uc ~T0 @X0 1 r3 ]
 [f ]
 "5
-[; ;motor_control.c: 5:     uint8_t data = speed << 2 | dir;
+[; ;motor_control.c: 5:     uint8_t data = (uint8_t)(speed << 2 | dir);
 [v _data `uc ~T0 @X0 1 a ]
 [e = _data -> | << -> _speed `i -> 2 `i -> _dir `i `uc ]
 "6

@@ -1327,7 +1327,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _hallRead ]
 [f ]
 "4
-[; ;hall_effect.c: 4:     return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
+[; ;hall_effect.c: 4:     return (uint16_t)(I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
 [e ) -> | << -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 14 `i `uc `i -> 8 `i -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 15 `i `uc `i `us ]
 [e $UE 1451  ]
 "5
@@ -1391,11 +1391,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _hallInit ]
 [f ]
 "23
-[; ;hall_effect.c: 23:     hall_pos[1] = hallRead();
-[e = *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
+[; ;hall_effect.c: 23:     hall_pos[2 -1] = hallRead();
+[e = *U + &U _hall_pos * -> -> - -> 2 `i -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
 "24
-[; ;hall_effect.c: 24:     hall_time[1] = 0;
-[e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
+[; ;hall_effect.c: 24:     hall_time[2 -1] = 0;
+[e = *U + &U _hall_time * -> -> - -> 2 `i -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
 "25
 [; ;hall_effect.c: 25: }
 [e :UE 1454 ]

@@ -1,7 +1,7 @@
 #include "hall_effect.h"
 
 uint16_t hallRead(void){
-    return (I2C1_Read1ByteRegister(HALL_ADDRESS,0x0E) << 8 | I2C1_Read1ByteRegister(HALL_ADDRESS,0x0F));
+    return (uint16_t)(I2C1_Read1ByteRegister(HALL_ADDRESS,0x0E) << 8 | I2C1_Read1ByteRegister(HALL_ADDRESS,0x0F));
 }
 
 void hallRecord(double *time){
@@ -20,6 +20,6 @@ double windSpeedCalc(double time, float power){
 }
 
 void hallInit(void){
-    hall_pos[1] = hallRead(); //populate half the array
-    hall_time[1] = 0; //populate half the array
+    hall_pos[HALL_DATALENGTH-1] = hallRead(); //populate half the array
+    hall_time[HALL_DATALENGTH-1] = 0; //populate half the array
 }

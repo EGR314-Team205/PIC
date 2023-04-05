@@ -16971,7 +16971,7 @@ double windSpeedCalc(double, float);
 
 
 uint16_t hallRead(void){
-    return (I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
+    return (uint16_t)(I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
 }
 
 void hallRecord(double *time){
@@ -16990,6 +16990,6 @@ double windSpeedCalc(double time, float power){
 }
 
 void hallInit(void){
-    hall_pos[1] = hallRead();
-    hall_time[1] = 0;
+    hall_pos[2 -1] = hallRead();
+    hall_time[2 -1] = 0;
 }

@@ -54,6 +54,7 @@ void SYSTEM_Initialize(void)
     I2C1_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    TMR4_Initialize();
     TMR2_Initialize();
     EUSART1_Initialize();
 }

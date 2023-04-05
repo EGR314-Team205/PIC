@@ -1,82 +1,83 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F10626 `(v ~T0 @X0 0 tf ]
-"437 ./mcc_generated_files/tmr2.h
-[; ;./mcc_generated_files/tmr2.h: 437: void TMR2_StartTimer(void);
-[v _TMR2_StartTimer `(v ~T0 @X0 0 ef ]
-"32 ./hall_effect.h
-[; ;./hall_effect.h: 32: void hallInit(void);
-[v _hallInit `(v ~T0 @X0 0 ef ]
-"58 ./motor_control.h
-[; ;./motor_control.h: 58: void motorStop(void);
-[v _motorStop `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"73 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 73: void SYSTEM_Initialize(void);
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"27 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 27: void Interrupt_Handler_Initialize(void);
-[v _Interrupt_Handler_Initialize `(v ~T0 @X0 0 ef ]
-"105 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
-[; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"23 ./temp_sensor.h
-[; ;./temp_sensor.h: 23: uint8_t tempRead(void);
-[v _tempRead `(uc ~T0 @X0 0 ef ]
-"34 ./hall_effect.h
-[; ;./hall_effect.h: 34: uint16_t hallRead(void);
-[v _hallRead `(us ~T0 @X0 0 ef ]
-"38
-[; ;./hall_effect.h: 38: double windSpeedCalc(double, float);
-[v _windSpeedCalc `(d ~T0 @X0 0 ef2`d`f ]
-"30 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 30: double t_update(void);
-[v _t_update `(d ~T0 @X0 0 ef ]
-"16371 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16371:     struct {
-[s S819 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S819 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
-"16381
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16381:     struct {
-[s S820 :1 `uc 1 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S820 . ULPWUIN . LVDIN . RJPU ]
-"16370
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16370: typedef union {
-[u S818 `S819 1 `S820 1 ]
-[n S818 . . . ]
-"16389
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16389: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF8D)));
-[v _PORTAbits `VS818 ~T0 @X0 0 e@3981 ]
-"54 ./motor_control.h
-[; ;./motor_control.h: 54: uint8_t motorFaultRead(int);
-[v _motorFaultRead `(uc ~T0 @X0 0 ef1`i ]
-"56
+[v F10035 `(v ~T0 @X0 0 tf ]
+"26594 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26594:     struct {
+[s S1419 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1419 . INT0EDG INT1EDG INT2EDG . IPEN PEIE_GIEL GIE_GIEH ]
+"26603
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26603:     struct {
+[s S1420 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1420 . . PEIE GIE ]
+"26608
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26608:     struct {
+[s S1421 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1421 . . GIEL GIEH ]
+"26593
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26593: typedef union {
+[u S1418 `S1419 1 `S1420 1 `S1421 1 ]
+[n S1418 . . . . ]
+"26614
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26614: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS1418 ~T0 @X0 0 e@4082 ]
+[v F10097 `(v ~T0 @X0 0 tf ]
+"789 ./mcc_generated_files/tmr2.h
+[; ;./mcc_generated_files/tmr2.h: 789:  void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR2_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10097 ]
+"29 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 29: void timer_callback(void);
+[v _timer_callback `(v ~T0 @X0 0 ef ]
+[v F9955 `(v ~T0 @X0 0 tf ]
+"394 ./mcc_generated_files/pin_manager.h
+[; ;./mcc_generated_files/pin_manager.h: 394: void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _IOCAF0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9955 ]
+"34 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 34: void button_override(void);
+[v _button_override `(v ~T0 @X0 0 ef ]
+[v F10146 `(v ~T0 @X0 0 tf ]
+"506 ./mcc_generated_files/eusart1.h
+[; ;./mcc_generated_files/eusart1.h: 506: void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
+[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10146 ]
+"32 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 32: void Rx1_ISR(void);
+[v _Rx1_ISR `(v ~T0 @X0 0 ef ]
+"391 ./mcc_generated_files/eusart1.h
+[; ;./mcc_generated_files/eusart1.h: 391: void EUSART1_Receive_ISR(void);
+[v _EUSART1_Receive_ISR `(v ~T0 @X0 0 ef ]
+"214
+[; ;./mcc_generated_files/eusart1.h: 214: _Bool EUSART1_is_rx_ready(void);
+[v _EUSART1_is_rx_ready `(a ~T0 @X0 0 ef ]
+"329
+[; ;./mcc_generated_files/eusart1.h: 329: uint8_t EUSART1_Read(void);
+[v _EUSART1_Read `(uc ~T0 @X0 0 ef ]
+"8622 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8622:     struct {
+[s S476 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S476 . ODCB0 ODCB1 ODCB2 ODCB3 ODCB4 ODCB5 ODCB6 ODCB7 ]
+"8621
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8621: typedef union {
+[u S475 `S476 1 ]
+[n S475 . . ]
+"8633
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8633: extern volatile ODCONBbits_t ODCONBbits __attribute__((address(0xF17)));
+[v _ODCONBbits `VS475 ~T0 @X0 0 e@3863 ]
+"15781
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15781:     struct {
+[s S800 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S800 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"15791
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15791:     struct {
+[s S801 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S801 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
+"15780
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15780: typedef union {
+[u S799 `S800 1 `S801 1 ]
+[n S799 . . . ]
+"15802
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15802: extern volatile LATBbits_t LATBbits __attribute__((address(0xF84)));
+[v _LATBbits `VS799 ~T0 @X0 0 e@3972 ]
+"56 ./motor_control.h
 [; ;./motor_control.h: 56: void actionTrigger(void);
 [v _actionTrigger `(v ~T0 @X0 0 ef ]
-"166 ./mcc_generated_files/eusart1.h
-[; ;./mcc_generated_files/eusart1.h: 166: _Bool EUSART1_is_tx_ready(void);
-[v _EUSART1_is_tx_ready `(a ~T0 @X0 0 ef ]
-"36 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 36: uint8_t Read_EUSART1_Buffer(void);
-[v _Read_EUSART1_Buffer `(uc ~T0 @X0 0 ef ]
-[v F1101 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\builtins.h
-[v __delay `JF1101 ~T0 @X0 0 e ]
-[p i __delay ]
-"15669 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15669:     struct {
-[s S798 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S798 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
-"15679
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15679:     struct {
-[s S799 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S799 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
-"15668
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15668: typedef union {
-[u S797 `S798 1 `S799 1 ]
-[n S797 . . . ]
-"15690
-[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15690: extern volatile LATAbits_t LATAbits __attribute__((address(0xF83)));
-[v _LATAbits `VS797 ~T0 @X0 0 e@3971 ]
 "54 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 54: __asm("RX2PPS equ 0E8Dh");
 [; <" RX2PPS equ 0E8Dh ;# ">
@@ -1383,16 +1384,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 27037: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "213 ./mcc_generated_files/examples/../i2c1_master.h
-[v _MSSP1_InterruptHandler `*F10626 ~T0 @X0 1 e ]
-"29 ./hall_effect.h
-[; ;./hall_effect.h: 29: uint16_t hall_pos[2];
-[v _hall_pos `us ~T0 @X0 -> 2 `i e ]
-"30
-[; ;./hall_effect.h: 30: uint16_t hall_time[2];
-[v _hall_time `us ~T0 @X0 -> 2 `i e ]
-"36 ./motor_control.h
-[; ;./motor_control.h: 36: _Bool deployStatus;
-[v _deployStatus `a ~T0 @X0 1 e ]
+[v _MSSP1_InterruptHandler `*F10035 ~T0 @X0 1 e ]
 "19 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 19: uint16_t timer_ms;
 [v _timer_ms `us ~T0 @X0 1 e ]
@@ -1405,201 +1397,152 @@ Version 4.0 HI-TECH Software Intermediate Code
 "24
 [; ;./interrupt_handler.h: 24: _Bool manualMode;
 [v _manualMode `a ~T0 @X0 1 e ]
-"35 main.c
-[; ;main.c: 35: void PROJECT_INIT(){
-[v _PROJECT_INIT `(v ~T0 @X0 1 ef ]
+"36 ./motor_control.h
+[; ;./motor_control.h: 36: _Bool deployStatus;
+[v _deployStatus `a ~T0 @X0 1 e ]
+"5 interrupt_handler.c
+[; ;interrupt_handler.c: 5: void Interrupt_Handler_Initialize(void){
+[v _Interrupt_Handler_Initialize `(v ~T0 @X0 1 ef ]
 {
-[e :U _PROJECT_INIT ]
+[e :U _Interrupt_Handler_Initialize ]
 [f ]
-"36
-[; ;main.c: 36:     TMR2_StartTimer();
-[e ( _TMR2_StartTimer ..  ]
-"37
-[; ;main.c: 37:     hallInit();
-[e ( _hallInit ..  ]
-"38
-[; ;main.c: 38:     motorStop();
-[e ( _motorStop ..  ]
-"39
-[; ;main.c: 39: }
+"6
+[; ;interrupt_handler.c: 6:     uint16_t timer_ms = 0;
+[v _timer_ms `us ~T0 @X0 1 a ]
+[e = _timer_ms -> -> 0 `i `us ]
+"7
+[; ;interrupt_handler.c: 7:     uint16_t timer_s = 0;
+[v _timer_s `us ~T0 @X0 1 a ]
+[e = _timer_s -> -> 0 `i `us ]
+"9
+[; ;interrupt_handler.c: 9:     _Bool manualMode = 0;
+[v _manualMode `a ~T0 @X0 1 a ]
+[e = _manualMode -> -> 0 `i `a ]
+"11
+[; ;interrupt_handler.c: 11:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+"12
+[; ;interrupt_handler.c: 12:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
+"14
+[; ;interrupt_handler.c: 14:     TMR2_SetInterruptHandler(timer_callback);
+[e ( _TMR2_SetInterruptHandler (1 &U _timer_callback ]
+"15
+[; ;interrupt_handler.c: 15:     IOCAF0_SetInterruptHandler(button_override);
+[e ( _IOCAF0_SetInterruptHandler (1 &U _button_override ]
+"16
+[; ;interrupt_handler.c: 16:     EUSART1_SetRxInterruptHandler(Rx1_ISR);
+[e ( _EUSART1_SetRxInterruptHandler (1 &U _Rx1_ISR ]
+"18
+[; ;interrupt_handler.c: 18: }
+[e :UE 1451 ]
+}
+"20
+[; ;interrupt_handler.c: 20: void timer_callback(void){
+[v _timer_callback `(v ~T0 @X0 1 ef ]
+{
+[e :U _timer_callback ]
+[f ]
+"21
+[; ;interrupt_handler.c: 21:     timer_ms++;
+[e ++ _timer_ms -> -> 1 `i `us ]
+"22
+[; ;interrupt_handler.c: 22:     if (timer_ms>=1000){
+[e $ ! >= -> _timer_ms `ui -> -> 1000 `i `ui 1453  ]
+{
+"23
+[; ;interrupt_handler.c: 23:         timer_ms-=1000;
+[e =- _timer_ms -> -> 1000 `i `us ]
+"24
+[; ;interrupt_handler.c: 24:         timer_s++;
+[e ++ _timer_s -> -> 1 `i `us ]
+"26
+[; ;interrupt_handler.c: 26:     }
+}
+[e :U 1453 ]
+"27
+[; ;interrupt_handler.c: 27: }
 [e :UE 1452 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"42
-[; ;main.c: 42: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
-"43
-[; ;main.c: 43: {
+"29
+[; ;interrupt_handler.c: 29: double t_update(void){
+[v _t_update `(d ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _t_update ]
 [f ]
-"44
-[; ;main.c: 44:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"46
-[; ;main.c: 46:     Interrupt_Handler_Initialize();
-[e ( _Interrupt_Handler_Initialize ..  ]
-"48
-[; ;main.c: 48:     uint8_t tempData;
-[v _tempData `uc ~T0 @X0 1 a ]
-"49
-[; ;main.c: 49:     uint16_t hallRaw;
-[v _hallRaw `us ~T0 @X0 1 a ]
-"50
-[; ;main.c: 50:     double windSpeed;
-[v _windSpeed `d ~T0 @X0 1 a ]
-"51
-[; ;main.c: 51:     int readCount = 0;
-[v _readCount `i ~T0 @X0 1 a ]
-[e = _readCount -> 0 `i ]
-"53
-[; ;main.c: 53:     int threshCount = 0;
-[v _threshCount `i ~T0 @X0 1 a ]
-[e = _threshCount -> 0 `i ]
-"55
-[; ;main.c: 55:     uint8_t motor1_fault;
-[v _motor1_fault `uc ~T0 @X0 1 a ]
-"56
-[; ;main.c: 56:     uint8_t motor2_fault;
-[v _motor2_fault `uc ~T0 @X0 1 a ]
-"58
-[; ;main.c: 58:     printf("Staring...\n\r");
-[e ( _printf :s 1C ]
-"59
-[; ;main.c: 59:     while (1){
-[e :U 1455 ]
-{
-"62
-[; ;main.c: 62:         tempData = tempRead();
-[e = _tempData ( _tempRead ..  ]
-"63
-[; ;main.c: 63:         hallRaw = hallRead();
-[e = _hallRaw ( _hallRead ..  ]
-"64
-[; ;main.c: 64:         windSpeed = windSpeedCalc(t_update(),3);
-[e = _windSpeed ( _windSpeedCalc (2 , ( _t_update ..  -> -> 3 `i `f ]
-"65
-[; ;main.c: 65:         motor1_fault = 0;
-[e = _motor1_fault -> -> 0 `i `uc ]
-"66
-[; ;main.c: 66:         motor2_fault = 0;
-[e = _motor2_fault -> -> 0 `i `uc ]
-"69
-[; ;main.c: 69:         if (PORTAbits.RA1==0)
-[e $ ! == -> . . _PORTAbits 0 1 `i -> 0 `i 1457  ]
-"70
-[; ;main.c: 70:             motor1_fault = motorFaultRead(1);
-[e = _motor1_fault ( _motorFaultRead (1 -> 1 `i ]
-[e :U 1457 ]
-"71
-[; ;main.c: 71:         if (PORTAbits.RA2==0)
-[e $ ! == -> . . _PORTAbits 0 2 `i -> 0 `i 1458  ]
-"72
-[; ;main.c: 72:             motor2_fault = motorFaultRead(2);
-[e = _motor2_fault ( _motorFaultRead (1 -> 2 `i ]
-[e :U 1458 ]
-"74
-[; ;main.c: 74:         if(manualMode != 1){
-[e $ ! != -> _manualMode `i -> 1 `i 1459  ]
-{
-"75
-[; ;main.c: 75:             if(windSpeed>2 && threshCount<5)
-[e $ ! && > _windSpeed -> -> 2 `i `d < _threshCount -> 5 `i 1460  ]
-"76
-[; ;main.c: 76:                 threshCount++;
-[e ++ _threshCount -> 1 `i ]
-[e $U 1461  ]
-"77
-[; ;main.c: 77:             else if (windSpeed>2 && threshCount>=5){
-[e :U 1460 ]
-[e $ ! && > _windSpeed -> -> 2 `i `d >= _threshCount -> 5 `i 1462  ]
-{
-"78
-[; ;main.c: 78:                 actionTrigger();
-[e ( _actionTrigger ..  ]
-"79
-[; ;main.c: 79:                 threshCount = 0;
-[e = _threshCount -> 0 `i ]
-"80
-[; ;main.c: 80:             }
+"30
+[; ;interrupt_handler.c: 30:     return (double)timer_s + (double)timer_ms /1000;
+[e ) + -> _timer_s `d / -> _timer_ms `d -> -> 1000 `i `d ]
+[e $UE 1454  ]
+"31
+[; ;interrupt_handler.c: 31: }
+[e :UE 1454 ]
 }
-[e $U 1463  ]
-"81
-[; ;main.c: 81:             else
-[e :U 1462 ]
-"82
-[; ;main.c: 82:                 threshCount = 0;
-[e = _threshCount -> 0 `i ]
-[e :U 1463 ]
-[e :U 1461 ]
-"83
-[; ;main.c: 83:         }
-}
-[e $U 1464  ]
-"84
-[; ;main.c: 84:         else
+"33
+[; ;interrupt_handler.c: 33: void Rx1_ISR(void){
+[v _Rx1_ISR `(v ~T0 @X0 1 ef ]
+{
+[e :U _Rx1_ISR ]
+[f ]
+"34
+[; ;interrupt_handler.c: 34:     EUSART1_Receive_ISR();
+[e ( _EUSART1_Receive_ISR ..  ]
+"35
+[; ;interrupt_handler.c: 35:     if(EUSART1_is_rx_ready()){
+[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 1456  ]
+{
+"36
+[; ;interrupt_handler.c: 36:         rxData = EUSART1_Read();
+[e = _rxData ( _EUSART1_Read ..  ]
+"41
+[; ;interrupt_handler.c: 41:         do { ODCONBbits.ODCB4 = 1; } while(0);
 [e :U 1459 ]
-"85
-[; ;main.c: 85:             threshCount = 0;
-[e = _threshCount -> 0 `i ]
-[e :U 1464 ]
-"87
-[; ;main.c: 87:         if(EUSART1_is_tx_ready()){
-[e $ ! != -> ( _EUSART1_is_tx_ready ..  `i -> 0 `i 1465  ]
 {
-"88
-[; ;main.c: 88:             printf("Reading %i (t = %.3f s): \n\r", ++readCount, t_update());
-[e ( _printf , , (. :s 2C =+ _readCount -> 1 `i ( _t_update ..  ]
-"89
-[; ;main.c: 89:                     printf("\tTemp: %u C \n\r", tempData);
-[e ( _printf , (. :s 3C -> _tempData `i ]
-"90
-[; ;main.c: 90:                     printf("\tHall Effect Position: %u \n\r", hallRaw);
-[e ( _printf , (. :s 4C -> _hallRaw `ui ]
-"91
-[; ;main.c: 91:                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
-[e ( _printf , (. :s 5C _windSpeed ]
-"92
-[; ;main.c: 92:                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
-[e ( _printf , , (. :s 6C -> _motor1_fault `i -> _motor2_fault `i ]
-"93
-[; ;main.c: 93:                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
-[e ( _printf , , , (. :s 7C _threshCount -> 5 `i -> _deployStatus `i ]
-"94
-[; ;main.c: 94:                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
-[e ( _printf , (. :s 8C -> ( _Read_EUSART1_Buffer ..  `i ]
-"95
-[; ;main.c: 95:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"96
-[; ;main.c: 96:         }
+[e = . . _ODCONBbits 0 4 -> -> 1 `i `uc ]
 }
-[e :U 1465 ]
-"98
-[; ;main.c: 98:         LATAbits.LATA3 = (tempData>=25);
-[e = . . _LATAbits 0 3 -> -> >= -> _tempData `i -> 25 `i `i `uc ]
-"100
-[; ;main.c: 100:         LATAbits.LATA4 = (hallRaw>2048);
-[e = . . _LATAbits 0 4 -> -> > -> _hallRaw `ui -> -> 2048 `i `ui `i `uc ]
-"102
-[; ;main.c: 102:         LATAbits.LATA4 = !PORTAbits.RA0;
-[e = . . _LATAbits 0 4 -> -> ! != -> . . _PORTAbits 0 0 `i -> 0 `i `i `uc ]
-"103
-[; ;main.c: 103:     }
+[e :U 1458 ]
+"42
+[; ;interrupt_handler.c: 42:         do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
+[e :U 1462 ]
+{
+[e = . . _LATBbits 0 5 -> ~ -> . . _LATBbits 0 5 `i `uc ]
 }
-[e :U 1454 ]
-[e $U 1455  ]
+[e :U 1461 ]
+"43
+[; ;interrupt_handler.c: 43:     }
+}
 [e :U 1456 ]
-"104
-[; ;main.c: 104: }
-[e :UE 1453 ]
+"44
+[; ;interrupt_handler.c: 44: }
+[e :UE 1455 ]
 }
-[p f _printf 8496256 ]
-[a 1C 83 116 97 114 105 110 103 46 46 46 10 13 0 ]
-[a 7C 9 84 72 82 69 83 72 32 67 111 117 110 116 58 32 37 105 47 37 105 32 40 68 101 112 108 111 121 32 83 116 97 116 101 32 61 32 37 100 41 10 13 0 ]
-[a 4C 9 72 97 108 108 32 69 102 102 101 99 116 32 80 111 115 105 116 105 111 110 58 32 37 117 32 10 13 0 ]
-[a 8C 9 69 85 83 65 82 84 32 68 97 116 97 58 32 37 117 32 10 13 0 ]
-[a 5C 9 87 105 110 100 32 83 112 101 101 100 58 32 37 53 46 53 102 32 109 47 115 32 10 13 0 ]
-[a 3C 9 84 101 109 112 58 32 37 117 32 67 32 10 13 0 ]
-[a 2C 82 101 97 100 105 110 103 32 37 105 32 40 116 32 61 32 37 46 51 102 32 115 41 58 32 10 13 0 ]
-[a 6C 9 77 111 116 111 114 32 70 97 117 108 116 32 67 111 100 101 115 58 32 40 37 117 44 37 117 41 32 10 13 0 ]
+"46
+[; ;interrupt_handler.c: 46: uint8_t Read_EUSART1_Buffer(void){
+[v _Read_EUSART1_Buffer `(uc ~T0 @X0 1 ef ]
+{
+[e :U _Read_EUSART1_Buffer ]
+[f ]
+"47
+[; ;interrupt_handler.c: 47:     return rxData;
+[e ) _rxData ]
+[e $UE 1463  ]
+"48
+[; ;interrupt_handler.c: 48: }
+[e :UE 1463 ]
+}
+"50
+[; ;interrupt_handler.c: 50: void button_override(void){
+[v _button_override `(v ~T0 @X0 1 ef ]
+{
+[e :U _button_override ]
+[f ]
+"51
+[; ;interrupt_handler.c: 51:     manualMode = !manualMode;
+[e = _manualMode -> -> ! != -> _manualMode `i -> 0 `i `i `a ]
+"52
+[; ;interrupt_handler.c: 52:     actionTrigger();
+[e ( _actionTrigger ..  ]
+"53
+[; ;interrupt_handler.c: 53: }
+[e :UE 1464 ]
+}

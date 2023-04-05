@@ -16609,7 +16609,7 @@ void motorStop(void);
 
 
 void motorController(uint8_t address, uint8_t speed, uint8_t dir){
-    uint8_t data = speed << 2 | dir;
+    uint8_t data = (uint8_t)(speed << 2 | dir);
     I2C1_Write1ByteRegister(address, 0x00, data);
 }
 
