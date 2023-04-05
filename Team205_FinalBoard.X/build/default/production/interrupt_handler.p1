@@ -19,27 +19,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26614
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26614: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS1418 ~T0 @X0 0 e@4082 ]
-[v F10097 `(v ~T0 @X0 0 tf ]
+[v F10160 `(v ~T0 @X0 0 tf ]
 "789 ./mcc_generated_files/tmr2.h
 [; ;./mcc_generated_files/tmr2.h: 789:  void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR2_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10097 ]
-"29 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 29: void timer_callback(void);
-[v _timer_callback `(v ~T0 @X0 0 ef ]
+[v _TMR2_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10160 ]
+"35 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 35: void internal_clock(void);
+[v _internal_clock `(v ~T0 @X0 0 ef ]
+[v F10097 `(v ~T0 @X0 0 tf ]
+"789 ./mcc_generated_files/tmr4.h
+[; ;./mcc_generated_files/tmr4.h: 789:  void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR4_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10097 ]
+"38 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 38: void sensor_read(void);
+[v _sensor_read `(v ~T0 @X0 0 ef ]
 [v F9955 `(v ~T0 @X0 0 tf ]
 "394 ./mcc_generated_files/pin_manager.h
 [; ;./mcc_generated_files/pin_manager.h: 394: void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _IOCAF0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9955 ]
-"34 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 34: void button_override(void);
+"42 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 42: void button_override(void);
 [v _button_override `(v ~T0 @X0 0 ef ]
-[v F10146 `(v ~T0 @X0 0 tf ]
+[v F10209 `(v ~T0 @X0 0 tf ]
 "506 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 506: void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10146 ]
-"32 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 32: void Rx1_ISR(void);
+[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10209 ]
+"40 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 40: void Rx1_ISR(void);
 [v _Rx1_ISR `(v ~T0 @X0 0 ef ]
+"23 ./temp_sensor.h
+[; ;./temp_sensor.h: 23: uint8_t tempRead(void);
+[v _tempRead `(uc ~T0 @X0 0 ef ]
+"34 ./hall_effect.h
+[; ;./hall_effect.h: 34: uint16_t hallRead(void);
+[v _hallRead `(us ~T0 @X0 0 ef ]
+"38
+[; ;./hall_effect.h: 38: double windSpeedCalc(double, float);
+[v _windSpeedCalc `(d ~T0 @X0 0 ef2`d`f ]
 "391 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 391: void EUSART1_Receive_ISR(void);
 [v _EUSART1_Receive_ISR `(v ~T0 @X0 0 ef ]
@@ -1392,157 +1408,197 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./interrupt_handler.h: 20: uint16_t timer_s;
 [v _timer_s `us ~T0 @X0 1 e ]
 "22
-[; ;./interrupt_handler.h: 22: volatile uint8_t rxData;
-[v _rxData `Vuc ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 22: uint8_t tempData;
+[v _tempData `uc ~T0 @X0 1 e ]
+"23
+[; ;./interrupt_handler.h: 23: uint16_t hallRaw;
+[v _hallRaw `us ~T0 @X0 1 e ]
 "24
-[; ;./interrupt_handler.h: 24: _Bool manualMode;
+[; ;./interrupt_handler.h: 24: double windSpeed;
+[v _windSpeed `d ~T0 @X0 1 e ]
+"25
+[; ;./interrupt_handler.h: 25: int readCount;
+[v _readCount `i ~T0 @X0 1 e ]
+"28
+[; ;./interrupt_handler.h: 28: volatile uint8_t rxData;
+[v _rxData `Vuc ~T0 @X0 1 e ]
+"30
+[; ;./interrupt_handler.h: 30: _Bool manualMode;
 [v _manualMode `a ~T0 @X0 1 e ]
 "36 ./motor_control.h
 [; ;./motor_control.h: 36: _Bool deployStatus;
 [v _deployStatus `a ~T0 @X0 1 e ]
-"5 interrupt_handler.c
-[; ;interrupt_handler.c: 5: void Interrupt_Handler_Initialize(void){
+"29 ./hall_effect.h
+[; ;./hall_effect.h: 29: uint16_t hall_pos[2];
+[v _hall_pos `us ~T0 @X0 -> 2 `i e ]
+"30
+[; ;./hall_effect.h: 30: uint16_t hall_time[2];
+[v _hall_time `us ~T0 @X0 -> 2 `i e ]
+"7 interrupt_handler.c
+[; ;interrupt_handler.c: 7: void Interrupt_Handler_Initialize(void){
 [v _Interrupt_Handler_Initialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _Interrupt_Handler_Initialize ]
 [f ]
-"6
-[; ;interrupt_handler.c: 6:     uint16_t timer_ms = 0;
-[v _timer_ms `us ~T0 @X0 1 a ]
+"8
+[; ;interrupt_handler.c: 8:     timer_ms = 0;
 [e = _timer_ms -> -> 0 `i `us ]
-"7
-[; ;interrupt_handler.c: 7:     uint16_t timer_s = 0;
-[v _timer_s `us ~T0 @X0 1 a ]
-[e = _timer_s -> -> 0 `i `us ]
 "9
-[; ;interrupt_handler.c: 9:     _Bool manualMode = 0;
-[v _manualMode `a ~T0 @X0 1 a ]
-[e = _manualMode -> -> 0 `i `a ]
+[; ;interrupt_handler.c: 9:     timer_s = 0;
+[e = _timer_s -> -> 0 `i `us ]
+"10
+[; ;interrupt_handler.c: 10:     readCount = 0;
+[e = _readCount -> 0 `i ]
 "11
-[; ;interrupt_handler.c: 11:     (INTCONbits.GIE = 1);
+[; ;interrupt_handler.c: 11:     manualMode = 0;
+[e = _manualMode -> -> 0 `i `a ]
+"13
+[; ;interrupt_handler.c: 13:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
-"12
-[; ;interrupt_handler.c: 12:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
 "14
-[; ;interrupt_handler.c: 14:     TMR2_SetInterruptHandler(timer_callback);
-[e ( _TMR2_SetInterruptHandler (1 &U _timer_callback ]
-"15
-[; ;interrupt_handler.c: 15:     IOCAF0_SetInterruptHandler(button_override);
-[e ( _IOCAF0_SetInterruptHandler (1 &U _button_override ]
+[; ;interrupt_handler.c: 14:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
 "16
-[; ;interrupt_handler.c: 16:     EUSART1_SetRxInterruptHandler(Rx1_ISR);
-[e ( _EUSART1_SetRxInterruptHandler (1 &U _Rx1_ISR ]
+[; ;interrupt_handler.c: 16:     TMR2_SetInterruptHandler(internal_clock);
+[e ( _TMR2_SetInterruptHandler (1 &U _internal_clock ]
+"17
+[; ;interrupt_handler.c: 17:     TMR4_SetInterruptHandler(sensor_read);
+[e ( _TMR4_SetInterruptHandler (1 &U _sensor_read ]
 "18
-[; ;interrupt_handler.c: 18: }
+[; ;interrupt_handler.c: 18:     IOCAF0_SetInterruptHandler(button_override);
+[e ( _IOCAF0_SetInterruptHandler (1 &U _button_override ]
+"19
+[; ;interrupt_handler.c: 19:     EUSART1_SetRxInterruptHandler(Rx1_ISR);
+[e ( _EUSART1_SetRxInterruptHandler (1 &U _Rx1_ISR ]
+"21
+[; ;interrupt_handler.c: 21: }
 [e :UE 1451 ]
 }
-"20
-[; ;interrupt_handler.c: 20: void timer_callback(void){
-[v _timer_callback `(v ~T0 @X0 1 ef ]
+"23
+[; ;interrupt_handler.c: 23: void internal_clock(void){
+[v _internal_clock `(v ~T0 @X0 1 ef ]
 {
-[e :U _timer_callback ]
+[e :U _internal_clock ]
 [f ]
-"21
-[; ;interrupt_handler.c: 21:     timer_ms++;
+"24
+[; ;interrupt_handler.c: 24:     timer_ms++;
 [e ++ _timer_ms -> -> 1 `i `us ]
-"22
-[; ;interrupt_handler.c: 22:     if (timer_ms>=1000){
+"25
+[; ;interrupt_handler.c: 25:     if (timer_ms>=1000){
 [e $ ! >= -> _timer_ms `ui -> -> 1000 `i `ui 1453  ]
 {
-"23
-[; ;interrupt_handler.c: 23:         timer_ms-=1000;
-[e =- _timer_ms -> -> 1000 `i `us ]
-"24
-[; ;interrupt_handler.c: 24:         timer_s++;
-[e ++ _timer_s -> -> 1 `i `us ]
 "26
-[; ;interrupt_handler.c: 26:     }
+[; ;interrupt_handler.c: 26:         timer_ms-=1000;
+[e =- _timer_ms -> -> 1000 `i `us ]
+"27
+[; ;interrupt_handler.c: 27:         timer_s++;
+[e ++ _timer_s -> -> 1 `i `us ]
+"29
+[; ;interrupt_handler.c: 29:     }
 }
 [e :U 1453 ]
-"27
-[; ;interrupt_handler.c: 27: }
+"30
+[; ;interrupt_handler.c: 30: }
 [e :UE 1452 ]
 }
-"29
-[; ;interrupt_handler.c: 29: double t_update(void){
+"32
+[; ;interrupt_handler.c: 32: double t_update(void){
 [v _t_update `(d ~T0 @X0 1 ef ]
 {
 [e :U _t_update ]
 [f ]
-"30
-[; ;interrupt_handler.c: 30:     return (double)timer_s + (double)timer_ms /1000;
+"33
+[; ;interrupt_handler.c: 33:     return (double)timer_s + (double)timer_ms /1000;
 [e ) + -> _timer_s `d / -> _timer_ms `d -> -> 1000 `i `d ]
 [e $UE 1454  ]
-"31
-[; ;interrupt_handler.c: 31: }
+"34
+[; ;interrupt_handler.c: 34: }
 [e :UE 1454 ]
 }
-"33
-[; ;interrupt_handler.c: 33: void Rx1_ISR(void){
+"36
+[; ;interrupt_handler.c: 36: void sensor_read(void){
+[v _sensor_read `(v ~T0 @X0 1 ef ]
+{
+[e :U _sensor_read ]
+[f ]
+"37
+[; ;interrupt_handler.c: 37:         tempData = tempRead();
+[e = _tempData ( _tempRead ..  ]
+"38
+[; ;interrupt_handler.c: 38:         hallRaw = hallRead();
+[e = _hallRaw ( _hallRead ..  ]
+"39
+[; ;interrupt_handler.c: 39:         windSpeed = windSpeedCalc(t_update(),3);
+[e = _windSpeed ( _windSpeedCalc (2 , ( _t_update ..  -> -> 3 `i `f ]
+"40
+[; ;interrupt_handler.c: 40: }
+[e :UE 1455 ]
+}
+"42
+[; ;interrupt_handler.c: 42: void Rx1_ISR(void){
 [v _Rx1_ISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _Rx1_ISR ]
 [f ]
-"34
-[; ;interrupt_handler.c: 34:     EUSART1_Receive_ISR();
+"43
+[; ;interrupt_handler.c: 43:     EUSART1_Receive_ISR();
 [e ( _EUSART1_Receive_ISR ..  ]
-"35
-[; ;interrupt_handler.c: 35:     if(EUSART1_is_rx_ready()){
-[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 1456  ]
+"44
+[; ;interrupt_handler.c: 44:     if(EUSART1_is_rx_ready()){
+[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 1457  ]
 {
-"36
-[; ;interrupt_handler.c: 36:         rxData = EUSART1_Read();
+"45
+[; ;interrupt_handler.c: 45:         rxData = EUSART1_Read();
 [e = _rxData ( _EUSART1_Read ..  ]
-"41
-[; ;interrupt_handler.c: 41:         do { ODCONBbits.ODCB4 = 1; } while(0);
-[e :U 1459 ]
+"50
+[; ;interrupt_handler.c: 50:         do { ODCONBbits.ODCB4 = 1; } while(0);
+[e :U 1460 ]
 {
 [e = . . _ODCONBbits 0 4 -> -> 1 `i `uc ]
 }
-[e :U 1458 ]
-"42
-[; ;interrupt_handler.c: 42:         do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
-[e :U 1462 ]
+[e :U 1459 ]
+"51
+[; ;interrupt_handler.c: 51:         do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
+[e :U 1463 ]
 {
 [e = . . _LATBbits 0 5 -> ~ -> . . _LATBbits 0 5 `i `uc ]
 }
-[e :U 1461 ]
-"43
-[; ;interrupt_handler.c: 43:     }
+[e :U 1462 ]
+"52
+[; ;interrupt_handler.c: 52:     }
 }
-[e :U 1456 ]
-"44
-[; ;interrupt_handler.c: 44: }
-[e :UE 1455 ]
+[e :U 1457 ]
+"53
+[; ;interrupt_handler.c: 53: }
+[e :UE 1456 ]
 }
-"46
-[; ;interrupt_handler.c: 46: uint8_t Read_EUSART1_Buffer(void){
+"55
+[; ;interrupt_handler.c: 55: uint8_t Read_EUSART1_Buffer(void){
 [v _Read_EUSART1_Buffer `(uc ~T0 @X0 1 ef ]
 {
 [e :U _Read_EUSART1_Buffer ]
 [f ]
-"47
-[; ;interrupt_handler.c: 47:     return rxData;
+"56
+[; ;interrupt_handler.c: 56:     return rxData;
 [e ) _rxData ]
-[e $UE 1463  ]
-"48
-[; ;interrupt_handler.c: 48: }
-[e :UE 1463 ]
+[e $UE 1464  ]
+"57
+[; ;interrupt_handler.c: 57: }
+[e :UE 1464 ]
 }
-"50
-[; ;interrupt_handler.c: 50: void button_override(void){
+"59
+[; ;interrupt_handler.c: 59: void button_override(void){
 [v _button_override `(v ~T0 @X0 1 ef ]
 {
 [e :U _button_override ]
 [f ]
-"51
-[; ;interrupt_handler.c: 51:     manualMode = !manualMode;
+"60
+[; ;interrupt_handler.c: 60:     manualMode = !manualMode;
 [e = _manualMode -> -> ! != -> _manualMode `i -> 0 `i `i `a ]
-"52
-[; ;interrupt_handler.c: 52:     actionTrigger();
+"61
+[; ;interrupt_handler.c: 61:     actionTrigger();
 [e ( _actionTrigger ..  ]
-"53
-[; ;interrupt_handler.c: 53: }
-[e :UE 1464 ]
+"62
+[; ;interrupt_handler.c: 62: }
+[e :UE 1465 ]
 }

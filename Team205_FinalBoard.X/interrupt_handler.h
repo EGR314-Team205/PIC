@@ -35,7 +35,7 @@ void Interrupt_Handler_Initialize(void);
 void internal_clock(void);
 double t_update(void);
 
-uint16_t sensor_read(void);
+void sensor_read(void);
 
 void Rx1_ISR(void);
 

@@ -16751,6 +16751,196 @@ void (*MSSP1_InterruptHandler)(void);
 void I2C1_SetInterruptHandler(void (* InterruptHandler)(void));
 # 56 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/tmr4.h" 1
+# 79 "./mcc_generated_files/tmr4.h"
+typedef enum
+{
+# 89 "./mcc_generated_files/tmr4.h"
+   TMR4_ROP_STARTS_TMRON,
+
+
+
+
+   TMR4_ROP_STARTS_TMRON_ERSHIGH,
+
+
+
+
+   TMR4_ROP_STARTS_TMRON_ERSLOW,
+
+
+
+
+   TMR4_ROP_RESETS_ERSBOTHEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSRISINGEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSFALLINGEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSLOW,
+
+
+
+
+   TMR4_ROP_RESETS_ERSHIGH,
+# 135 "./mcc_generated_files/tmr4.h"
+   TMR4_OS_STARTS_TMRON,
+
+
+
+
+   TMR4_OS_STARTS_ERSRISINGEDGE ,
+
+
+
+
+   TMR4_OS_STARTS_ERSFALLINGEDGE ,
+
+
+
+
+   TMR4_OS_STARTS_ERSBOTHEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSFIRSTRISINGEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSFIRSTFALLINGEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSRISINGEDGEDETECT,
+
+
+
+
+   TMR4_OS_STARTS_ERSFALLINGEDGEDETECT,
+
+
+
+
+   TMR4_OS_STARTS_TMRON_ERSHIGH = 0x16,
+
+
+
+
+   TMR4_OS_STARTS_TMRON_ERSLOW = 0x17,
+# 192 "./mcc_generated_files/tmr4.h"
+   TMR4_MS_STARTS_TMRON_ERSRISINGEDGEDETECT = 0x11,
+
+
+
+
+   TMR4_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT = 0x12,
+
+
+
+
+
+   TMR4_MS_STARTS_TMRON_ERSBOTHEDGE = 0x13
+
+} TMR4_HLT_MODE;
+# 220 "./mcc_generated_files/tmr4.h"
+typedef enum
+{
+
+
+    TMR4_T4INPPS,
+
+
+
+    TMR4_T2POSTSCALED,
+
+
+
+    TMR4_RESERVED,
+
+
+
+    TMR4_T6POSTSCALED,
+
+
+    TMR4_CCP1_OUT,
+
+
+
+    TMR4_CCP2_OUT,
+
+
+
+    TMR4_PWM3_OUT,
+
+
+
+    TMR4_PWM4_OUT,
+
+
+
+    TMR4_C1_OUT_SYNC,
+
+
+
+    TMR4_C2_OUT_SYNC,
+
+
+
+    TMR4_ZCD_OUTPUT
+
+
+} TMR4_HLT_EXT_RESET_SOURCE;
+# 308 "./mcc_generated_files/tmr4.h"
+void TMR4_Initialize(void);
+# 344 "./mcc_generated_files/tmr4.h"
+void TMR4_ModeSet(TMR4_HLT_MODE mode);
+# 379 "./mcc_generated_files/tmr4.h"
+void TMR4_ExtResetSourceSet(TMR4_HLT_EXT_RESET_SOURCE reset);
+# 408 "./mcc_generated_files/tmr4.h"
+void TMR4_Start(void);
+# 437 "./mcc_generated_files/tmr4.h"
+void TMR4_StartTimer(void);
+# 469 "./mcc_generated_files/tmr4.h"
+void TMR4_Stop(void);
+# 501 "./mcc_generated_files/tmr4.h"
+void TMR4_StopTimer(void);
+# 536 "./mcc_generated_files/tmr4.h"
+uint8_t TMR4_Counter8BitGet(void);
+# 571 "./mcc_generated_files/tmr4.h"
+uint8_t TMR4_ReadTimer(void);
+# 610 "./mcc_generated_files/tmr4.h"
+void TMR4_Counter8BitSet(uint8_t timerVal);
+# 649 "./mcc_generated_files/tmr4.h"
+void TMR4_WriteTimer(uint8_t timerVal);
+# 701 "./mcc_generated_files/tmr4.h"
+void TMR4_Period8BitSet(uint8_t periodVal);
+# 753 "./mcc_generated_files/tmr4.h"
+void TMR4_LoadPeriodRegister(uint8_t periodVal);
+# 771 "./mcc_generated_files/tmr4.h"
+void TMR4_ISR(void);
+# 789 "./mcc_generated_files/tmr4.h"
+ void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
+# 807 "./mcc_generated_files/tmr4.h"
+extern void (*TMR4_InterruptHandler)(void);
+# 825 "./mcc_generated_files/tmr4.h"
+void TMR4_DefaultInterruptHandler(void);
+# 57 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/tmr2.h" 1
 # 79 "./mcc_generated_files/tmr2.h"
 typedef enum
@@ -16939,7 +17129,7 @@ void TMR2_ISR(void);
 extern void (*TMR2_InterruptHandler)(void);
 # 825 "./mcc_generated_files/tmr2.h"
 void TMR2_DefaultInterruptHandler(void);
-# 57 "./mcc_generated_files/mcc.h" 2
+# 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart1.h" 1
 # 76 "./mcc_generated_files/eusart1.h"
@@ -16994,12 +17184,12 @@ void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
 # 506 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 58 "./mcc_generated_files/mcc.h" 2
-# 73 "./mcc_generated_files/mcc.h"
+# 59 "./mcc_generated_files/mcc.h" 2
+# 74 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 86 "./mcc_generated_files/mcc.h"
+# 87 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 99 "./mcc_generated_files/mcc.h"
+# 100 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 25 "main.c" 2
 
@@ -17066,6 +17256,12 @@ uint8_t tempRead(void);
 uint16_t timer_ms;
 uint16_t timer_s;
 
+uint8_t tempData;
+uint16_t hallRaw;
+double windSpeed;
+int readCount;
+
+
 volatile uint8_t rxData;
 
 _Bool manualMode;
@@ -17073,8 +17269,10 @@ _Bool manualMode;
 
 void Interrupt_Handler_Initialize(void);
 
-void timer_callback(void);
+void internal_clock(void);
 double t_update(void);
+
+void sensor_read(void);
 
 void Rx1_ISR(void);
 
@@ -17082,12 +17280,8 @@ void button_override(void);
 
 uint8_t Read_EUSART1_Buffer(void);
 # 31 "main.c" 2
-
-
-
-
+# 48 "main.c"
 void PROJECT_INIT(){
-    TMR2_StartTimer();
     hallInit();
     motorStop();
 }
@@ -17096,13 +17290,8 @@ void PROJECT_INIT(){
 void main(void)
 {
     SYSTEM_Initialize();
-
+    PROJECT_INIT();
     Interrupt_Handler_Initialize();
-
-    uint8_t tempData;
-    uint16_t hallRaw;
-    double windSpeed;
-    int readCount = 0;
 
     int threshCount = 0;
 
@@ -17113,27 +17302,15 @@ void main(void)
     while (1){
 
 
-        tempData = tempRead();
-        hallRaw = hallRead();
-        windSpeed = windSpeedCalc(t_update(),3);
-        motor1_fault = 0;
-        motor2_fault = 0;
 
+        motor1_fault = (!PORTAbits.RA1 ? motorFaultRead(1) : 0);
+        motor2_fault = (!PORTAbits.RA2 ? motorFaultRead(2) : 0);
 
-        if (PORTAbits.RA1==0)
-            motor1_fault = motorFaultRead(1);
-        if (PORTAbits.RA2==0)
-            motor2_fault = motorFaultRead(2);
-
-        if(manualMode != 1){
-            if(windSpeed>2 && threshCount<5)
-                threshCount++;
-            else if (windSpeed>2 && threshCount>=5){
-                actionTrigger();
-                threshCount = 0;
-            }
-            else
-                threshCount = 0;
+        if(manualMode && windSpeed>2 && threshCount<5)
+            threshCount++;
+        else if (manualMode && windSpeed>2 && threshCount>=5){
+            actionTrigger();
+            threshCount = 0;
         }
         else
             threshCount = 0;
@@ -17146,6 +17323,7 @@ void main(void)
                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
+
             _delay((unsigned long)((500)*(16000000/4000.0)));
         }
 

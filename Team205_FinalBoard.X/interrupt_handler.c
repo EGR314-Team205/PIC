@@ -1,5 +1,7 @@
 #include "interrupt_handler.h"
 #include "motor_control.h"
+#include "temp_sensor.h"
+#include "hall_effect.h"
 
 
 void Interrupt_Handler_Initialize(void){
