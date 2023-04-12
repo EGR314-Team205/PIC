@@ -38,7 +38,7 @@
  * 
  * PERIPHERAL:         TRIGGER:             RESULT:
  * TIMER2              1 MS                 INTERNAL CLOCK TIMER
- * TIMER4              1 MS                 SENSOR READ
+ * TIMER3              2 MS                 SENSOR READ
  * EUSART1             RX DATA RECIEVE      STORE IN RXDATA
  * GPIO(PUSH_BUTTON)   PIN READ HIGH        TRIGGER MOTOR ACTION GROUP
  * 
@@ -48,21 +48,23 @@
 void PROJECT_INIT(){
     hallInit(); 
     motorStop();
+    TMR3_StartTimer();
 }
 
 
 void main(void)
 {
     SYSTEM_Initialize();     // Initialize the device
-    PROJECT_INIT();
+//    PROJECT_INIT();
     Interrupt_Handler_Initialize();
-    
+    sensor_read();
     int threshCount = 0;
     
     uint8_t motor1_fault;
     uint8_t motor2_fault;
     
-    printf("Staring...\n\r");
+    printf("Staring...\n\r");  
+    
     while (1){
         
       

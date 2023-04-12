@@ -6,6 +6,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "58 ./motor_control.h
 [; ;./motor_control.h: 58: void motorStop(void);
 [v _motorStop `(v ~T0 @X0 0 ef ]
+"129 ./mcc_generated_files/tmr3.h
+[; ;./mcc_generated_files/tmr3.h: 129: void TMR3_StartTimer(void);
+[v _TMR3_StartTimer `(v ~T0 @X0 0 ef ]
 [p mainexit ]
 "74 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 74: void SYSTEM_Initialize(void);
@@ -13,6 +16,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 33: void Interrupt_Handler_Initialize(void);
 [v _Interrupt_Handler_Initialize `(v ~T0 @X0 0 ef ]
+"38
+[; ;./interrupt_handler.h: 38: void sensor_read(void);
+[v _sensor_read `(v ~T0 @X0 0 ef ]
 "105 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
 [; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
@@ -1418,129 +1424,132 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 50:     motorStop();
 [e ( _motorStop ..  ]
 "51
-[; ;main.c: 51: }
+[; ;main.c: 51:     TMR3_StartTimer();
+[e ( _TMR3_StartTimer ..  ]
+"52
+[; ;main.c: 52: }
 [e :UE 1452 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"54
-[; ;main.c: 54: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
 "55
-[; ;main.c: 55: {
+[; ;main.c: 55: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"56
+[; ;main.c: 56: {
 {
 [e :U _main ]
 [f ]
-"56
-[; ;main.c: 56:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
 "57
-[; ;main.c: 57:     PROJECT_INIT();
-[e ( _PROJECT_INIT ..  ]
-"58
-[; ;main.c: 58:     Interrupt_Handler_Initialize();
+[; ;main.c: 57:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"59
+[; ;main.c: 59:     Interrupt_Handler_Initialize();
 [e ( _Interrupt_Handler_Initialize ..  ]
 "60
-[; ;main.c: 60:     int threshCount = 0;
+[; ;main.c: 60:     sensor_read();
+[e ( _sensor_read ..  ]
+"61
+[; ;main.c: 61:     int threshCount = 0;
 [v _threshCount `i ~T0 @X0 1 a ]
 [e = _threshCount -> 0 `i ]
-"62
-[; ;main.c: 62:     uint8_t motor1_fault;
-[v _motor1_fault `uc ~T0 @X0 1 a ]
 "63
-[; ;main.c: 63:     uint8_t motor2_fault;
+[; ;main.c: 63:     uint8_t motor1_fault;
+[v _motor1_fault `uc ~T0 @X0 1 a ]
+"64
+[; ;main.c: 64:     uint8_t motor2_fault;
 [v _motor2_fault `uc ~T0 @X0 1 a ]
-"65
-[; ;main.c: 65:     printf("Staring...\n\r");
-[e ( _printf :s 1C ]
 "66
-[; ;main.c: 66:     while (1){
+[; ;main.c: 66:     printf("Staring...\n\r");
+[e ( _printf :s 1C ]
+"68
+[; ;main.c: 68:     while (1){
 [e :U 1455 ]
 {
-"70
-[; ;main.c: 70:         motor1_fault = (!PORTAbits.RA1 ? motorFaultRead(1) : 0);
+"72
+[; ;main.c: 72:         motor1_fault = (!PORTAbits.RA1 ? motorFaultRead(1) : 0);
 [e = _motor1_fault -> ? ! != -> . . _PORTAbits 0 1 `i -> 0 `i : -> ( _motorFaultRead (1 -> 1 `i `i -> 0 `i `uc ]
-"71
-[; ;main.c: 71:         motor2_fault = (!PORTAbits.RA2 ? motorFaultRead(2) : 0);
-[e = _motor2_fault -> ? ! != -> . . _PORTAbits 0 2 `i -> 0 `i : -> ( _motorFaultRead (1 -> 2 `i `i -> 0 `i `uc ]
 "73
-[; ;main.c: 73:         if(manualMode && windSpeed>2 && threshCount<5)
+[; ;main.c: 73:         motor2_fault = (!PORTAbits.RA2 ? motorFaultRead(2) : 0);
+[e = _motor2_fault -> ? ! != -> . . _PORTAbits 0 2 `i -> 0 `i : -> ( _motorFaultRead (1 -> 2 `i `i -> 0 `i `uc ]
+"75
+[; ;main.c: 75:         if(manualMode && windSpeed>2 && threshCount<5)
 [e $ ! && && != -> _manualMode `i -> 0 `i > _windSpeed -> -> 2 `i `d < _threshCount -> 5 `i 1457  ]
-"74
-[; ;main.c: 74:             threshCount++;
+"76
+[; ;main.c: 76:             threshCount++;
 [e ++ _threshCount -> 1 `i ]
 [e $U 1458  ]
-"75
-[; ;main.c: 75:         else if (manualMode && windSpeed>2 && threshCount>=5){
+"77
+[; ;main.c: 77:         else if (manualMode && windSpeed>2 && threshCount>=5){
 [e :U 1457 ]
 [e $ ! && && != -> _manualMode `i -> 0 `i > _windSpeed -> -> 2 `i `d >= _threshCount -> 5 `i 1459  ]
 {
-"76
-[; ;main.c: 76:             actionTrigger();
-[e ( _actionTrigger ..  ]
-"77
-[; ;main.c: 77:             threshCount = 0;
-[e = _threshCount -> 0 `i ]
 "78
-[; ;main.c: 78:         }
+[; ;main.c: 78:             actionTrigger();
+[e ( _actionTrigger ..  ]
+"79
+[; ;main.c: 79:             threshCount = 0;
+[e = _threshCount -> 0 `i ]
+"80
+[; ;main.c: 80:         }
 }
 [e $U 1460  ]
-"79
-[; ;main.c: 79:         else
+"81
+[; ;main.c: 81:         else
 [e :U 1459 ]
-"80
-[; ;main.c: 80:             threshCount = 0;
+"82
+[; ;main.c: 82:             threshCount = 0;
 [e = _threshCount -> 0 `i ]
 [e :U 1460 ]
 [e :U 1458 ]
-"82
-[; ;main.c: 82:         if(EUSART1_is_tx_ready()){
+"84
+[; ;main.c: 84:         if(EUSART1_is_tx_ready()){
 [e $ ! != -> ( _EUSART1_is_tx_ready ..  `i -> 0 `i 1461  ]
 {
-"83
-[; ;main.c: 83:             printf("Reading %i (t = %.3f s): \n\r", ++readCount, t_update());
-[e ( _printf , , (. :s 2C =+ _readCount -> 1 `i ( _t_update ..  ]
-"84
-[; ;main.c: 84:                     printf("\tTemp: %u C \n\r", tempData);
-[e ( _printf , (. :s 3C -> _tempData `i ]
 "85
-[; ;main.c: 85:                     printf("\tHall Effect Position: %u \n\r", hallRaw);
-[e ( _printf , (. :s 4C -> _hallRaw `ui ]
+[; ;main.c: 85:             printf("Reading %i (t = %.3f s): \n\r", ++readCount, t_update());
+[e ( _printf , , (. :s 2C =+ _readCount -> 1 `i ( _t_update ..  ]
 "86
-[; ;main.c: 86:                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
-[e ( _printf , (. :s 5C _windSpeed ]
+[; ;main.c: 86:                     printf("\tTemp: %u C \n\r", tempData);
+[e ( _printf , (. :s 3C -> _tempData `i ]
 "87
-[; ;main.c: 87:                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
-[e ( _printf , , (. :s 6C -> _motor1_fault `i -> _motor2_fault `i ]
+[; ;main.c: 87:                     printf("\tHall Effect Position: %u \n\r", hallRaw);
+[e ( _printf , (. :s 4C -> _hallRaw `ui ]
 "88
-[; ;main.c: 88:                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
-[e ( _printf , , , (. :s 7C _threshCount -> 5 `i -> _deployStatus `i ]
+[; ;main.c: 88:                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
+[e ( _printf , (. :s 5C _windSpeed ]
 "89
-[; ;main.c: 89:                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
-[e ( _printf , (. :s 8C -> ( _Read_EUSART1_Buffer ..  `i ]
+[; ;main.c: 89:                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
+[e ( _printf , , (. :s 6C -> _motor1_fault `i -> _motor2_fault `i ]
+"90
+[; ;main.c: 90:                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
+[e ( _printf , , , (. :s 7C _threshCount -> 5 `i -> _deployStatus `i ]
 "91
-[; ;main.c: 91:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;main.c: 91:                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
+[e ( _printf , (. :s 8C -> ( _Read_EUSART1_Buffer ..  `i ]
+"93
+[; ;main.c: 93:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"92
-[; ;main.c: 92:         }
+"94
+[; ;main.c: 94:         }
 }
 [e :U 1461 ]
-"94
-[; ;main.c: 94:         LATAbits.LATA3 = (tempData>=25);
-[e = . . _LATAbits 0 3 -> -> >= -> _tempData `i -> 25 `i `i `uc ]
 "96
-[; ;main.c: 96:         LATAbits.LATA4 = (hallRaw>2048);
-[e = . . _LATAbits 0 4 -> -> > -> _hallRaw `ui -> -> 2048 `i `ui `i `uc ]
+[; ;main.c: 96:         LATAbits.LATA3 = (tempData>=25);
+[e = . . _LATAbits 0 3 -> -> >= -> _tempData `i -> 25 `i `i `uc ]
 "98
-[; ;main.c: 98:         LATAbits.LATA4 = !PORTAbits.RA0;
+[; ;main.c: 98:         LATAbits.LATA4 = (hallRaw>2048);
+[e = . . _LATAbits 0 4 -> -> > -> _hallRaw `ui -> -> 2048 `i `ui `i `uc ]
+"100
+[; ;main.c: 100:         LATAbits.LATA4 = !PORTAbits.RA0;
 [e = . . _LATAbits 0 4 -> -> ! != -> . . _PORTAbits 0 0 `i -> 0 `i `i `uc ]
-"99
-[; ;main.c: 99:     }
+"101
+[; ;main.c: 101:     }
 }
 [e :U 1454 ]
 [e $U 1455  ]
 [e :U 1456 ]
-"100
-[; ;main.c: 100: }
+"102
+[; ;main.c: 102: }
 [e :UE 1453 ]
 }
 [p f _printf 8496256 ]

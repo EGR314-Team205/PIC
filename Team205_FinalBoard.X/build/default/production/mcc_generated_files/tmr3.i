@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/tmr4.c"
+# 1 "mcc_generated_files/tmr3.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/tmr4.c" 2
-# 51 "mcc_generated_files/tmr4.c"
+# 1 "mcc_generated_files/tmr3.c" 2
+# 51 "mcc_generated_files/tmr3.c"
 # 1 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -16066,331 +16066,168 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\xc.h" 2 3
-# 51 "mcc_generated_files/tmr4.c" 2
+# 51 "mcc_generated_files/tmr3.c" 2
 
-# 1 "mcc_generated_files/tmr4.h" 1
-# 55 "mcc_generated_files/tmr4.h"
+# 1 "mcc_generated_files/tmr3.h" 1
+# 54 "mcc_generated_files/tmr3.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdbool.h" 1 3
-# 55 "mcc_generated_files/tmr4.h" 2
-# 79 "mcc_generated_files/tmr4.h"
-typedef enum
-{
-# 89 "mcc_generated_files/tmr4.h"
-   TMR4_ROP_STARTS_TMRON,
+# 54 "mcc_generated_files/tmr3.h" 2
+# 100 "mcc_generated_files/tmr3.h"
+void TMR3_Initialize(void);
+# 129 "mcc_generated_files/tmr3.h"
+void TMR3_StartTimer(void);
+# 161 "mcc_generated_files/tmr3.h"
+void TMR3_StopTimer(void);
+# 196 "mcc_generated_files/tmr3.h"
+uint16_t TMR3_ReadTimer(void);
+# 235 "mcc_generated_files/tmr3.h"
+void TMR3_WriteTimer(uint16_t timerVal);
+# 271 "mcc_generated_files/tmr3.h"
+void TMR3_Reload(void);
+# 310 "mcc_generated_files/tmr3.h"
+void TMR3_StartSinglePulseAcquisition(void);
+# 349 "mcc_generated_files/tmr3.h"
+uint8_t TMR3_CheckGateValueStatus(void);
+# 367 "mcc_generated_files/tmr3.h"
+void TMR3_ISR(void);
+# 385 "mcc_generated_files/tmr3.h"
+ void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+# 403 "mcc_generated_files/tmr3.h"
+extern void (*TMR3_InterruptHandler)(void);
+# 421 "mcc_generated_files/tmr3.h"
+void TMR3_DefaultInterruptHandler(void);
+# 52 "mcc_generated_files/tmr3.c" 2
 
 
 
 
-   TMR4_ROP_STARTS_TMRON_ERSHIGH,
 
+volatile uint16_t timer3ReloadVal;
+void (*TMR3_InterruptHandler)(void);
 
 
 
-   TMR4_ROP_STARTS_TMRON_ERSLOW,
 
 
-
-
-   TMR4_ROP_RESETS_ERSBOTHEDGE,
-
-
-
-
-   TMR4_ROP_RESETS_ERSRISINGEDGE,
-
-
-
-
-   TMR4_ROP_RESETS_ERSFALLINGEDGE,
-
-
-
-
-   TMR4_ROP_RESETS_ERSLOW,
-
-
-
-
-   TMR4_ROP_RESETS_ERSHIGH,
-# 135 "mcc_generated_files/tmr4.h"
-   TMR4_OS_STARTS_TMRON,
-
-
-
-
-   TMR4_OS_STARTS_ERSRISINGEDGE ,
-
-
-
-
-   TMR4_OS_STARTS_ERSFALLINGEDGE ,
-
-
-
-
-   TMR4_OS_STARTS_ERSBOTHEDGE,
-
-
-
-
-
-   TMR4_OS_STARTS_ERSFIRSTRISINGEDGE,
-
-
-
-
-
-   TMR4_OS_STARTS_ERSFIRSTFALLINGEDGE,
-
-
-
-
-
-   TMR4_OS_STARTS_ERSRISINGEDGEDETECT,
-
-
-
-
-   TMR4_OS_STARTS_ERSFALLINGEDGEDETECT,
-
-
-
-
-   TMR4_OS_STARTS_TMRON_ERSHIGH = 0x16,
-
-
-
-
-   TMR4_OS_STARTS_TMRON_ERSLOW = 0x17,
-# 192 "mcc_generated_files/tmr4.h"
-   TMR4_MS_STARTS_TMRON_ERSRISINGEDGEDETECT = 0x11,
-
-
-
-
-   TMR4_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT = 0x12,
-
-
-
-
-
-   TMR4_MS_STARTS_TMRON_ERSBOTHEDGE = 0x13
-
-} TMR4_HLT_MODE;
-# 220 "mcc_generated_files/tmr4.h"
-typedef enum
-{
-
-
-    TMR4_T4INPPS,
-
-
-
-    TMR4_T2POSTSCALED,
-
-
-
-    TMR4_RESERVED,
-
-
-
-    TMR4_T6POSTSCALED,
-
-
-    TMR4_CCP1_OUT,
-
-
-
-    TMR4_CCP2_OUT,
-
-
-
-    TMR4_PWM3_OUT,
-
-
-
-    TMR4_PWM4_OUT,
-
-
-
-    TMR4_C1_OUT_SYNC,
-
-
-
-    TMR4_C2_OUT_SYNC,
-
-
-
-    TMR4_ZCD_OUTPUT
-
-
-} TMR4_HLT_EXT_RESET_SOURCE;
-# 308 "mcc_generated_files/tmr4.h"
-void TMR4_Initialize(void);
-# 344 "mcc_generated_files/tmr4.h"
-void TMR4_ModeSet(TMR4_HLT_MODE mode);
-# 379 "mcc_generated_files/tmr4.h"
-void TMR4_ExtResetSourceSet(TMR4_HLT_EXT_RESET_SOURCE reset);
-# 408 "mcc_generated_files/tmr4.h"
-void TMR4_Start(void);
-# 437 "mcc_generated_files/tmr4.h"
-void TMR4_StartTimer(void);
-# 469 "mcc_generated_files/tmr4.h"
-void TMR4_Stop(void);
-# 501 "mcc_generated_files/tmr4.h"
-void TMR4_StopTimer(void);
-# 536 "mcc_generated_files/tmr4.h"
-uint8_t TMR4_Counter8BitGet(void);
-# 571 "mcc_generated_files/tmr4.h"
-uint8_t TMR4_ReadTimer(void);
-# 610 "mcc_generated_files/tmr4.h"
-void TMR4_Counter8BitSet(uint8_t timerVal);
-# 649 "mcc_generated_files/tmr4.h"
-void TMR4_WriteTimer(uint8_t timerVal);
-# 701 "mcc_generated_files/tmr4.h"
-void TMR4_Period8BitSet(uint8_t periodVal);
-# 753 "mcc_generated_files/tmr4.h"
-void TMR4_LoadPeriodRegister(uint8_t periodVal);
-# 771 "mcc_generated_files/tmr4.h"
-void TMR4_ISR(void);
-# 789 "mcc_generated_files/tmr4.h"
- void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
-# 807 "mcc_generated_files/tmr4.h"
-extern void (*TMR4_InterruptHandler)(void);
-# 825 "mcc_generated_files/tmr4.h"
-void TMR4_DefaultInterruptHandler(void);
-# 52 "mcc_generated_files/tmr4.c" 2
-
-
-
-
-
-
-void (*TMR4_InterruptHandler)(void);
-
-
-
-
-
-void TMR4_Initialize(void)
+void TMR3_Initialize(void)
 {
 
 
 
-    T4CLKCON = 0x03;
+    T3GCON = 0x00;
 
 
-    T4HLT = 0x00;
+    T3GATE = 0x00;
 
 
-    T4RST = 0x00;
+    T3CLK = 0x03;
 
 
-    T4PR = 0xF9;
+    TMR3H = 0x83;
 
 
-    T4TMR = 0x00;
+    TMR3L = 0x00;
 
 
-    PIR4bits.TMR4IF = 0;
+    PIR4bits.TMR3IF = 0;
 
 
-    PIE4bits.TMR4IE = 1;
+    timer3ReloadVal=(uint16_t)((TMR3H << 8) | TMR3L);
 
 
-    TMR4_SetInterruptHandler(TMR4_DefaultInterruptHandler);
+    PIE4bits.TMR3IE = 1;
 
 
-    T4CON = 0xAF;
+    TMR3_SetInterruptHandler(TMR3_DefaultInterruptHandler);
+
+
+    T3CON = 0x03;
 }
 
-void TMR4_ModeSet(TMR4_HLT_MODE mode)
+void TMR3_StartTimer(void)
 {
 
-    T4HLTbits.MODE = mode;
+    T3CONbits.TMR3ON = 1;
 }
 
-void TMR4_ExtResetSourceSet(TMR4_HLT_EXT_RESET_SOURCE reset)
+void TMR3_StopTimer(void)
 {
 
-    T4RSTbits.RSEL = reset;
+    T3CONbits.TMR3ON = 0;
 }
 
-void TMR4_Start(void)
+uint16_t TMR3_ReadTimer(void)
 {
+    uint16_t readVal;
+    uint8_t readValHigh;
+    uint8_t readValLow;
 
-    T4CONbits.TMR4ON = 1;
-}
+    T3CONbits.T3RD16 = 1;
 
-void TMR4_StartTimer(void)
-{
-    TMR4_Start();
-}
+    readValLow = TMR3L;
+    readValHigh = TMR3H;
 
-void TMR4_Stop(void)
-{
-
-    T4CONbits.TMR4ON = 0;
-}
-
-void TMR4_StopTimer(void)
-{
-    TMR4_Stop();
-}
-
-uint8_t TMR4_Counter8BitGet(void)
-{
-    uint8_t readVal;
-
-    readVal = TMR4;
+    readVal = ((uint16_t)readValHigh << 8) | readValLow;
 
     return readVal;
 }
 
-uint8_t TMR4_ReadTimer(void)
+void TMR3_WriteTimer(uint16_t timerVal)
 {
-    return TMR4_Counter8BitGet();
-}
-
-void TMR4_Counter8BitSet(uint8_t timerVal)
-{
-
-    TMR4 = timerVal;
-}
-
-void TMR4_WriteTimer(uint8_t timerVal)
-{
-    TMR4_Counter8BitSet(timerVal);
-}
-
-void TMR4_Period8BitSet(uint8_t periodVal)
-{
-   PR4 = periodVal;
-}
-
-void TMR4_LoadPeriodRegister(uint8_t periodVal)
-{
-   TMR4_Period8BitSet(periodVal);
-}
-
-void TMR4_ISR(void)
-{
-
-
-    PIR4bits.TMR4IF = 0;
-
-    if(TMR4_InterruptHandler)
+    if (T3CONbits.nT3SYNC == 1)
     {
-        TMR4_InterruptHandler();
+
+        T3CONbits.TMR3ON = 0;
+
+
+        TMR3H = (uint8_t)(timerVal >> 8);
+        TMR3L = (uint8_t)timerVal;
+
+
+        T3CONbits.TMR3ON =1;
+    }
+    else
+    {
+
+        TMR3H = (uint8_t)(timerVal >> 8);
+        TMR3L = (uint8_t)timerVal;
+    }
+}
+
+void TMR3_Reload(void)
+{
+    TMR3_WriteTimer(timer3ReloadVal);
+}
+
+void TMR3_StartSinglePulseAcquisition(void)
+{
+    T3GCONbits.T3GGO = 1;
+}
+
+uint8_t TMR3_CheckGateValueStatus(void)
+{
+    return (T3GCONbits.T3GVAL);
+}
+
+void TMR3_ISR(void)
+{
+
+
+    PIR4bits.TMR3IF = 0;
+    TMR3_WriteTimer(timer3ReloadVal);
+
+    if(TMR3_InterruptHandler)
+    {
+        TMR3_InterruptHandler();
     }
 }
 
 
-void TMR4_SetInterruptHandler(void (* InterruptHandler)(void)){
-    TMR4_InterruptHandler = InterruptHandler;
+void TMR3_SetInterruptHandler(void (* InterruptHandler)(void)){
+    TMR3_InterruptHandler = InterruptHandler;
 }
 
-void TMR4_DefaultInterruptHandler(void){
+void TMR3_DefaultInterruptHandler(void){
 
 
 }

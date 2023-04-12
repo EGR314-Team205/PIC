@@ -19,17 +19,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26614
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 26614: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS1418 ~T0 @X0 0 e@4082 ]
-[v F10160 `(v ~T0 @X0 0 tf ]
+[v F10114 `(v ~T0 @X0 0 tf ]
 "789 ./mcc_generated_files/tmr2.h
 [; ;./mcc_generated_files/tmr2.h: 789:  void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR2_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10160 ]
+[v _TMR2_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10114 ]
 "35 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 35: void internal_clock(void);
 [v _internal_clock `(v ~T0 @X0 0 ef ]
-[v F10097 `(v ~T0 @X0 0 tf ]
-"789 ./mcc_generated_files/tmr4.h
-[; ;./mcc_generated_files/tmr4.h: 789:  void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR4_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10097 ]
+[v F10051 `(v ~T0 @X0 0 tf ]
+"385 ./mcc_generated_files/tmr3.h
+[; ;./mcc_generated_files/tmr3.h: 385:  void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR3_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F10051 ]
 "38 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 38: void sensor_read(void);
 [v _sensor_read `(v ~T0 @X0 0 ef ]
@@ -40,10 +40,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 42: void button_override(void);
 [v _button_override `(v ~T0 @X0 0 ef ]
-[v F10209 `(v ~T0 @X0 0 tf ]
+[v F10163 `(v ~T0 @X0 0 tf ]
 "506 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 506: void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10209 ]
+[v _EUSART1_SetRxInterruptHandler `(v ~T0 @X0 0 ef1`*F10163 ]
 "40 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 40: void Rx1_ISR(void);
 [v _Rx1_ISR `(v ~T0 @X0 0 ef ]
@@ -1462,8 +1462,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;interrupt_handler.c: 16:     TMR2_SetInterruptHandler(internal_clock);
 [e ( _TMR2_SetInterruptHandler (1 &U _internal_clock ]
 "17
-[; ;interrupt_handler.c: 17:     TMR4_SetInterruptHandler(sensor_read);
-[e ( _TMR4_SetInterruptHandler (1 &U _sensor_read ]
+[; ;interrupt_handler.c: 17:     TMR3_SetInterruptHandler(sensor_read);
+[e ( _TMR3_SetInterruptHandler (1 &U _sensor_read ]
 "18
 [; ;interrupt_handler.c: 18:     IOCAF0_SetInterruptHandler(button_override);
 [e ( _IOCAF0_SetInterruptHandler (1 &U _button_override ]

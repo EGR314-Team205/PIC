@@ -1,7 +1,7 @@
 #include "hall_effect.h"
 
 uint16_t hallRead(void){
-    return (uint16_t)(I2C1_Read1ByteRegister(HALL_ADDRESS,0x0E) << 8 | I2C1_Read1ByteRegister(HALL_ADDRESS,0x0F));
+    return (uint16_t)(I2C1_Read1ByteRegister(HALL_ADDRESS,HALL_ANGLE1) << 8 | I2C1_Read1ByteRegister(HALL_ADDRESS,HALL_ANGLE2));
 }
 
 void hallRecord(double *time){

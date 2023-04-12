@@ -14,7 +14,7 @@ void Interrupt_Handler_Initialize(void){
     INTERRUPT_PeripheralInterruptEnable();     // Enable the Peripheral Interrupts
 
     TMR2_SetInterruptHandler(internal_clock);
-    TMR4_SetInterruptHandler(sensor_read);
+    TMR3_SetInterruptHandler(sensor_read);
     IOCAF0_SetInterruptHandler(button_override); //button triggers manual override
     EUSART1_SetRxInterruptHandler(Rx1_ISR);
     
@@ -26,7 +26,7 @@ void internal_clock(void){
         timer_ms-=1000;
         timer_s++;
 //        IO_RE0_Toggle();
-    } 
+    }
 }
 
 double t_update(void){
