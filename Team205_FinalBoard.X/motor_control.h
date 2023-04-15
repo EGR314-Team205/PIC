@@ -18,13 +18,9 @@ extern "C" {
 #include "mcc_generated_files/examples/i2c1_master_example.h"
 #include "mcc_generated_files/i2c1_master.h"
     
-//MOTOR 1 = SOLENOID
-#define MOTOR1_WRITE 0xD0
-#define MOTOR1_READ 0xD1
-#define MOTOR2_WRITE 0xC0
-#define MOTOR2_READ 0xC1
-
-//MOTOR 2 = DC MOTOR
+#define MOTOR_WRITE 0xC0
+#define MOTOR_READ 0xC1
+    
 #define MOTOR_CONTROL 0x00
 #define MOTOR_FAULT 0x01
 #define MOTOR_5V 0x3F
@@ -51,7 +47,7 @@ void umbDeploy(void);
 
 void umbStow(void);
 
-uint8_t motorFaultRead(int);
+uint8_t motorFaultRead(void);
 
 void actionTrigger(void);
 

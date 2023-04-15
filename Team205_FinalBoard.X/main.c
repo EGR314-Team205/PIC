@@ -29,6 +29,7 @@
 #include "motor_control.h"
 #include "temp_sensor.h"
 #include "interrupt_handler.h"
+#include "sensor_controller.h"
 
 #define THRESH_CUTOFF 5
 
@@ -47,21 +48,21 @@
 
 void PROJECT_INIT(){
     hallInit(); 
-    motorStop();
-    TMR3_StartTimer();
+//    motorStop();
+//    TMR3_StartTimer();
 }
 
 
 void main(void)
 {
     SYSTEM_Initialize();     // Initialize the device
-//    PROJECT_INIT();
+    PROJECT_INIT();
     Interrupt_Handler_Initialize();
     sensor_read();
+    int readCount = 0;
     int threshCount = 0;
-    
-    uint8_t motor1_fault;
-    uint8_t motor2_fault;
+    const float initThresh[] = {25, 0.5};
+    set_thresh(initThresh);
     
     printf("Staring...\n\r");  
     
@@ -69,8 +70,7 @@ void main(void)
         
       
 //        motorFWD(); //debug motor
-        motor1_fault = (!MOTOR_FAULT1_GetValue() ? motorFaultRead(1) : 0);
-        motor2_fault = (!MOTOR_FAULT2_GetValue() ? motorFaultRead(2) : 0);
+        uint8_t motor_fault = (!MOTOR_FAULT_GetValue() ? motorFaultRead() : 0);
         
         if(manualMode && windSpeed>2 && threshCount<THRESH_CUTOFF)
             threshCount++;
@@ -86,17 +86,17 @@ void main(void)
                     printf("\tTemp: %u C \n\r", tempData);
                     printf("\tHall Effect Position: %u \n\r", hallRaw);
                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
-                    printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
+                    printf("\tMotor Fault Codes: (%u) \n\r", motor_fault);
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, THRESH_CUTOFF, deployStatus);
                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
                     
             __delay_ms(500);
         }
         
+        
+        //Threshold Indicators
         LED_DEBUG1_LAT = (tempData>=25);
-             
-        LED_DEBUG2_LAT = (hallRaw>2048);
-                
-        LED_DEBUG2_LAT = !PUSH_BUTTON_GetValue();
+        LED_DEBUG2_LAT = (hallRaw>2048);      
+        LED_DEBUG3_LAT = !PUSH_BUTTON_GetValue();
     }
 }

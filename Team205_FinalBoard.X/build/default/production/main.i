@@ -16655,17 +16655,17 @@ unsigned char __t3rd16on(void);
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 346 "./mcc_generated_files/pin_manager.h"
+# 406 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 358 "./mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_IOC(void);
-# 371 "./mcc_generated_files/pin_manager.h"
-void IOCAF0_ISR(void);
-# 394 "./mcc_generated_files/pin_manager.h"
-void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
 # 418 "./mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_IOC(void);
+# 431 "./mcc_generated_files/pin_manager.h"
+void IOCAF0_ISR(void);
+# 454 "./mcc_generated_files/pin_manager.h"
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 478 "./mcc_generated_files/pin_manager.h"
 extern void (*IOCAF0_InterruptHandler)(void);
-# 442 "./mcc_generated_files/pin_manager.h"
+# 502 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -16969,7 +16969,7 @@ void TMR2_DefaultInterruptHandler(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart1.h" 1
-# 76 "./mcc_generated_files/eusart1.h"
+# 75 "./mcc_generated_files/eusart1.h"
 typedef union {
     struct {
         unsigned perr : 1;
@@ -16991,35 +16991,35 @@ extern volatile uint8_t eusart1RxCount;
 
 extern void (*EUSART1_TxDefaultInterruptHandler)(void);
 extern void (*EUSART1_RxDefaultInterruptHandler)(void);
-# 118 "./mcc_generated_files/eusart1.h"
+# 117 "./mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 166 "./mcc_generated_files/eusart1.h"
+# 165 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 214 "./mcc_generated_files/eusart1.h"
+# 213 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 261 "./mcc_generated_files/eusart1.h"
+# 260 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 309 "./mcc_generated_files/eusart1.h"
+# 308 "./mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 329 "./mcc_generated_files/eusart1.h"
+# 328 "./mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 349 "./mcc_generated_files/eusart1.h"
+# 348 "./mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 370 "./mcc_generated_files/eusart1.h"
+# 369 "./mcc_generated_files/eusart1.h"
 void EUSART1_Transmit_ISR(void);
-# 391 "./mcc_generated_files/eusart1.h"
+# 390 "./mcc_generated_files/eusart1.h"
 void EUSART1_Receive_ISR(void);
-# 412 "./mcc_generated_files/eusart1.h"
+# 411 "./mcc_generated_files/eusart1.h"
 void EUSART1_RxDataHandler(void);
-# 430 "./mcc_generated_files/eusart1.h"
+# 429 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 448 "./mcc_generated_files/eusart1.h"
+# 447 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 466 "./mcc_generated_files/eusart1.h"
+# 465 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
-# 486 "./mcc_generated_files/eusart1.h"
+# 485 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
-# 506 "./mcc_generated_files/eusart1.h"
+# 505 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 # 59 "./mcc_generated_files/mcc.h" 2
 # 74 "./mcc_generated_files/mcc.h"
@@ -17057,7 +17057,7 @@ double windSpeedCalc(double, float);
 # 28 "main.c" 2
 
 # 1 "./motor_control.h" 1
-# 36 "./motor_control.h"
+# 32 "./motor_control.h"
 _Bool deployStatus;
 
 void motorController(uint8_t, uint8_t, uint8_t);
@@ -17076,7 +17076,7 @@ void umbDeploy(void);
 
 void umbStow(void);
 
-uint8_t motorFaultRead(int);
+uint8_t motorFaultRead(void);
 
 void actionTrigger(void);
 
@@ -17093,23 +17093,17 @@ uint8_t tempRead(void);
 uint16_t timer_ms;
 uint16_t timer_s;
 
-uint8_t tempData;
-uint16_t hallRaw;
-double windSpeed;
-int readCount;
-
 
 volatile uint8_t rxData;
 
 _Bool manualMode;
 
-
 void Interrupt_Handler_Initialize(void);
 
 void internal_clock(void);
+
 double t_update(void);
 
-void sensor_read(void);
 
 void Rx1_ISR(void);
 
@@ -17117,24 +17111,40 @@ void button_override(void);
 
 uint8_t Read_EUSART1_Buffer(void);
 # 31 "main.c" 2
-# 48 "main.c"
+
+# 1 "./sensor_controller.h" 1
+# 20 "./sensor_controller.h"
+uint8_t tempData;
+uint16_t hallRaw;
+double windSpeed;
+
+float tempCutoff;
+float windCutoff;
+
+void sensor_read(void);
+
+void set_thresh(float*);
+
+void data_transmit(char);
+# 32 "main.c" 2
+# 49 "main.c"
 void PROJECT_INIT(){
     hallInit();
-    motorStop();
-    TMR3_StartTimer();
+
+
 }
 
 
 void main(void)
 {
     SYSTEM_Initialize();
-
+    PROJECT_INIT();
     Interrupt_Handler_Initialize();
     sensor_read();
+    int readCount = 0;
     int threshCount = 0;
-
-    uint8_t motor1_fault;
-    uint8_t motor2_fault;
+    const float initThresh[] = {25, 0.5};
+    set_thresh(initThresh);
 
     printf("Staring...\n\r");
 
@@ -17142,8 +17152,7 @@ void main(void)
 
 
 
-        motor1_fault = (!PORTAbits.RA1 ? motorFaultRead(1) : 0);
-        motor2_fault = (!PORTAbits.RA2 ? motorFaultRead(2) : 0);
+        uint8_t motor_fault = (!PORTAbits.RA1 ? motorFaultRead() : 0);
 
         if(manualMode && windSpeed>2 && threshCount<5)
             threshCount++;
@@ -17159,17 +17168,17 @@ void main(void)
                     printf("\tTemp: %u C \n\r", tempData);
                     printf("\tHall Effect Position: %u \n\r", hallRaw);
                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
-                    printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
+                    printf("\tMotor Fault Codes: (%u) \n\r", motor_fault);
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
 
             _delay((unsigned long)((500)*(16000000/4000.0)));
         }
 
-        LATAbits.LATA3 = (tempData>=25);
 
-        LATAbits.LATA4 = (hallRaw>2048);
 
-        LATAbits.LATA4 = !PORTAbits.RA0;
+        LATAbits.LATA7 = (tempData>=25);
+        LATAbits.LATA6 = (hallRaw>2048);
+        LATCbits.LATC0 = !PORTAbits.RA0;
     }
 }

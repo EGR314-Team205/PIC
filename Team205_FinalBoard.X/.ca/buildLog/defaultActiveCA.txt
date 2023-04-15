@@ -1,0 +1,147 @@
+make -f nbproject/Makefile-defaultActiveCA.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+rm -f  -r .ca/build/defaultActiveCA/production
+rm -f  -r .ca/dist/defaultActiveCA/production
+make[1]: Leaving directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+[32mCLEAN SUCCESSFUL (total time: 461ms)[0m
+make -f nbproject/Makefile-defaultActiveCA.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+make  -f nbproject/Makefile-defaultActiveCA.mk .ca/dist/defaultActiveCA/production/Team205_FinalBoard.X.production.hex
+make[2]: Entering directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/examples/i2c1_master_example.p1 mcc_generated_files/examples/i2c1_master_example.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/pin_manager.p1 mcc_generated_files/pin_manager.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/device_config.p1 mcc_generated_files/device_config.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/i2c1_master.p1 mcc_generated_files/i2c1_master.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/mcc.p1 mcc_generated_files/mcc.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/tmr2.p1 mcc_generated_files/tmr2.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/interrupt_manager.p1 mcc_generated_files/interrupt_manager.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/eusart1.p1 mcc_generated_files/eusart1.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/mcc_generated_files/tmr3.p1 mcc_generated_files/tmr3.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/motor_control.p1 motor_control.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/main.p1 main.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/hall_effect.p1 hall_effect.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/sensor_controller.p1 sensor_controller.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/interrupt_handler.p1 interrupt_handler.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -c   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/temp_sensor.p1 temp_sensor.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18LF26K40 -Wl,-Map=.ca/dist/defaultActiveCA/production/Team205_FinalBoard.X.production.map  -DXPRJ_defaultActiveCA=defaultActiveCA  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto      -Wl,--memorysummary,.ca/dist/defaultActiveCA/production/memoryfile.xml -o .ca/dist/defaultActiveCA/production/Team205_FinalBoard.X.production.elf  .ca/build/defaultActiveCA/production/mcc_generated_files/examples/i2c1_master_example.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/device_config.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/pin_manager.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/i2c1_master.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/mcc.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/interrupt_manager.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/tmr2.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/eusart1.p1 .ca/build/defaultActiveCA/production/mcc_generated_files/tmr3.p1 .ca/build/defaultActiveCA/production/main.p1 .ca/build/defaultActiveCA/production/hall_effect.p1 .ca/build/defaultActiveCA/production/motor_control.p1 .ca/build/defaultActiveCA/production/temp_sensor.p1 .ca/build/defaultActiveCA/production/interrupt_handler.p1 .ca/build/defaultActiveCA/production/sensor_controller.p1     
+mcc_generated_files/examples/i2c1_master_example.c:63:: advisory: (1510) non-reentrant function "_I2C1_Read1ByteRegister" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:176:: advisory: (1510) non-reentrant function "_I2C1_Open" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:211:: advisory: (1510) non-reentrant function "_I2C1_Close" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:226:: advisory: (1510) non-reentrant function "_I2C1_MasterOperation" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:252:: advisory: (1510) non-reentrant function "_I2C1_MasterWrite" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:264:: advisory: (1510) non-reentrant function "_I2C1_SetBuffer" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:274:: advisory: (1510) non-reentrant function "_I2C1_SetDataCompleteCallback" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:284:: advisory: (1510) non-reentrant function "_I2C1_SetAddressNackCallback" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:299:: advisory: (1510) non-reentrant function "_I2C1_SetInterruptHandler" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:304:: advisory: (1510) non-reentrant function "_I2C1_SetCallback" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:544:: advisory: (1510) non-reentrant function "_I2C1_MasterOpen" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:558:: advisory: (1510) non-reentrant function "_I2C1_MasterClose" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:589:: advisory: (1510) non-reentrant function "_I2C1_MasterStart" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:627:: advisory: (1510) non-reentrant function "_I2C1_MasterEnableIrq" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:637:: advisory: (1510) non-reentrant function "_I2C1_MasterDisableIrq" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/i2c1_master.c:642:: advisory: (1510) non-reentrant function "_I2C1_MasterClearIrq" appears in multiple call graphs and has been duplicated by the compiler
+hall_effect.c:3:: advisory: (1510) non-reentrant function "_hallRead" appears in multiple call graphs and has been duplicated by the compiler
+hall_effect.c:7:: advisory: (1510) non-reentrant function "_hallRecord" appears in multiple call graphs and has been duplicated by the compiler
+hall_effect.c:15:: advisory: (1510) non-reentrant function "_windSpeedCalc" appears in multiple call graphs and has been duplicated by the compiler
+temp_sensor.c:4:: advisory: (1510) non-reentrant function "_tempRead" appears in multiple call graphs and has been duplicated by the compiler
+interrupt_handler.c:30:: advisory: (1510) non-reentrant function "_t_update" appears in multiple call graphs and has been duplicated by the compiler
+sensor_controller.c:7:: advisory: (1510) non-reentrant function "_sensor_read" appears in multiple call graphs and has been duplicated by the compiler
+sensor_controller.c:20:: advisory: (1510) non-reentrant function "_data_transmit" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c:15:: advisory: (1510) non-reentrant function "___wmul" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c:9:: advisory: (1510) non-reentrant function "___aodiv" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c:9:: advisory: (1510) non-reentrant function "___aomod" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c:4:: advisory: (1510) non-reentrant function "___fleq" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c:4:: advisory: (1510) non-reentrant function "___flge" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flneg.c:15:: advisory: (1510) non-reentrant function "___flneg" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fltol.c:43:: advisory: (1510) non-reentrant function "___fltol" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lodiv.c:9:: advisory: (1510) non-reentrant function "___lodiv" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lomod.c:9:: advisory: (1510) non-reentrant function "___lomod" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lwdiv.c:7:: advisory: (1510) non-reentrant function "___lwdiv" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c:10:: advisory: (1510) non-reentrant function "___fladd" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c:245:: advisory: (1510) non-reentrant function "___flsub" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c:11:: advisory: (1510) non-reentrant function "___fldiv" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c:8:: advisory: (1510) non-reentrant function "___flmul" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c:10:: advisory: (1510) non-reentrant function "___xxtofl" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\powf.c:53:: advisory: (1510) non-reentrant function "_powf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fabsf.c:4:: advisory: (1510) non-reentrant function "_fabsf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\printf.c:5:: advisory: (1510) non-reentrant function "_printf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:133:: advisory: (1510) non-reentrant function "_pad" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:406:: advisory: (1510) non-reentrant function "_ctoa" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:443:: advisory: (1510) non-reentrant function "_dtoa" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:506:: advisory: (1510) non-reentrant function "_efgtoa" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:894:: advisory: (1510) non-reentrant function "_utoa" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:1007:: advisory: (1510) non-reentrant function "_vfpfcnvrt" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c:1520:: advisory: (1510) non-reentrant function "_vfprintf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\__fpclassifyf.c:4:: advisory: (1510) non-reentrant function "___fpclassifyf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c:1:: advisory: (1510) non-reentrant function "_abs" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\atoi.c:4:: advisory: (1510) non-reentrant function "_atoi" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\floorf.c:3:: advisory: (1510) non-reentrant function "_floorf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\isdigit.c:5:: advisory: (1510) non-reentrant function "_isdigit" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\isspace.c:5:: advisory: (1510) non-reentrant function "_isspace" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\labs.c:1:: advisory: (1510) non-reentrant function "_labs" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\memcpy.c:4:: advisory: (1510) non-reentrant function "_memcpy" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c:8:: advisory: (1510) non-reentrant function "_fputc" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c:8:: advisory: (1510) non-reentrant function "_fputs" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\putch.c:7:: advisory: (1510) non-reentrant function "_putch" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\scalbnf.c:4:: advisory: (1510) non-reentrant function "_scalbnf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sqrtf.c:22:: advisory: (1510) non-reentrant function "_sqrtf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nanf.c:4:: advisory: (1510) non-reentrant function "_nanf" appears in multiple call graphs and has been duplicated by the compiler
+C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\strcpy.c:3:: advisory: (1510) non-reentrant function "_strcpy" appears in multiple call graphs and has been duplicated by the compiler
+mcc_generated_files/examples/i2c1_master_example.c:77:: warning: (520) function "_I2C1_Read2ByteRegister" is never called
+mcc_generated_files/examples/i2c1_master_example.c:101:: warning: (520) function "_I2C1_Write2ByteRegister" is never called
+mcc_generated_files/examples/i2c1_master_example.c:111:: warning: (520) function "_I2C1_WriteNBytes" is never called
+mcc_generated_files/examples/i2c1_master_example.c:120:: warning: (520) function "_I2C1_ReadNBytes" is never called
+mcc_generated_files/examples/i2c1_master_example.c:128:: warning: (520) function "_I2C1_ReadDataBlock" is never called
+mcc_generated_files/pin_manager.c:136:: warning: (520) function "_PIN_MANAGER_IOC" is never called
+mcc_generated_files/pin_manager.c:148:: warning: (520) function "_IOCAF0_ISR" is never called
+mcc_generated_files/i2c1_master.c:247:: warning: (520) function "_I2C1_MasterRead" is never called
+mcc_generated_files/i2c1_master.c:257:: warning: (520) function "_I2C1_SetTimeOut" is never called
+mcc_generated_files/i2c1_master.c:279:: warning: (520) function "_I2C1_SetWriteCollisionCallback" is never called
+mcc_generated_files/i2c1_master.c:289:: warning: (520) function "_I2C1_SetDataNackCallback" is never called
+mcc_generated_files/i2c1_master.c:294:: warning: (520) function "_I2C1_SetTimeoutCallback" is never called
+mcc_generated_files/i2c1_master.c:428:: warning: (520) function "_I2C1_DO_RX_EMPTY" is never called
+mcc_generated_files/i2c1_master.c:515:: warning: (520) function "_I2C1_BusCollisionIsr" is never called
+mcc_generated_files/i2c1_master.c:531:: warning: (520) function "_I2C1_CallbackRestartWrite" is never called
+mcc_generated_files/i2c1_master.c:536:: warning: (520) function "_I2C1_CallbackRestartRead" is never called
+mcc_generated_files/i2c1_master.c:579:: warning: (2053) function "_I2C1_MasterDisableRestart" is never called
+mcc_generated_files/i2c1_master.c:616:: warning: (2053) function "_I2C1_MasterClearBusCollision" is never called
+mcc_generated_files/i2c1_master.c:622:: warning: (2053) function "_I2C1_MasterIsRxBufFull" is never called
+mcc_generated_files/i2c1_master.c:632:: warning: (2053) function "_I2C1_MasterIsIrqEnabled" is never called
+mcc_generated_files/i2c1_master.c:652:: warning: (2053) function "_I2C1_MasterWaitForEvent" is never called
+mcc_generated_files/tmr2.c:96:: warning: (520) function "_TMR2_ModeSet" is never called
+mcc_generated_files/tmr2.c:102:: warning: (520) function "_TMR2_ExtResetSourceSet" is never called
+mcc_generated_files/tmr2.c:108:: warning: (520) function "_TMR2_Start" is never called
+mcc_generated_files/tmr2.c:114:: warning: (520) function "_TMR2_StartTimer" is never called
+mcc_generated_files/tmr2.c:119:: warning: (520) function "_TMR2_Stop" is never called
+mcc_generated_files/tmr2.c:125:: warning: (520) function "_TMR2_StopTimer" is never called
+mcc_generated_files/tmr2.c:130:: warning: (520) function "_TMR2_Counter8BitGet" is never called
+mcc_generated_files/tmr2.c:139:: warning: (520) function "_TMR2_ReadTimer" is never called
+mcc_generated_files/tmr2.c:144:: warning: (520) function "_TMR2_Counter8BitSet" is never called
+mcc_generated_files/tmr2.c:150:: warning: (520) function "_TMR2_WriteTimer" is never called
+mcc_generated_files/tmr2.c:155:: warning: (520) function "_TMR2_Period8BitSet" is never called
+mcc_generated_files/tmr2.c:160:: warning: (520) function "_TMR2_LoadPeriodRegister" is never called
+mcc_generated_files/eusart1.c:142:: warning: (520) function "_EUSART1_is_tx_done" is never called
+mcc_generated_files/eusart1.c:147:: warning: (520) function "_EUSART1_get_last_status" is never called
+mcc_generated_files/eusart1.c:173:: warning: (520) function "_EUSART1_Write" is never called
+mcc_generated_files/tmr3.c:99:: warning: (520) function "_TMR3_StartTimer" is never called
+mcc_generated_files/tmr3.c:105:: warning: (520) function "_TMR3_StopTimer" is never called
+mcc_generated_files/tmr3.c:111:: warning: (520) function "_TMR3_ReadTimer" is never called
+mcc_generated_files/tmr3.c:149:: warning: (520) function "_TMR3_Reload" is never called
+mcc_generated_files/tmr3.c:154:: warning: (520) function "_TMR3_StartSinglePulseAcquisition" is never called
+mcc_generated_files/tmr3.c:159:: warning: (520) function "_TMR3_CheckGateValueStatus" is never called
+main.c:49:: warning: (520) function "_PROJECT_INIT" is never called
+hall_effect.c:22:: warning: (520) function "_hallInit" is never called
+motor_control.c:14:: warning: (520) function "_motorFWDStep" is never called
+motor_control.c:63:: warning: (520) function "_motorStop" is never called
+sensor_controller.c:14:: warning: (520) function "_set_thresh" is never called
+
+Memory Summary:
+    Program space        used  EA72h ( 60018) of 10000h bytes   ( 91.6%)
+    Data space           used   446h (  1094) of   E88h bytes   ( 29.4%)
+    Configuration bits   used     6h (     6) of     6h words   (100.0%)
+    EEPROM space         used     0h (     0) of   400h bytes   (  0.0%)
+    ID Location space    used    10h (    16) of    10h bytes   (100.0%)
+
+make[2]: Leaving directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+make[1]: Leaving directory 'C:/Users/DJMik/github/PIC/Team205_FinalBoard.X'
+[32mBUILD SUCCESSFUL (total time: 9s)[0m

@@ -12,4 +12,5 @@ mcc_generated_files/examples/i2c1_master_example.h  \
 hall_effect.h  \
 motor_control.h  \
 temp_sensor.h  \
-interrupt_handler.h 
+interrupt_handler.h  \
+sensor_controller.h 

@@ -85,85 +85,125 @@
 #define PUSH_BUTTON_SetAnalogMode()      do { ANSELAbits.ANSELA0 = 1; } while(0)
 #define PUSH_BUTTON_SetDigitalMode()     do { ANSELAbits.ANSELA0 = 0; } while(0)
 
-// get/set MOTOR_FAULT1 aliases
-#define MOTOR_FAULT1_TRIS                 TRISAbits.TRISA1
-#define MOTOR_FAULT1_LAT                  LATAbits.LATA1
-#define MOTOR_FAULT1_PORT                 PORTAbits.RA1
-#define MOTOR_FAULT1_WPU                  WPUAbits.WPUA1
-#define MOTOR_FAULT1_OD                   ODCONAbits.ODCA1
-#define MOTOR_FAULT1_ANS                  ANSELAbits.ANSELA1
-#define MOTOR_FAULT1_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
-#define MOTOR_FAULT1_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
-#define MOTOR_FAULT1_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
-#define MOTOR_FAULT1_GetValue()           PORTAbits.RA1
-#define MOTOR_FAULT1_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
-#define MOTOR_FAULT1_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
-#define MOTOR_FAULT1_SetPullup()          do { WPUAbits.WPUA1 = 1; } while(0)
-#define MOTOR_FAULT1_ResetPullup()        do { WPUAbits.WPUA1 = 0; } while(0)
-#define MOTOR_FAULT1_SetPushPull()        do { ODCONAbits.ODCA1 = 0; } while(0)
-#define MOTOR_FAULT1_SetOpenDrain()       do { ODCONAbits.ODCA1 = 1; } while(0)
-#define MOTOR_FAULT1_SetAnalogMode()      do { ANSELAbits.ANSELA1 = 1; } while(0)
-#define MOTOR_FAULT1_SetDigitalMode()     do { ANSELAbits.ANSELA1 = 0; } while(0)
+// get/set MOTOR_FAULT aliases
+#define MOTOR_FAULT_TRIS                 TRISAbits.TRISA1
+#define MOTOR_FAULT_LAT                  LATAbits.LATA1
+#define MOTOR_FAULT_PORT                 PORTAbits.RA1
+#define MOTOR_FAULT_WPU                  WPUAbits.WPUA1
+#define MOTOR_FAULT_OD                   ODCONAbits.ODCA1
+#define MOTOR_FAULT_ANS                  ANSELAbits.ANSELA1
+#define MOTOR_FAULT_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
+#define MOTOR_FAULT_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
+#define MOTOR_FAULT_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
+#define MOTOR_FAULT_GetValue()           PORTAbits.RA1
+#define MOTOR_FAULT_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
+#define MOTOR_FAULT_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
+#define MOTOR_FAULT_SetPullup()          do { WPUAbits.WPUA1 = 1; } while(0)
+#define MOTOR_FAULT_ResetPullup()        do { WPUAbits.WPUA1 = 0; } while(0)
+#define MOTOR_FAULT_SetPushPull()        do { ODCONAbits.ODCA1 = 0; } while(0)
+#define MOTOR_FAULT_SetOpenDrain()       do { ODCONAbits.ODCA1 = 1; } while(0)
+#define MOTOR_FAULT_SetAnalogMode()      do { ANSELAbits.ANSELA1 = 1; } while(0)
+#define MOTOR_FAULT_SetDigitalMode()     do { ANSELAbits.ANSELA1 = 0; } while(0)
 
-// get/set MOTOR_FAULT2 aliases
-#define MOTOR_FAULT2_TRIS                 TRISAbits.TRISA2
-#define MOTOR_FAULT2_LAT                  LATAbits.LATA2
-#define MOTOR_FAULT2_PORT                 PORTAbits.RA2
-#define MOTOR_FAULT2_WPU                  WPUAbits.WPUA2
-#define MOTOR_FAULT2_OD                   ODCONAbits.ODCA2
-#define MOTOR_FAULT2_ANS                  ANSELAbits.ANSELA2
-#define MOTOR_FAULT2_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
-#define MOTOR_FAULT2_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
-#define MOTOR_FAULT2_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
-#define MOTOR_FAULT2_GetValue()           PORTAbits.RA2
-#define MOTOR_FAULT2_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
-#define MOTOR_FAULT2_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
-#define MOTOR_FAULT2_SetPullup()          do { WPUAbits.WPUA2 = 1; } while(0)
-#define MOTOR_FAULT2_ResetPullup()        do { WPUAbits.WPUA2 = 0; } while(0)
-#define MOTOR_FAULT2_SetPushPull()        do { ODCONAbits.ODCA2 = 0; } while(0)
-#define MOTOR_FAULT2_SetOpenDrain()       do { ODCONAbits.ODCA2 = 1; } while(0)
-#define MOTOR_FAULT2_SetAnalogMode()      do { ANSELAbits.ANSELA2 = 1; } while(0)
-#define MOTOR_FAULT2_SetDigitalMode()     do { ANSELAbits.ANSELA2 = 0; } while(0)
+// get/set MOTOR_CONTROL aliases
+#define MOTOR_CONTROL_TRIS                 TRISAbits.TRISA2
+#define MOTOR_CONTROL_LAT                  LATAbits.LATA2
+#define MOTOR_CONTROL_PORT                 PORTAbits.RA2
+#define MOTOR_CONTROL_WPU                  WPUAbits.WPUA2
+#define MOTOR_CONTROL_OD                   ODCONAbits.ODCA2
+#define MOTOR_CONTROL_ANS                  ANSELAbits.ANSELA2
+#define MOTOR_CONTROL_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
+#define MOTOR_CONTROL_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
+#define MOTOR_CONTROL_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
+#define MOTOR_CONTROL_GetValue()           PORTAbits.RA2
+#define MOTOR_CONTROL_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
+#define MOTOR_CONTROL_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
+#define MOTOR_CONTROL_SetPullup()          do { WPUAbits.WPUA2 = 1; } while(0)
+#define MOTOR_CONTROL_ResetPullup()        do { WPUAbits.WPUA2 = 0; } while(0)
+#define MOTOR_CONTROL_SetPushPull()        do { ODCONAbits.ODCA2 = 0; } while(0)
+#define MOTOR_CONTROL_SetOpenDrain()       do { ODCONAbits.ODCA2 = 1; } while(0)
+#define MOTOR_CONTROL_SetAnalogMode()      do { ANSELAbits.ANSELA2 = 1; } while(0)
+#define MOTOR_CONTROL_SetDigitalMode()     do { ANSELAbits.ANSELA2 = 0; } while(0)
 
-// get/set LED_DEBUG1 aliases
-#define LED_DEBUG1_TRIS                 TRISAbits.TRISA3
-#define LED_DEBUG1_LAT                  LATAbits.LATA3
-#define LED_DEBUG1_PORT                 PORTAbits.RA3
-#define LED_DEBUG1_WPU                  WPUAbits.WPUA3
-#define LED_DEBUG1_OD                   ODCONAbits.ODCA3
-#define LED_DEBUG1_ANS                  ANSELAbits.ANSELA3
-#define LED_DEBUG1_SetHigh()            do { LATAbits.LATA3 = 1; } while(0)
-#define LED_DEBUG1_SetLow()             do { LATAbits.LATA3 = 0; } while(0)
-#define LED_DEBUG1_Toggle()             do { LATAbits.LATA3 = ~LATAbits.LATA3; } while(0)
-#define LED_DEBUG1_GetValue()           PORTAbits.RA3
-#define LED_DEBUG1_SetDigitalInput()    do { TRISAbits.TRISA3 = 1; } while(0)
-#define LED_DEBUG1_SetDigitalOutput()   do { TRISAbits.TRISA3 = 0; } while(0)
-#define LED_DEBUG1_SetPullup()          do { WPUAbits.WPUA3 = 1; } while(0)
-#define LED_DEBUG1_ResetPullup()        do { WPUAbits.WPUA3 = 0; } while(0)
-#define LED_DEBUG1_SetPushPull()        do { ODCONAbits.ODCA3 = 0; } while(0)
-#define LED_DEBUG1_SetOpenDrain()       do { ODCONAbits.ODCA3 = 1; } while(0)
-#define LED_DEBUG1_SetAnalogMode()      do { ANSELAbits.ANSELA3 = 1; } while(0)
-#define LED_DEBUG1_SetDigitalMode()     do { ANSELAbits.ANSELA3 = 0; } while(0)
+// get/set SOL_CONTROL aliases
+#define SOL_CONTROL_TRIS                 TRISAbits.TRISA3
+#define SOL_CONTROL_LAT                  LATAbits.LATA3
+#define SOL_CONTROL_PORT                 PORTAbits.RA3
+#define SOL_CONTROL_WPU                  WPUAbits.WPUA3
+#define SOL_CONTROL_OD                   ODCONAbits.ODCA3
+#define SOL_CONTROL_ANS                  ANSELAbits.ANSELA3
+#define SOL_CONTROL_SetHigh()            do { LATAbits.LATA3 = 1; } while(0)
+#define SOL_CONTROL_SetLow()             do { LATAbits.LATA3 = 0; } while(0)
+#define SOL_CONTROL_Toggle()             do { LATAbits.LATA3 = ~LATAbits.LATA3; } while(0)
+#define SOL_CONTROL_GetValue()           PORTAbits.RA3
+#define SOL_CONTROL_SetDigitalInput()    do { TRISAbits.TRISA3 = 1; } while(0)
+#define SOL_CONTROL_SetDigitalOutput()   do { TRISAbits.TRISA3 = 0; } while(0)
+#define SOL_CONTROL_SetPullup()          do { WPUAbits.WPUA3 = 1; } while(0)
+#define SOL_CONTROL_ResetPullup()        do { WPUAbits.WPUA3 = 0; } while(0)
+#define SOL_CONTROL_SetPushPull()        do { ODCONAbits.ODCA3 = 0; } while(0)
+#define SOL_CONTROL_SetOpenDrain()       do { ODCONAbits.ODCA3 = 1; } while(0)
+#define SOL_CONTROL_SetAnalogMode()      do { ANSELAbits.ANSELA3 = 1; } while(0)
+#define SOL_CONTROL_SetDigitalMode()     do { ANSELAbits.ANSELA3 = 0; } while(0)
+
+// get/set MOTOR_DEBUG aliases
+#define MOTOR_DEBUG_TRIS                 TRISAbits.TRISA4
+#define MOTOR_DEBUG_LAT                  LATAbits.LATA4
+#define MOTOR_DEBUG_PORT                 PORTAbits.RA4
+#define MOTOR_DEBUG_WPU                  WPUAbits.WPUA4
+#define MOTOR_DEBUG_OD                   ODCONAbits.ODCA4
+#define MOTOR_DEBUG_ANS                  ANSELAbits.ANSELA4
+#define MOTOR_DEBUG_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
+#define MOTOR_DEBUG_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
+#define MOTOR_DEBUG_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
+#define MOTOR_DEBUG_GetValue()           PORTAbits.RA4
+#define MOTOR_DEBUG_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
+#define MOTOR_DEBUG_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
+#define MOTOR_DEBUG_SetPullup()          do { WPUAbits.WPUA4 = 1; } while(0)
+#define MOTOR_DEBUG_ResetPullup()        do { WPUAbits.WPUA4 = 0; } while(0)
+#define MOTOR_DEBUG_SetPushPull()        do { ODCONAbits.ODCA4 = 0; } while(0)
+#define MOTOR_DEBUG_SetOpenDrain()       do { ODCONAbits.ODCA4 = 1; } while(0)
+#define MOTOR_DEBUG_SetAnalogMode()      do { ANSELAbits.ANSELA4 = 1; } while(0)
+#define MOTOR_DEBUG_SetDigitalMode()     do { ANSELAbits.ANSELA4 = 0; } while(0)
 
 // get/set LED_DEBUG2 aliases
-#define LED_DEBUG2_TRIS                 TRISAbits.TRISA4
-#define LED_DEBUG2_LAT                  LATAbits.LATA4
-#define LED_DEBUG2_PORT                 PORTAbits.RA4
-#define LED_DEBUG2_WPU                  WPUAbits.WPUA4
-#define LED_DEBUG2_OD                   ODCONAbits.ODCA4
-#define LED_DEBUG2_ANS                  ANSELAbits.ANSELA4
-#define LED_DEBUG2_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
-#define LED_DEBUG2_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
-#define LED_DEBUG2_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
-#define LED_DEBUG2_GetValue()           PORTAbits.RA4
-#define LED_DEBUG2_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
-#define LED_DEBUG2_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
-#define LED_DEBUG2_SetPullup()          do { WPUAbits.WPUA4 = 1; } while(0)
-#define LED_DEBUG2_ResetPullup()        do { WPUAbits.WPUA4 = 0; } while(0)
-#define LED_DEBUG2_SetPushPull()        do { ODCONAbits.ODCA4 = 0; } while(0)
-#define LED_DEBUG2_SetOpenDrain()       do { ODCONAbits.ODCA4 = 1; } while(0)
-#define LED_DEBUG2_SetAnalogMode()      do { ANSELAbits.ANSELA4 = 1; } while(0)
-#define LED_DEBUG2_SetDigitalMode()     do { ANSELAbits.ANSELA4 = 0; } while(0)
+#define LED_DEBUG2_TRIS                 TRISAbits.TRISA6
+#define LED_DEBUG2_LAT                  LATAbits.LATA6
+#define LED_DEBUG2_PORT                 PORTAbits.RA6
+#define LED_DEBUG2_WPU                  WPUAbits.WPUA6
+#define LED_DEBUG2_OD                   ODCONAbits.ODCA6
+#define LED_DEBUG2_ANS                  ANSELAbits.ANSELA6
+#define LED_DEBUG2_SetHigh()            do { LATAbits.LATA6 = 1; } while(0)
+#define LED_DEBUG2_SetLow()             do { LATAbits.LATA6 = 0; } while(0)
+#define LED_DEBUG2_Toggle()             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0)
+#define LED_DEBUG2_GetValue()           PORTAbits.RA6
+#define LED_DEBUG2_SetDigitalInput()    do { TRISAbits.TRISA6 = 1; } while(0)
+#define LED_DEBUG2_SetDigitalOutput()   do { TRISAbits.TRISA6 = 0; } while(0)
+#define LED_DEBUG2_SetPullup()          do { WPUAbits.WPUA6 = 1; } while(0)
+#define LED_DEBUG2_ResetPullup()        do { WPUAbits.WPUA6 = 0; } while(0)
+#define LED_DEBUG2_SetPushPull()        do { ODCONAbits.ODCA6 = 0; } while(0)
+#define LED_DEBUG2_SetOpenDrain()       do { ODCONAbits.ODCA6 = 1; } while(0)
+#define LED_DEBUG2_SetAnalogMode()      do { ANSELAbits.ANSELA6 = 1; } while(0)
+#define LED_DEBUG2_SetDigitalMode()     do { ANSELAbits.ANSELA6 = 0; } while(0)
+
+// get/set LED_DEBUG1 aliases
+#define LED_DEBUG1_TRIS                 TRISAbits.TRISA7
+#define LED_DEBUG1_LAT                  LATAbits.LATA7
+#define LED_DEBUG1_PORT                 PORTAbits.RA7
+#define LED_DEBUG1_WPU                  WPUAbits.WPUA7
+#define LED_DEBUG1_OD                   ODCONAbits.ODCA7
+#define LED_DEBUG1_ANS                  ANSELAbits.ANSELA7
+#define LED_DEBUG1_SetHigh()            do { LATAbits.LATA7 = 1; } while(0)
+#define LED_DEBUG1_SetLow()             do { LATAbits.LATA7 = 0; } while(0)
+#define LED_DEBUG1_Toggle()             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0)
+#define LED_DEBUG1_GetValue()           PORTAbits.RA7
+#define LED_DEBUG1_SetDigitalInput()    do { TRISAbits.TRISA7 = 1; } while(0)
+#define LED_DEBUG1_SetDigitalOutput()   do { TRISAbits.TRISA7 = 0; } while(0)
+#define LED_DEBUG1_SetPullup()          do { WPUAbits.WPUA7 = 1; } while(0)
+#define LED_DEBUG1_ResetPullup()        do { WPUAbits.WPUA7 = 0; } while(0)
+#define LED_DEBUG1_SetPushPull()        do { ODCONAbits.ODCA7 = 0; } while(0)
+#define LED_DEBUG1_SetOpenDrain()       do { ODCONAbits.ODCA7 = 1; } while(0)
+#define LED_DEBUG1_SetAnalogMode()      do { ANSELAbits.ANSELA7 = 1; } while(0)
+#define LED_DEBUG1_SetDigitalMode()     do { ANSELAbits.ANSELA7 = 0; } while(0)
 
 // get/set GPIO_OUT1 aliases
 #define GPIO_OUT1_TRIS                 TRISBbits.TRISB0
@@ -284,6 +324,26 @@
 #define GPIO_OUT6_SetOpenDrain()       do { ODCONBbits.ODCB5 = 1; } while(0)
 #define GPIO_OUT6_SetAnalogMode()      do { ANSELBbits.ANSELB5 = 1; } while(0)
 #define GPIO_OUT6_SetDigitalMode()     do { ANSELBbits.ANSELB5 = 0; } while(0)
+
+// get/set LED_DEBUG3 aliases
+#define LED_DEBUG3_TRIS                 TRISCbits.TRISC0
+#define LED_DEBUG3_LAT                  LATCbits.LATC0
+#define LED_DEBUG3_PORT                 PORTCbits.RC0
+#define LED_DEBUG3_WPU                  WPUCbits.WPUC0
+#define LED_DEBUG3_OD                   ODCONCbits.ODCC0
+#define LED_DEBUG3_ANS                  ANSELCbits.ANSELC0
+#define LED_DEBUG3_SetHigh()            do { LATCbits.LATC0 = 1; } while(0)
+#define LED_DEBUG3_SetLow()             do { LATCbits.LATC0 = 0; } while(0)
+#define LED_DEBUG3_Toggle()             do { LATCbits.LATC0 = ~LATCbits.LATC0; } while(0)
+#define LED_DEBUG3_GetValue()           PORTCbits.RC0
+#define LED_DEBUG3_SetDigitalInput()    do { TRISCbits.TRISC0 = 1; } while(0)
+#define LED_DEBUG3_SetDigitalOutput()   do { TRISCbits.TRISC0 = 0; } while(0)
+#define LED_DEBUG3_SetPullup()          do { WPUCbits.WPUC0 = 1; } while(0)
+#define LED_DEBUG3_ResetPullup()        do { WPUCbits.WPUC0 = 0; } while(0)
+#define LED_DEBUG3_SetPushPull()        do { ODCONCbits.ODCC0 = 0; } while(0)
+#define LED_DEBUG3_SetOpenDrain()       do { ODCONCbits.ODCC0 = 1; } while(0)
+#define LED_DEBUG3_SetAnalogMode()      do { ANSELCbits.ANSELC0 = 1; } while(0)
+#define LED_DEBUG3_SetDigitalMode()     do { ANSELCbits.ANSELC0 = 0; } while(0)
 
 // get/set RC3 procedures
 #define RC3_SetHigh()            do { LATCbits.LATC3 = 1; } while(0)

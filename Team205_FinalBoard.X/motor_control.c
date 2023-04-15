@@ -7,23 +7,24 @@ void motorController(uint8_t address, uint8_t speed, uint8_t dir){
 }
 
 void solTrigger(void){
-        motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_FWD); //solenoid activates
-        motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);//solenoid deactivates
+    SOL_CONTROL_LAT = 1;
+    __delay_us(1000);
+    SOL_CONTROL_LAT = 0;
 }
 void motorFWDStep(void){
-        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
-        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
+        motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
+        motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
 }
 void motorFWD(void){
-        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
+        motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
 }
 
 void motorRVR(void){
-        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_RVR); //motor backwards
+        motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_RVR); //motor backwards
 }
 
 void motorOFF(void){
-        motorController(MOTOR2_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
+        motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_COAST);//motor off
 }
 
 void umbDeploy(){
@@ -55,19 +56,11 @@ void actionTrigger(void){
     }
 }
 
-uint8_t motorFaultRead(int motor_num){
-    switch(motor_num){
-        case 1:
-            return I2C1_Read1ByteRegister(MOTOR1_READ, MOTOR_FAULT);
-        case 2:
-            return I2C1_Read1ByteRegister(MOTOR1_READ, MOTOR_FAULT);
-        default:
-            return 0x0;
-    }
-    
+uint8_t motorFaultRead(void){
+    return I2C1_Read1ByteRegister(MOTOR_READ, MOTOR_FAULT);  
 }
 
 void motorStop(void){
-    motorController(MOTOR1_WRITE, MOTOR_5V, MOTOR_COAST);
+    motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_COAST);
     motorOFF();
 }

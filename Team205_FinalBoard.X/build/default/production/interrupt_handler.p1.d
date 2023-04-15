@@ -11,5 +11,4 @@ mcc_generated_files/tmr2.h  \
 mcc_generated_files/eusart1.h  \
 mcc_generated_files/examples/i2c1_master_example.h  \
 motor_control.h  \
-temp_sensor.h  \
-hall_effect.h 
+sensor_controller.h 

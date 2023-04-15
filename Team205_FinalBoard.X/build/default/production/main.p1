@@ -3,22 +3,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32 ./hall_effect.h
 [; ;./hall_effect.h: 32: void hallInit(void);
 [v _hallInit `(v ~T0 @X0 0 ef ]
-"58 ./motor_control.h
-[; ;./motor_control.h: 58: void motorStop(void);
-[v _motorStop `(v ~T0 @X0 0 ef ]
-"129 ./mcc_generated_files/tmr3.h
-[; ;./mcc_generated_files/tmr3.h: 129: void TMR3_StartTimer(void);
-[v _TMR3_StartTimer `(v ~T0 @X0 0 ef ]
 [p mainexit ]
 "74 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 74: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"33 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 33: void Interrupt_Handler_Initialize(void);
+"27 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 27: void Interrupt_Handler_Initialize(void);
 [v _Interrupt_Handler_Initialize `(v ~T0 @X0 0 ef ]
-"38
-[; ;./interrupt_handler.h: 38: void sensor_read(void);
+"27 ./sensor_controller.h
+[; ;./sensor_controller.h: 27: void sensor_read(void);
 [v _sensor_read `(v ~T0 @X0 0 ef ]
+"29
+[; ;./sensor_controller.h: 29: void set_thresh(float*);
+[v _set_thresh `(v ~T0 @X0 0 ef1`*f ]
 "105 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
 [; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
@@ -37,20 +34,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16389
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16389: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF8D)));
 [v _PORTAbits `VS818 ~T0 @X0 0 e@3981 ]
-"54 ./motor_control.h
-[; ;./motor_control.h: 54: uint8_t motorFaultRead(int);
-[v _motorFaultRead `(uc ~T0 @X0 0 ef1`i ]
-"56
-[; ;./motor_control.h: 56: void actionTrigger(void);
+"50 ./motor_control.h
+[; ;./motor_control.h: 50: uint8_t motorFaultRead(void);
+[v _motorFaultRead `(uc ~T0 @X0 0 ef ]
+"52
+[; ;./motor_control.h: 52: void actionTrigger(void);
 [v _actionTrigger `(v ~T0 @X0 0 ef ]
-"166 ./mcc_generated_files/eusart1.h
-[; ;./mcc_generated_files/eusart1.h: 166: _Bool EUSART1_is_tx_ready(void);
+"165 ./mcc_generated_files/eusart1.h
+[; ;./mcc_generated_files/eusart1.h: 165: _Bool EUSART1_is_tx_ready(void);
 [v _EUSART1_is_tx_ready `(a ~T0 @X0 0 ef ]
-"36 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 36: double t_update(void);
+"31 ./interrupt_handler.h
+[; ;./interrupt_handler.h: 31: double t_update(void);
 [v _t_update `(d ~T0 @X0 0 ef ]
-"44
-[; ;./interrupt_handler.h: 44: uint8_t Read_EUSART1_Buffer(void);
+"38
+[; ;./interrupt_handler.h: 38: uint8_t Read_EUSART1_Buffer(void);
 [v _Read_EUSART1_Buffer `(uc ~T0 @X0 0 ef ]
 [v F1101 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\builtins.h
@@ -71,6 +68,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15690
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15690: extern volatile LATAbits_t LATAbits __attribute__((address(0xF83)));
 [v _LATAbits `VS797 ~T0 @X0 0 e@3971 ]
+"15893
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15893:     struct {
+[s S804 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S804 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"15903
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15903:     struct {
+[s S805 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S805 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"15892
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15892: typedef union {
+[u S803 `S804 1 `S805 1 ]
+[n S803 . . . ]
+"15914
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15914: extern volatile LATCbits_t LATCbits __attribute__((address(0xF85)));
+[v _LATCbits `VS803 ~T0 @X0 0 e@3973 ]
 "54 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 54: __asm("RX2PPS equ 0E8Dh");
 [; <" RX2PPS equ 0E8Dh ;# ">
@@ -1384,8 +1396,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30
 [; ;./hall_effect.h: 30: uint16_t hall_time[2];
 [v _hall_time `us ~T0 @X0 -> 2 `i e ]
-"36 ./motor_control.h
-[; ;./motor_control.h: 36: _Bool deployStatus;
+"32 ./motor_control.h
+[; ;./motor_control.h: 32: _Bool deployStatus;
 [v _deployStatus `a ~T0 @X0 1 e ]
 "19 ./interrupt_handler.h
 [; ;./interrupt_handler.h: 19: uint16_t timer_ms;
@@ -1393,84 +1405,94 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20
 [; ;./interrupt_handler.h: 20: uint16_t timer_s;
 [v _timer_s `us ~T0 @X0 1 e ]
-"22
-[; ;./interrupt_handler.h: 22: uint8_t tempData;
-[v _tempData `uc ~T0 @X0 1 e ]
 "23
-[; ;./interrupt_handler.h: 23: uint16_t hallRaw;
-[v _hallRaw `us ~T0 @X0 1 e ]
-"24
-[; ;./interrupt_handler.h: 24: double windSpeed;
-[v _windSpeed `d ~T0 @X0 1 e ]
-"25
-[; ;./interrupt_handler.h: 25: int readCount;
-[v _readCount `i ~T0 @X0 1 e ]
-"28
-[; ;./interrupt_handler.h: 28: volatile uint8_t rxData;
+[; ;./interrupt_handler.h: 23: volatile uint8_t rxData;
 [v _rxData `Vuc ~T0 @X0 1 e ]
-"30
-[; ;./interrupt_handler.h: 30: _Bool manualMode;
+"25
+[; ;./interrupt_handler.h: 25: _Bool manualMode;
 [v _manualMode `a ~T0 @X0 1 e ]
-"48 main.c
-[; ;main.c: 48: void PROJECT_INIT(){
+"20 ./sensor_controller.h
+[; ;./sensor_controller.h: 20: uint8_t tempData;
+[v _tempData `uc ~T0 @X0 1 e ]
+"21
+[; ;./sensor_controller.h: 21: uint16_t hallRaw;
+[v _hallRaw `us ~T0 @X0 1 e ]
+"22
+[; ;./sensor_controller.h: 22: double windSpeed;
+[v _windSpeed `d ~T0 @X0 1 e ]
+"24
+[; ;./sensor_controller.h: 24: float tempCutoff;
+[v _tempCutoff `f ~T0 @X0 1 e ]
+"25
+[; ;./sensor_controller.h: 25: float windCutoff;
+[v _windCutoff `f ~T0 @X0 1 e ]
+"49 main.c
+[; ;main.c: 49: void PROJECT_INIT(){
 [v _PROJECT_INIT `(v ~T0 @X0 1 ef ]
 {
 [e :U _PROJECT_INIT ]
 [f ]
-"49
-[; ;main.c: 49:     hallInit();
-[e ( _hallInit ..  ]
 "50
-[; ;main.c: 50:     motorStop();
-[e ( _motorStop ..  ]
-"51
-[; ;main.c: 51:     TMR3_StartTimer();
-[e ( _TMR3_StartTimer ..  ]
-"52
-[; ;main.c: 52: }
+[; ;main.c: 50:     hallInit();
+[e ( _hallInit ..  ]
+"53
+[; ;main.c: 53: }
 [e :UE 1452 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"55
-[; ;main.c: 55: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
 "56
-[; ;main.c: 56: {
+[; ;main.c: 56: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"57
+[; ;main.c: 57: {
 {
 [e :U _main ]
 [f ]
-"57
-[; ;main.c: 57:     SYSTEM_Initialize();
+"58
+[; ;main.c: 58:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
 "59
-[; ;main.c: 59:     Interrupt_Handler_Initialize();
-[e ( _Interrupt_Handler_Initialize ..  ]
+[; ;main.c: 59:     PROJECT_INIT();
+[e ( _PROJECT_INIT ..  ]
 "60
-[; ;main.c: 60:     sensor_read();
-[e ( _sensor_read ..  ]
+[; ;main.c: 60:     Interrupt_Handler_Initialize();
+[e ( _Interrupt_Handler_Initialize ..  ]
 "61
-[; ;main.c: 61:     int threshCount = 0;
+[; ;main.c: 61:     sensor_read();
+[e ( _sensor_read ..  ]
+"62
+[; ;main.c: 62:     int readCount = 0;
+[v _readCount `i ~T0 @X0 1 a ]
+[e = _readCount -> 0 `i ]
+"63
+[; ;main.c: 63:     int threshCount = 0;
 [v _threshCount `i ~T0 @X0 1 a ]
 [e = _threshCount -> 0 `i ]
-"63
-[; ;main.c: 63:     uint8_t motor1_fault;
-[v _motor1_fault `uc ~T0 @X0 1 a ]
+[v F10836 `Cf ~T0 @X0 -> 2 `i s ]
+[i F10836
+:U ..
 "64
-[; ;main.c: 64:     uint8_t motor2_fault;
-[v _motor2_fault `uc ~T0 @X0 1 a ]
-"66
-[; ;main.c: 66:     printf("Staring...\n\r");
+[; ;main.c: 64:     const float initThresh[] = {25, 0.5};
+-> -> 25 `i `f
+-> .0.5 `f
+..
+]
+[v _initThresh `Cf ~T0 @X0 -> 2 `i a ]
+[e = _initThresh F10836 ]
+"65
+[; ;main.c: 65:     set_thresh(initThresh);
+[e ( _set_thresh (1 -> &U _initThresh `*f ]
+"67
+[; ;main.c: 67:     printf("Staring...\n\r");
 [e ( _printf :s 1C ]
-"68
-[; ;main.c: 68:     while (1){
+"69
+[; ;main.c: 69:     while (1){
 [e :U 1455 ]
 {
-"72
-[; ;main.c: 72:         motor1_fault = (!PORTAbits.RA1 ? motorFaultRead(1) : 0);
-[e = _motor1_fault -> ? ! != -> . . _PORTAbits 0 1 `i -> 0 `i : -> ( _motorFaultRead (1 -> 1 `i `i -> 0 `i `uc ]
 "73
-[; ;main.c: 73:         motor2_fault = (!PORTAbits.RA2 ? motorFaultRead(2) : 0);
-[e = _motor2_fault -> ? ! != -> . . _PORTAbits 0 2 `i -> 0 `i : -> ( _motorFaultRead (1 -> 2 `i `i -> 0 `i `uc ]
+[; ;main.c: 73:         uint8_t motor_fault = (!PORTAbits.RA1 ? motorFaultRead() : 0);
+[v _motor_fault `uc ~T0 @X0 1 a ]
+[e = _motor_fault -> ? ! != -> . . _PORTAbits 0 1 `i -> 0 `i : -> ( _motorFaultRead ..  `i -> 0 `i `uc ]
 "75
 [; ;main.c: 75:         if(manualMode && windSpeed>2 && threshCount<5)
 [e $ ! && && != -> _manualMode `i -> 0 `i > _windSpeed -> -> 2 `i `d < _threshCount -> 5 `i 1457  ]
@@ -1518,8 +1540,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 88:                     printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
 [e ( _printf , (. :s 5C _windSpeed ]
 "89
-[; ;main.c: 89:                     printf("\tMotor Fault Codes: (%u,%u) \n\r", motor1_fault, motor2_fault);
-[e ( _printf , , (. :s 6C -> _motor1_fault `i -> _motor2_fault `i ]
+[; ;main.c: 89:                     printf("\tMotor Fault Codes: (%u) \n\r", motor_fault);
+[e ( _printf , (. :s 6C -> _motor_fault `i ]
 "90
 [; ;main.c: 90:                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
 [e ( _printf , , , (. :s 7C _threshCount -> 5 `i -> _deployStatus `i ]
@@ -1533,15 +1555,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 94:         }
 }
 [e :U 1461 ]
-"96
-[; ;main.c: 96:         LATAbits.LATA3 = (tempData>=25);
-[e = . . _LATAbits 0 3 -> -> >= -> _tempData `i -> 25 `i `i `uc ]
 "98
-[; ;main.c: 98:         LATAbits.LATA4 = (hallRaw>2048);
-[e = . . _LATAbits 0 4 -> -> > -> _hallRaw `ui -> -> 2048 `i `ui `i `uc ]
+[; ;main.c: 98:         LATAbits.LATA7 = (tempData>=25);
+[e = . . _LATAbits 0 7 -> -> >= -> _tempData `i -> 25 `i `i `uc ]
+"99
+[; ;main.c: 99:         LATAbits.LATA6 = (hallRaw>2048);
+[e = . . _LATAbits 0 6 -> -> > -> _hallRaw `ui -> -> 2048 `i `ui `i `uc ]
 "100
-[; ;main.c: 100:         LATAbits.LATA4 = !PORTAbits.RA0;
-[e = . . _LATAbits 0 4 -> -> ! != -> . . _PORTAbits 0 0 `i -> 0 `i `i `uc ]
+[; ;main.c: 100:         LATCbits.LATC0 = !PORTAbits.RA0;
+[e = . . _LATCbits 0 0 -> -> ! != -> . . _PORTAbits 0 0 `i -> 0 `i `i `uc ]
 "101
 [; ;main.c: 101:     }
 }
@@ -1560,4 +1582,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 5C 9 87 105 110 100 32 83 112 101 101 100 58 32 37 53 46 53 102 32 109 47 115 32 10 13 0 ]
 [a 3C 9 84 101 109 112 58 32 37 117 32 67 32 10 13 0 ]
 [a 2C 82 101 97 100 105 110 103 32 37 105 32 40 116 32 61 32 37 46 51 102 32 115 41 58 32 10 13 0 ]
-[a 6C 9 77 111 116 111 114 32 70 97 117 108 116 32 67 111 100 101 115 58 32 40 37 117 44 37 117 41 32 10 13 0 ]
+[a 6C 9 77 111 116 111 114 32 70 97 117 108 116 32 67 111 100 101 115 58 32 40 37 117 41 32 10 13 0 ]

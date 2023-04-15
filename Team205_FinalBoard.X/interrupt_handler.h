@@ -18,24 +18,18 @@ extern "C" {
 
 uint16_t timer_ms;
 uint16_t timer_s;
-
-uint8_t tempData;
-uint16_t hallRaw;
-double windSpeed;
-int readCount;
     
 
 volatile uint8_t rxData;
 
 bool manualMode;
-
     
 void Interrupt_Handler_Initialize(void);
 
 void internal_clock(void);
+
 double t_update(void);
 
-void sensor_read(void);
 
 void Rx1_ISR(void);
 

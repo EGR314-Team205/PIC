@@ -1,13 +1,11 @@
 #include "interrupt_handler.h"
 #include "motor_control.h"
-#include "temp_sensor.h"
-#include "hall_effect.h"
+#include "sensor_controller.h"
 
 
 void Interrupt_Handler_Initialize(void){
     timer_ms = 0;
     timer_s = 0;
-    readCount = 0;
     manualMode = false;
     
     INTERRUPT_GlobalInterruptEnable();     // Enable the Global Interrupts
@@ -31,12 +29,6 @@ void internal_clock(void){
 
 double t_update(void){
     return (double)timer_s + (double)timer_ms /1000;
-}
-
-void sensor_read(void){
-        tempData = tempRead();
-        hallRaw = hallRead();
-        windSpeed = windSpeedCalc(t_update(),3); // ms = s * 10^-3
 }
 
 void Rx1_ISR(void){

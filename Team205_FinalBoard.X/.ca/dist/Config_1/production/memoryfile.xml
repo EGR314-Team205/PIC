@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name=".ca/dist/Config_1/production\Team205_FinalBoard.X.production.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>65536</length>
+      <used>52078</used>
+      <free>13458</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>3720</length>
+      <used>1094</used>
+      <free>2626</free>
+    </memory>
+  </executable>
+</project>

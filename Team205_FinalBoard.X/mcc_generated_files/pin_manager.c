@@ -66,16 +66,16 @@ void PIN_MANAGER_Initialize(void)
     /**
     TRISx registers
     */
-    TRISA = 0xE7;
+    TRISA = 0x23;
     TRISB = 0xC0;
-    TRISC = 0xBF;
+    TRISC = 0xBE;
 
     /**
     ANSELx registers
     */
-    ANSELC = 0x27;
-    ANSELB = 0xC0;
-    ANSELA = 0xE0;
+    ANSELC = 0x26;
+    ANSELB = 0x80;
+    ANSELA = 0x20;
 
     /**
     WPUx registers
@@ -123,8 +123,6 @@ void PIN_MANAGER_Initialize(void)
     // register default IOC callback functions at runtime; use these methods to register a custom function
     IOCAF0_SetInterruptHandler(IOCAF0_DefaultInterruptHandler);
    
-    // Enable IOCI interrupt 
-    PIE0bits.IOCIE = 1; 
     
 	
     SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCL1;    
