@@ -1381,7 +1381,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _data_transmit (1 -> -> 59 `ui `uc ]
 "12
 [; ;sensor_controller.c: 12: }
-[e :UE 1452 ]
+[e :UE 1454 ]
 }
 "14
 [; ;sensor_controller.c: 14: void set_thresh(float *thresh){
@@ -1398,7 +1398,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _windCutoff *U + _thresh * -> -> 1 `i `x -> -> # *U _thresh `i `x ]
 "18
 [; ;sensor_controller.c: 18: }
-[e :UE 1453 ]
+[e :UE 1455 ]
 }
 "20
 [; ;sensor_controller.c: 20: void data_transmit(char delim){
@@ -1407,8 +1407,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _data_transmit ]
 [v _delim `uc ~T0 @X0 1 r1 ]
 [f ]
-[v F10837 `f ~T0 @X0 -> 4 `i s ]
-[i F10837
+[v F10866 `f ~T0 @X0 -> 4 `i s ]
+[i F10866
 :U ..
 "21
 [; ;sensor_controller.c: 21:     float data[] = {tempData, tempCutoff, (float)windSpeed, windCutoff};
@@ -1419,16 +1419,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _data `f ~T0 @X0 -> 4 `i a ]
-[e = _data F10837 ]
+[e = _data F10866 ]
 [e ; = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> _tempData `f ; = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux _tempCutoff ; = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux -> _windSpeed `f = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux _windCutoff ]
 "22
 [; ;sensor_controller.c: 22:     for(int i=0; i<2; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 2 `i 1455  ]
-[e $U 1456  ]
-[e :U 1455 ]
+[e $ < _i -> 2 `i 1457  ]
+[e $U 1458  ]
+[e :U 1457 ]
 {
 "23
 [; ;sensor_controller.c: 23:         printf("%f%c",data[i],delim);
@@ -1437,15 +1437,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;sensor_controller.c: 24:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 2 `i 1455  ]
-[e :U 1456 ]
+[e $ < _i -> 2 `i 1457  ]
+[e :U 1458 ]
 }
 "25
 [; ;sensor_controller.c: 25:     printf("\n\r");
 [e ( _printf :s 2C ]
 "27
 [; ;sensor_controller.c: 27: }
-[e :UE 1454 ]
+[e :UE 1456 ]
 }
 [p f _printf 8921088 ]
 [a 1C 37 102 37 99 0 ]

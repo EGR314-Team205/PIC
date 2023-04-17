@@ -1353,7 +1353,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C1_Write1ByteRegister (3 , , _address -> -> 0 `i `uc _data ]
 "7
 [; ;motor_control.c: 7: }
-[e :UE 1451 ]
+[e :UE 1453 ]
 }
 "9
 [; ;motor_control.c: 9: void solTrigger(void){
@@ -1372,7 +1372,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 "13
 [; ;motor_control.c: 13: }
-[e :UE 1452 ]
+[e :UE 1454 ]
 }
 "14
 [; ;motor_control.c: 14: void motorFWDStep(void){
@@ -1388,7 +1388,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
 "17
 [; ;motor_control.c: 17: }
-[e :UE 1453 ]
+[e :UE 1455 ]
 }
 "18
 [; ;motor_control.c: 18: void motorFWD(void){
@@ -1401,7 +1401,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 2 `i `uc ]
 "20
 [; ;motor_control.c: 20: }
-[e :UE 1454 ]
+[e :UE 1456 ]
 }
 "22
 [; ;motor_control.c: 22: void motorRVR(void){
@@ -1414,7 +1414,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 1 `i `uc ]
 "24
 [; ;motor_control.c: 24: }
-[e :UE 1455 ]
+[e :UE 1457 ]
 }
 "26
 [; ;motor_control.c: 26: void motorOFF(void){
@@ -1427,7 +1427,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _motorController (3 , , -> -> 192 `i `uc -> -> 63 `i `uc -> -> 0 `i `uc ]
 "28
 [; ;motor_control.c: 28: }
-[e :UE 1456 ]
+[e :UE 1458 ]
 }
 "30
 [; ;motor_control.c: 30: void umbDeploy(){
@@ -1455,7 +1455,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "37
 [; ;motor_control.c: 37: }
-[e :UE 1457 ]
+[e :UE 1459 ]
 }
 "39
 [; ;motor_control.c: 39: void umbStow(){
@@ -1483,7 +1483,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "46
 [; ;motor_control.c: 46: }
-[e :UE 1458 ]
+[e :UE 1460 ]
 }
 "48
 [; ;motor_control.c: 48: void actionTrigger(void){
@@ -1493,7 +1493,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "49
 [; ;motor_control.c: 49:     if(deployStatus){
-[e $ ! != -> _deployStatus `i -> 0 `i 1460  ]
+[e $ ! != -> _deployStatus `i -> 0 `i 1462  ]
 {
 "50
 [; ;motor_control.c: 50:         umbDeploy();
@@ -1504,10 +1504,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "52
 [; ;motor_control.c: 52:     }
 }
-[e $U 1461  ]
+[e $U 1463  ]
 "53
 [; ;motor_control.c: 53:     else{
-[e :U 1460 ]
+[e :U 1462 ]
 {
 "54
 [; ;motor_control.c: 54:         umbStow();
@@ -1518,10 +1518,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [; ;motor_control.c: 56:     }
 }
-[e :U 1461 ]
+[e :U 1463 ]
 "57
 [; ;motor_control.c: 57: }
-[e :UE 1459 ]
+[e :UE 1461 ]
 }
 "59
 [; ;motor_control.c: 59: uint8_t motorFaultRead(void){
@@ -1532,10 +1532,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [; ;motor_control.c: 60:     return I2C1_Read1ByteRegister(0xC1, 0x01);
 [e ) ( _I2C1_Read1ByteRegister (2 , -> -> 193 `i `uc -> -> 1 `i `uc ]
-[e $UE 1462  ]
+[e $UE 1464  ]
 "61
 [; ;motor_control.c: 61: }
-[e :UE 1462 ]
+[e :UE 1464 ]
 }
 "63
 [; ;motor_control.c: 63: void motorStop(void){
@@ -1551,5 +1551,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _motorOFF ..  ]
 "66
 [; ;motor_control.c: 66: }
-[e :UE 1463 ]
+[e :UE 1465 ]
 }

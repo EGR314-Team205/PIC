@@ -23,7 +23,7 @@ extern "C" {
 #define HALL_ANGLE2 0x0F
 #define HALL_DATALENGTH 2
 #define TICKS_PER_REV 4096
-#define WIND_CUP_RADIUS 0.015
+#define WIND_CUP_RADIUS 0.06
 
     
 uint16_t hall_pos[HALL_DATALENGTH];

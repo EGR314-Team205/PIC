@@ -16069,17 +16069,17 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\\pic\\include\\xc.h" 2 3
 # 54 "mcc_generated_files/pin_manager.h" 2
-# 406 "mcc_generated_files/pin_manager.h"
+# 430 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 418 "mcc_generated_files/pin_manager.h"
+# 442 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 431 "mcc_generated_files/pin_manager.h"
+# 455 "mcc_generated_files/pin_manager.h"
 void IOCAF0_ISR(void);
-# 454 "mcc_generated_files/pin_manager.h"
-void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
 # 478 "mcc_generated_files/pin_manager.h"
-extern void (*IOCAF0_InterruptHandler)(void);
+void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
 # 502 "mcc_generated_files/pin_manager.h"
+extern void (*IOCAF0_InterruptHandler)(void);
+# 526 "mcc_generated_files/pin_manager.h"
 void IOCAF0_DefaultInterruptHandler(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
@@ -16103,14 +16103,14 @@ void PIN_MANAGER_Initialize(void)
 
 
     TRISA = 0x23;
-    TRISB = 0xC0;
+    TRISB = 0x80;
     TRISC = 0xBE;
 
 
 
 
     ANSELC = 0x26;
-    ANSELB = 0x80;
+    ANSELB = 0x00;
     ANSELA = 0x20;
 
 
@@ -16163,9 +16163,11 @@ void PIN_MANAGER_Initialize(void)
 
     SSP1CLKPPS = 0x13;
     RX1PPS = 0x17;
+    RB6PPS = 0x0B;
     RC3PPS = 0x0F;
     RC4PPS = 0x10;
     RC6PPS = 0x09;
+    RX2PPS = 0x0F;
     SSP1DATPPS = 0x14;
 }
 

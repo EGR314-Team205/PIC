@@ -7,4 +7,5 @@ mcc_generated_files/pin_manager.h  \
 mcc_generated_files/i2c1_master.h  \
 mcc_generated_files/tmr3.h  \
 mcc_generated_files/tmr2.h  \
+mcc_generated_files/eusart2.h  \
 mcc_generated_files/eusart1.h 

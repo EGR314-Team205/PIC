@@ -325,6 +325,30 @@
 #define GPIO_OUT6_SetAnalogMode()      do { ANSELBbits.ANSELB5 = 1; } while(0)
 #define GPIO_OUT6_SetDigitalMode()     do { ANSELBbits.ANSELB5 = 0; } while(0)
 
+// get/set RB6 procedures
+#define RB6_SetHigh()            do { LATBbits.LATB6 = 1; } while(0)
+#define RB6_SetLow()             do { LATBbits.LATB6 = 0; } while(0)
+#define RB6_Toggle()             do { LATBbits.LATB6 = ~LATBbits.LATB6; } while(0)
+#define RB6_GetValue()              PORTBbits.RB6
+#define RB6_SetDigitalInput()    do { TRISBbits.TRISB6 = 1; } while(0)
+#define RB6_SetDigitalOutput()   do { TRISBbits.TRISB6 = 0; } while(0)
+#define RB6_SetPullup()             do { WPUBbits.WPUB6 = 1; } while(0)
+#define RB6_ResetPullup()           do { WPUBbits.WPUB6 = 0; } while(0)
+#define RB6_SetAnalogMode()         do { ANSELBbits.ANSELB6 = 1; } while(0)
+#define RB6_SetDigitalMode()        do { ANSELBbits.ANSELB6 = 0; } while(0)
+
+// get/set RB7 procedures
+#define RB7_SetHigh()            do { LATBbits.LATB7 = 1; } while(0)
+#define RB7_SetLow()             do { LATBbits.LATB7 = 0; } while(0)
+#define RB7_Toggle()             do { LATBbits.LATB7 = ~LATBbits.LATB7; } while(0)
+#define RB7_GetValue()              PORTBbits.RB7
+#define RB7_SetDigitalInput()    do { TRISBbits.TRISB7 = 1; } while(0)
+#define RB7_SetDigitalOutput()   do { TRISBbits.TRISB7 = 0; } while(0)
+#define RB7_SetPullup()             do { WPUBbits.WPUB7 = 1; } while(0)
+#define RB7_ResetPullup()           do { WPUBbits.WPUB7 = 0; } while(0)
+#define RB7_SetAnalogMode()         do { ANSELBbits.ANSELB7 = 1; } while(0)
+#define RB7_SetDigitalMode()        do { ANSELBbits.ANSELB7 = 0; } while(0)
+
 // get/set LED_DEBUG3 aliases
 #define LED_DEBUG3_TRIS                 TRISCbits.TRISC0
 #define LED_DEBUG3_LAT                  LATCbits.LATC0

@@ -928,9 +928,9 @@ static void dtoa(FILE *fp, long long d)
 
 
 
-
-
-
+    if (!(prec < 0)) {
+        flags &= ~(1 << 1);
+    }
 
     p = (0 < prec) ? prec : 1;
     w = width;
@@ -947,7 +947,7 @@ static void dtoa(FILE *fp, long long d)
     dbuf[i] = '\0';
     while (!(i < 1) && (n || (0 < p)
 
-
+    || ((0 < w) && (flags & (1 << 1)))
 
     )) {
         --i;
@@ -1175,7 +1175,16 @@ static void efgtoa(FILE *fp, long double f, char c)
  memcpy(&dbuf[i-n], &dbuf[0], (size_t)n);
  n = i-n;
  i = sign == 0 ? 0 : 1;
-# 780 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
+
+
+ if (flags & (1 << 1)) {
+  while (w > i && n > i) {
+   dbuf[--n] = '0';
+   w--;
+  }
+ }
+
+
  if (sign) {
   dbuf[--n] = sign;
  }
@@ -1192,9 +1201,9 @@ static void utoa(FILE *fp, unsigned long long d)
 
 
 
-
-
-
+    if (!(prec < 0)) {
+        flags &= ~(1 << 1);
+    }
 
     p = (0 < prec) ? prec : 1;
     w = width;
@@ -1205,7 +1214,7 @@ static void utoa(FILE *fp, unsigned long long d)
     dbuf[i] = '\0';
     while (i && (n || (0 < p)
 
-
+    || ((0 < w) && (flags & (1 << 1)))
 
     )) {
         --i;
@@ -1237,6 +1246,29 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
 
         flags = width = 0;
         prec = -1;
+
+
+
+        done = 0;
+        while (!done) {
+            switch ((*fmt)[0]) {
+
+
+
+
+
+
+
+                case '0' :
+                    flags |= (1 << 1);
+                    ++*fmt;
+                    break;
+# 1060 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
+                default:
+                    done = 1;
+                    break;
+            }
+        }
 # 1074 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
         if ((*fmt)[0] == '*') {
             ++*fmt;

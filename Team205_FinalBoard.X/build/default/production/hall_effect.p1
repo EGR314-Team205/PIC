@@ -1329,10 +1329,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4
 [; ;hall_effect.c: 4:     return (uint16_t)(I2C1_Read1ByteRegister(0x36,0x0E) << 8 | I2C1_Read1ByteRegister(0x36,0x0F));
 [e ) -> | << -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 14 `i `uc `i -> 8 `i -> ( _I2C1_Read1ByteRegister (2 , -> -> 54 `i `uc -> -> 15 `i `uc `i `us ]
-[e $UE 1451  ]
+[e $UE 1453  ]
 "5
 [; ;hall_effect.c: 5: }
-[e :UE 1451 ]
+[e :UE 1453 ]
 }
 "7
 [; ;hall_effect.c: 7: void hallRecord(double *time){
@@ -1355,7 +1355,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> *U _time `us ]
 "13
 [; ;hall_effect.c: 13: }
-[e :UE 1452 ]
+[e :UE 1454 ]
 }
 "15
 [; ;hall_effect.c: 15: double windSpeedCalc(double time, float power){
@@ -1373,16 +1373,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dw_dt `d ~T0 @X0 1 a ]
 [e = _dw_dt -> / - -> *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui -> *U + &U _hall_pos * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui - -> *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui -> *U + &U _hall_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui `d ]
 "18
-[; ;hall_effect.c: 18:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.015) / (4096*powf(10,power)) ;
+[; ;hall_effect.c: 18:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power)) ;
 [v _linearVel `d ~T0 @X0 1 a ]
-[e = _linearVel / * * * _dw_dt .2.0 .3.14159265358979323846 .0.015 -> * -> -> 4096 `i `f ( _powf (2 , -> -> 10 `i `f _power `d ]
+[e = _linearVel / * * * _dw_dt .2.0 .3.14159265358979323846 .0.06 -> * -> -> 4096 `i `f ( _powf (2 , -> -> 10 `i `f _power `d ]
 "19
 [; ;hall_effect.c: 19:    return linearVel;
 [e ) _linearVel ]
-[e $UE 1453  ]
+[e $UE 1455  ]
 "20
 [; ;hall_effect.c: 20: }
-[e :UE 1453 ]
+[e :UE 1455 ]
 }
 "22
 [; ;hall_effect.c: 22: void hallInit(void){
@@ -1398,5 +1398,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = *U + &U _hall_time * -> -> - -> 2 `i -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
 "25
 [; ;hall_effect.c: 25: }
-[e :UE 1454 ]
+[e :UE 1456 ]
 }
