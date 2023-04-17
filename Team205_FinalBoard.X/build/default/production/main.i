@@ -17208,7 +17208,7 @@ void main(void)
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
 
-            _delay((unsigned long)((500)*(16000000/4000.0)));
+
         }
 
 

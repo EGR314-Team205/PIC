@@ -49,10 +49,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;./interrupt_handler.h: 38: uint8_t Read_EUSART1_Buffer(void);
 [v _Read_EUSART1_Buffer `(uc ~T0 @X0 0 ef ]
-[v F1101 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\builtins.h
-[v __delay `JF1101 ~T0 @X0 0 e ]
-[p i __delay ]
 "165 ./mcc_generated_files/eusart1.h
 [; ;./mcc_generated_files/eusart1.h: 165: _Bool EUSART1_is_tx_ready(void);
 [v _EUSART1_is_tx_ready `(a ~T0 @X0 0 ef ]
@@ -1551,9 +1547,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "95
 [; ;main.c: 95:                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
 [e ( _printf , (. :s 8C -> ( _Read_EUSART1_Buffer ..  `i ]
-"97
-[; ;main.c: 97:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "98
 [; ;main.c: 98:         }
 }

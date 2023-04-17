@@ -49,7 +49,7 @@
 
 void PROJECT_INIT(){
     hallInit(); 
-//    motorStop();
+//    motorOFF();
 //    TMR3_StartTimer();
 }
 
@@ -94,7 +94,7 @@ void main(void)
                     printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, THRESH_CUTOFF, deployStatus);
                     printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
                     
-            __delay_ms(500);
+//            __delay_ms(500);
         }
         
         //PRINT DATA TO ESP32 (REFER TO TEAM 205 TOPIC TABLE FOR LEGEND)

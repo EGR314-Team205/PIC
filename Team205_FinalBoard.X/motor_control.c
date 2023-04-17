@@ -59,8 +59,3 @@ void actionTrigger(void){
 uint8_t motorFaultRead(void){
     return I2C1_Read1ByteRegister(MOTOR_READ, MOTOR_FAULT);  
 }
-
-void motorStop(void){
-    motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_COAST);
-    motorOFF();
-}

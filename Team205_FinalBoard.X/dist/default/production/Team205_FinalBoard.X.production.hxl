@@ -10,13 +10,13 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production\Team205_FinalBoard.X.production.hex)
-  8h - EDC9h		(dist/default/production\Team205_FinalBoard.X.production.hex)
+  8h - EDA5h		(dist/default/production\Team205_FinalBoard.X.production.hex)
   FE6Ah - FFFFh		(dist/default/production\Team205_FinalBoard.X.production.hex)
   200000h - 20000Fh		(dist/default/production\Team205_FinalBoard.X.production.hex)
   300000h - 30000Bh		(dist/default/production\Team205_FinalBoard.X.production.hex)
  Unused ranges:
   4h - 7h
-  EDCAh - FE69h
+  EDA6h - FE69h
   10000h - 1FFFFFh
   200010h - 2FFFFFh
 
@@ -3829,9 +3829,7 @@
 0000ED70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000ED80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000ED90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0000EDA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0000EDB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0000EDC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- --
+0000EDA0 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 0000FE60 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
 0000FE70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
