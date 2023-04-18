@@ -2407,7 +2407,7 @@
          <value>disabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RXPPS%aux0"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RXPPS%aux2"/>
          <value>23</value>
       </entry>
       <entry>
@@ -2443,11 +2443,11 @@
          <value>%DESELECT%</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="T3CKIPPS%aux1"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="T3CKIPPS%aux0"/>
          <value>%DESELECT%</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="T3GPPS%aux2"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="T3GPPS%aux1"/>
          <value>%DESELECT%</value>
       </entry>
       <entry>
@@ -7961,20 +7961,20 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>eddb95f8c8ac5fb4f61ada54f2c116a2a5991bc96d1238029a8aa749e38d47f8</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\eusart2.c</file>
-         <hash>1ea9b88a67ed33a84ec4f80048abc18b2b860a1215b37b6c5e93659b618d64a5</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\mcc.h</file>
          <hash>d8f04f5f4ddf35e68ef6abcd35902ca393e261968d1242beb03bef48d10c6c2e</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\device_config.h</file>
          <hash>83c195c6b237137d5e3903baa60660cabc0d7b073badccede9f214684f977ee4</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\eusart2.c</file>
+         <hash>1ea9b88a67ed33a84ec4f80048abc18b2b860a1215b37b6c5e93659b618d64a5</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>eddb95f8c8ac5fb4f61ada54f2c116a2a5991bc96d1238029a8aa749e38d47f8</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\eusart1.h</file>
@@ -7989,20 +7989,20 @@
          <hash>d70ecef3d4887f09a3f3860c419004fcfac48b67c2fcca032d962d031fb96cb5</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\tmr3.h</file>
-         <hash>4e59cbf394db2aa3c1aaa8e1907b653b66511845bba1d951362c78a64f8f5991</hash>
-      </entry>
-      <entry>
          <file>main.c</file>
          <hash>133ec259ea87965d70dc582ecbd92e37b43dc58637609512f9f07fae051394c4</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\tmr2.h</file>
-         <hash>a1628dc946288d51f670b3dec460e15c6265bbe308aa7c6de7a24cb022b75ce1</hash>
+         <file>mcc_generated_files\tmr3.h</file>
+         <hash>4e59cbf394db2aa3c1aaa8e1907b653b66511845bba1d951362c78a64f8f5991</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\device_config.c</file>
          <hash>f180793ab49ec674da05118644fcc06c5a569f9ef181fc845cce8a657447c0be</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr2.h</file>
+         <hash>a1628dc946288d51f670b3dec460e15c6265bbe308aa7c6de7a24cb022b75ce1</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
@@ -8029,12 +8029,12 @@
          <hash>5b8cc0b9a6ececa3cc3d5e9f8c580620fa270f59a4c8603e0d18eb39c320768a</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\interrupt_manager.c</file>
-         <hash>bec76cac923ca808b8b18f8a204828b6642568e9ccc4a812c8b153c6a34f6745</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\mcc.c</file>
          <hash>e9fc198af0f9c8c286f763f53e260a79849a87d4496090953f61af995afaf298</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\interrupt_manager.c</file>
+         <hash>bec76cac923ca808b8b18f8a204828b6642568e9ccc4a812c8b153c6a34f6745</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\i2c1_master.c</file>

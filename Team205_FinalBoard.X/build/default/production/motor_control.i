@@ -16726,8 +16726,3 @@ void actionTrigger(void){
 uint8_t motorFaultRead(void){
     return I2C1_Read1ByteRegister(0xC1, 0x01);
 }
-
-void motorStop(void){
-    motorController(0xC0, 0x3F, 0b00);
-    motorOFF();
-}

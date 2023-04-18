@@ -37,19 +37,31 @@
 /*
  * SYSTEM OVERVIEW:
  * 
- * PERIPHERAL:         TRIGGER:                 RESULT:
- * TIMER2              1 MS                     INTERNAL CLOCK TIMER
- * TIMER3              2 MS                     SENSOR READ
- * EUSART1             N/A                      PRINT TO DEBUG PC (DIRECT CONNECTION)
- * EUSART2             RX DATA RECIEVE(ESP32)   STORE IN RXDATA
- * GPIO(PUSH_BUTTON)   PIN READ HIGH            TRIGGER MOTOR ACTION GROUP
+ *                      INTERRUPTS
+ * 
+ * PERIPHERAL:          TRIGGER:                 RESULT:
+ * TIMER2               1 MS                     INTERNAL CLOCK TIMER
+ * TIMER3               2 MS                     SENSOR READ
+ * EUSART1              N/A                      PRINT TO DEBUG PC (DIRECT CONNECTION)
+ * EUSART2              RX DATA RECIEVE(ESP32)   STORE IN RXDATA
+ * GPIO(PUSH_BUTTON)    PIN READ HIGH            TRIGGER MOTOR ACTION GROUP
+ * 
+ *                      HEADER FILES
+ * 
+ * NAME:                    PURPOSE:
+ * INTERRUPT HANDLER        CONTAINS TIMER, EUSART, AND GPIO INTERRUPTS
+ * MOTOR CONTROLLER         CONTROLS DRIECTION OF DC MOTOR AND SOLENOID
+ * HALL EFFECT
+ * TEMP SENSOR
+ * SENSOR CONTROLLER
+ *                      
  * 
  */
 
 
 void PROJECT_INIT(){
     hallInit(); 
-//    motorOFF();
+    motorOFF();
 //    TMR3_StartTimer();
 }
 
