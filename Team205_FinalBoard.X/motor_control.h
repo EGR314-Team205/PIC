@@ -47,6 +47,10 @@ void umbDeploy(void);
 
 void umbStow(void);
 
+void umbTRDeploy(void);
+
+void umbTRStow(void);
+
 uint8_t motorFaultRead(void);
 
 void actionTrigger(void);

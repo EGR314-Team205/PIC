@@ -16598,17 +16598,17 @@ unsigned char __t3rd16on(void);
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 430 "./mcc_generated_files/pin_manager.h"
+# 406 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 442 "./mcc_generated_files/pin_manager.h"
+# 418 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 455 "./mcc_generated_files/pin_manager.h"
+# 431 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_ISR(void);
-# 478 "./mcc_generated_files/pin_manager.h"
+# 454 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 502 "./mcc_generated_files/pin_manager.h"
+# 478 "./mcc_generated_files/pin_manager.h"
 extern void (*IOCAF0_InterruptHandler)(void);
-# 526 "./mcc_generated_files/pin_manager.h"
+# 502 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -16694,31 +16694,194 @@ void (*MSSP1_InterruptHandler)(void);
 void I2C1_SetInterruptHandler(void (* InterruptHandler)(void));
 # 56 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/tmr3.h" 1
-# 100 "./mcc_generated_files/tmr3.h"
-void TMR3_Initialize(void);
-# 129 "./mcc_generated_files/tmr3.h"
-void TMR3_StartTimer(void);
-# 161 "./mcc_generated_files/tmr3.h"
-void TMR3_StopTimer(void);
-# 196 "./mcc_generated_files/tmr3.h"
-uint16_t TMR3_ReadTimer(void);
-# 235 "./mcc_generated_files/tmr3.h"
-void TMR3_WriteTimer(uint16_t timerVal);
-# 271 "./mcc_generated_files/tmr3.h"
-void TMR3_Reload(void);
-# 310 "./mcc_generated_files/tmr3.h"
-void TMR3_StartSinglePulseAcquisition(void);
-# 349 "./mcc_generated_files/tmr3.h"
-uint8_t TMR3_CheckGateValueStatus(void);
-# 367 "./mcc_generated_files/tmr3.h"
-void TMR3_ISR(void);
-# 385 "./mcc_generated_files/tmr3.h"
- void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
-# 403 "./mcc_generated_files/tmr3.h"
-extern void (*TMR3_InterruptHandler)(void);
-# 421 "./mcc_generated_files/tmr3.h"
-void TMR3_DefaultInterruptHandler(void);
+# 1 "./mcc_generated_files/tmr4.h" 1
+# 79 "./mcc_generated_files/tmr4.h"
+typedef enum
+{
+# 89 "./mcc_generated_files/tmr4.h"
+   TMR4_ROP_STARTS_TMRON,
+
+
+
+
+   TMR4_ROP_STARTS_TMRON_ERSHIGH,
+
+
+
+
+   TMR4_ROP_STARTS_TMRON_ERSLOW,
+
+
+
+
+   TMR4_ROP_RESETS_ERSBOTHEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSRISINGEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSFALLINGEDGE,
+
+
+
+
+   TMR4_ROP_RESETS_ERSLOW,
+
+
+
+
+   TMR4_ROP_RESETS_ERSHIGH,
+# 135 "./mcc_generated_files/tmr4.h"
+   TMR4_OS_STARTS_TMRON,
+
+
+
+
+   TMR4_OS_STARTS_ERSRISINGEDGE ,
+
+
+
+
+   TMR4_OS_STARTS_ERSFALLINGEDGE ,
+
+
+
+
+   TMR4_OS_STARTS_ERSBOTHEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSFIRSTRISINGEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSFIRSTFALLINGEDGE,
+
+
+
+
+
+   TMR4_OS_STARTS_ERSRISINGEDGEDETECT,
+
+
+
+
+   TMR4_OS_STARTS_ERSFALLINGEDGEDETECT,
+
+
+
+
+   TMR4_OS_STARTS_TMRON_ERSHIGH = 0x16,
+
+
+
+
+   TMR4_OS_STARTS_TMRON_ERSLOW = 0x17,
+# 192 "./mcc_generated_files/tmr4.h"
+   TMR4_MS_STARTS_TMRON_ERSRISINGEDGEDETECT = 0x11,
+
+
+
+
+   TMR4_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT = 0x12,
+
+
+
+
+
+   TMR4_MS_STARTS_TMRON_ERSBOTHEDGE = 0x13
+
+} TMR4_HLT_MODE;
+# 220 "./mcc_generated_files/tmr4.h"
+typedef enum
+{
+
+
+    TMR4_T4INPPS,
+
+
+
+    TMR4_T2POSTSCALED,
+
+
+
+    TMR4_RESERVED,
+
+
+
+    TMR4_T6POSTSCALED,
+
+
+    TMR4_CCP1_OUT,
+
+
+
+    TMR4_CCP2_OUT,
+
+
+
+    TMR4_PWM3_OUT,
+
+
+
+    TMR4_PWM4_OUT,
+
+
+
+    TMR4_C1_OUT_SYNC,
+
+
+
+    TMR4_C2_OUT_SYNC,
+
+
+
+    TMR4_ZCD_OUTPUT
+
+
+} TMR4_HLT_EXT_RESET_SOURCE;
+# 308 "./mcc_generated_files/tmr4.h"
+void TMR4_Initialize(void);
+# 344 "./mcc_generated_files/tmr4.h"
+void TMR4_ModeSet(TMR4_HLT_MODE mode);
+# 379 "./mcc_generated_files/tmr4.h"
+void TMR4_ExtResetSourceSet(TMR4_HLT_EXT_RESET_SOURCE reset);
+# 408 "./mcc_generated_files/tmr4.h"
+void TMR4_Start(void);
+# 437 "./mcc_generated_files/tmr4.h"
+void TMR4_StartTimer(void);
+# 469 "./mcc_generated_files/tmr4.h"
+void TMR4_Stop(void);
+# 501 "./mcc_generated_files/tmr4.h"
+void TMR4_StopTimer(void);
+# 536 "./mcc_generated_files/tmr4.h"
+uint8_t TMR4_Counter8BitGet(void);
+# 571 "./mcc_generated_files/tmr4.h"
+uint8_t TMR4_ReadTimer(void);
+# 610 "./mcc_generated_files/tmr4.h"
+void TMR4_Counter8BitSet(uint8_t timerVal);
+# 649 "./mcc_generated_files/tmr4.h"
+void TMR4_WriteTimer(uint8_t timerVal);
+# 701 "./mcc_generated_files/tmr4.h"
+void TMR4_Period8BitSet(uint8_t periodVal);
+# 753 "./mcc_generated_files/tmr4.h"
+void TMR4_LoadPeriodRegister(uint8_t periodVal);
+# 771 "./mcc_generated_files/tmr4.h"
+void TMR4_ISR(void);
+# 789 "./mcc_generated_files/tmr4.h"
+ void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
+# 807 "./mcc_generated_files/tmr4.h"
+extern void (*TMR4_InterruptHandler)(void);
+# 825 "./mcc_generated_files/tmr4.h"
+void TMR4_DefaultInterruptHandler(void);
 # 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr2.h" 1
@@ -16911,41 +17074,8 @@ extern void (*TMR2_InterruptHandler)(void);
 void TMR2_DefaultInterruptHandler(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/eusart2.h" 1
-# 76 "./mcc_generated_files/eusart2.h"
-typedef union {
-    struct {
-        unsigned perr : 1;
-        unsigned ferr : 1;
-        unsigned oerr : 1;
-        unsigned reserved : 5;
-    };
-    uint8_t status;
-}eusart2_status_t;
-# 111 "./mcc_generated_files/eusart2.h"
-void EUSART2_Initialize(void);
-# 159 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_tx_ready(void);
-# 207 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_rx_ready(void);
-# 254 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_tx_done(void);
-# 302 "./mcc_generated_files/eusart2.h"
-eusart2_status_t EUSART2_get_last_status(void);
-# 322 "./mcc_generated_files/eusart2.h"
-uint8_t EUSART2_Read(void);
-# 342 "./mcc_generated_files/eusart2.h"
-void EUSART2_Write(uint8_t txData);
-# 362 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetErrorHandler(void (* interruptHandler)(void));
-# 59 "./mcc_generated_files/mcc.h" 2
-
 # 1 "./mcc_generated_files/eusart1.h" 1
-# 75 "./mcc_generated_files/eusart1.h"
+# 76 "./mcc_generated_files/eusart1.h"
 typedef union {
     struct {
         unsigned perr : 1;
@@ -16967,42 +17097,42 @@ extern volatile uint8_t eusart1RxCount;
 
 extern void (*EUSART1_TxDefaultInterruptHandler)(void);
 extern void (*EUSART1_RxDefaultInterruptHandler)(void);
-# 117 "./mcc_generated_files/eusart1.h"
+# 118 "./mcc_generated_files/eusart1.h"
 void EUSART1_Initialize(void);
-# 165 "./mcc_generated_files/eusart1.h"
+# 166 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_ready(void);
-# 213 "./mcc_generated_files/eusart1.h"
+# 214 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_rx_ready(void);
-# 260 "./mcc_generated_files/eusart1.h"
+# 261 "./mcc_generated_files/eusart1.h"
 _Bool EUSART1_is_tx_done(void);
-# 308 "./mcc_generated_files/eusart1.h"
+# 309 "./mcc_generated_files/eusart1.h"
 eusart1_status_t EUSART1_get_last_status(void);
-# 328 "./mcc_generated_files/eusart1.h"
+# 329 "./mcc_generated_files/eusart1.h"
 uint8_t EUSART1_Read(void);
-# 348 "./mcc_generated_files/eusart1.h"
+# 349 "./mcc_generated_files/eusart1.h"
 void EUSART1_Write(uint8_t txData);
-# 369 "./mcc_generated_files/eusart1.h"
+# 370 "./mcc_generated_files/eusart1.h"
 void EUSART1_Transmit_ISR(void);
-# 390 "./mcc_generated_files/eusart1.h"
+# 391 "./mcc_generated_files/eusart1.h"
 void EUSART1_Receive_ISR(void);
-# 411 "./mcc_generated_files/eusart1.h"
+# 412 "./mcc_generated_files/eusart1.h"
 void EUSART1_RxDataHandler(void);
-# 429 "./mcc_generated_files/eusart1.h"
+# 430 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 447 "./mcc_generated_files/eusart1.h"
+# 448 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 465 "./mcc_generated_files/eusart1.h"
+# 466 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
-# 485 "./mcc_generated_files/eusart1.h"
+# 486 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
-# 505 "./mcc_generated_files/eusart1.h"
+# 506 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 60 "./mcc_generated_files/mcc.h" 2
-# 75 "./mcc_generated_files/mcc.h"
+# 59 "./mcc_generated_files/mcc.h" 2
+# 74 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 88 "./mcc_generated_files/mcc.h"
+# 87 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 101 "./mcc_generated_files/mcc.h"
+# 100 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 17 "./hall_effect.h" 2
 
@@ -17045,11 +17175,11 @@ void hallRecord(double *time){
 double windSpeedCalc(double time, float power){
    hallRecord(&time);
    double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
-   double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power)) ;
+   double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power));
    return linearVel;
 }
 
 void hallInit(void){
-    hall_pos[2 -1] = hallRead();
-    hall_time[2 -1] = 0;
+    hall_pos[1] = hallRead();
+    hall_time[1] = 0;
 }

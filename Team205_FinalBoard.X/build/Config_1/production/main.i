@@ -16655,17 +16655,17 @@ unsigned char __t3rd16on(void);
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 430 "./mcc_generated_files/pin_manager.h"
+# 406 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 442 "./mcc_generated_files/pin_manager.h"
+# 418 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 455 "./mcc_generated_files/pin_manager.h"
+# 431 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_ISR(void);
-# 478 "./mcc_generated_files/pin_manager.h"
+# 454 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 502 "./mcc_generated_files/pin_manager.h"
+# 478 "./mcc_generated_files/pin_manager.h"
 extern void (*IOCAF0_InterruptHandler)(void);
-# 526 "./mcc_generated_files/pin_manager.h"
+# 502 "./mcc_generated_files/pin_manager.h"
 void IOCAF0_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -16968,39 +16968,6 @@ extern void (*TMR2_InterruptHandler)(void);
 void TMR2_DefaultInterruptHandler(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/eusart2.h" 1
-# 76 "./mcc_generated_files/eusart2.h"
-typedef union {
-    struct {
-        unsigned perr : 1;
-        unsigned ferr : 1;
-        unsigned oerr : 1;
-        unsigned reserved : 5;
-    };
-    uint8_t status;
-}eusart2_status_t;
-# 111 "./mcc_generated_files/eusart2.h"
-void EUSART2_Initialize(void);
-# 159 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_tx_ready(void);
-# 207 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_rx_ready(void);
-# 254 "./mcc_generated_files/eusart2.h"
-_Bool EUSART2_is_tx_done(void);
-# 302 "./mcc_generated_files/eusart2.h"
-eusart2_status_t EUSART2_get_last_status(void);
-# 322 "./mcc_generated_files/eusart2.h"
-uint8_t EUSART2_Read(void);
-# 342 "./mcc_generated_files/eusart2.h"
-void EUSART2_Write(uint8_t txData);
-# 362 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 380 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 398 "./mcc_generated_files/eusart2.h"
-void EUSART2_SetErrorHandler(void (* interruptHandler)(void));
-# 59 "./mcc_generated_files/mcc.h" 2
-
 # 1 "./mcc_generated_files/eusart1.h" 1
 # 75 "./mcc_generated_files/eusart1.h"
 typedef union {
@@ -17054,12 +17021,12 @@ void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
 void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
 # 505 "./mcc_generated_files/eusart1.h"
 void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 60 "./mcc_generated_files/mcc.h" 2
-# 75 "./mcc_generated_files/mcc.h"
+# 59 "./mcc_generated_files/mcc.h" 2
+# 74 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 88 "./mcc_generated_files/mcc.h"
+# 87 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 101 "./mcc_generated_files/mcc.h"
+# 100 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 25 "main.c" 2
 
@@ -17108,6 +17075,10 @@ void motorOFF(void);
 void umbDeploy(void);
 
 void umbStow(void);
+
+void umbTRDeploy(void);
+
+void umbTRStow(void);
 
 uint8_t motorFaultRead(void);
 
@@ -17160,7 +17131,7 @@ void set_thresh(float*);
 
 void data_transmit(char);
 # 32 "main.c" 2
-# 62 "main.c"
+# 63 "main.c"
 void PROJECT_INIT(){
     hallInit();
     motorOFF();
@@ -17197,23 +17168,7 @@ void main(void)
         }
         else
             threshCount = 0;
-
-
-        if(EUSART2_is_tx_ready()){
-            printf("Reading %i (t = %.3f s): \n\r", ++readCount, t_update());
-                    printf("\tTemp: %u C \n\r", tempData);
-                    printf("\tHall Effect Position: %u \n\r", hallRaw);
-                    printf("\tWind Speed: %5.5f m/s \n\r", windSpeed);
-                    printf("\tMotor Fault Codes: (%u) \n\r", motor_fault);
-                    printf("\tTHRESH Count: %i/%i (Deploy State = %d)\n\r", threshCount, 5, deployStatus);
-                    printf("\tEUSART Data: %u \n\r",Read_EUSART1_Buffer());
-
-
-        }
-
-
-
-
+# 116 "main.c"
         if(EUSART1_is_tx_ready()){
             printf("%u;%5.5f;", hallRaw, windSpeed);
             printf("%u;%u",tempData*(9/5)+32, tempData);

@@ -18,11 +18,10 @@ extern "C" {
 
 uint16_t timer_ms;
 uint16_t timer_s;
-    
 
 volatile uint8_t rxData;
 
-bool manualMode;
+bool manualMode, tempConvert;
     
 void Interrupt_Handler_Initialize(void);
 

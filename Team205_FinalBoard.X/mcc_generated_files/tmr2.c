@@ -65,11 +65,11 @@ void TMR2_Initialize(void)
 {
     // Set TMR2 to the options selected in the User Interface
 
-    // T2CS HFINTOSC; 
-    T2CLKCON = 0x03;
+    // T2CS FOSC/4; 
+    T2CLKCON = 0x01;
 
-    // T2PSYNC Not Synchronized; T2MODE Software control; T2CKPOL Rising Edge; T2CKSYNC Not Synchronized; 
-    T2HLT = 0x00;
+    // T2PSYNC Not Synchronized; T2MODE Software control; T2CKPOL Rising Edge; T2CKSYNC Synchronized; 
+    T2HLT = 0x20;
 
     // T2RSEL T2CKIPPS pin; 
     T2RST = 0x00;
@@ -89,8 +89,8 @@ void TMR2_Initialize(void)
     // Set Default Interrupt Handler
     TMR2_SetInterruptHandler(TMR2_DefaultInterruptHandler);
 
-    // T2CKPS 1:16; T2OUTPS 1:4; TMR2ON on; 
-    T2CON = 0xC3;
+    // T2CKPS 1:8; T2OUTPS 1:2; TMR2ON on; 
+    T2CON = 0xB1;
 }
 
 void TMR2_ModeSet(TMR2_HLT_MODE mode)

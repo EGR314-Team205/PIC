@@ -17,7 +17,13 @@ void motorFWDStep(void){
 }
 void motorFWD(void){
         motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_FWD); //motor forwards
+        MOTOR_CONTROL_LAT = 1;
 }
+
+void motorTRFWD(void){
+        MOTOR_CONTROL_LAT = 1;//motor forwards
+}
+
 
 void motorRVR(void){
         motorController(MOTOR_WRITE, MOTOR_5V, MOTOR_RVR); //motor backwards
@@ -45,13 +51,33 @@ void umbStow(){
     __delay_ms(2000);  
 }
 
+void umbTRDeploy(){
+    solTrigger();
+    motorTRFWD(); //motor pivots umbrella forward
+    __delay_ms(4000);  
+}
+
+void umbTRStow(){
+    solTrigger();
+    motorTRFWD(); //motor pivots umbrella forward
+    __delay_ms(4000);  
+}
+
 void actionTrigger(void){
+//    if(deployStatus){
+//        umbDeploy();
+//        deployStatus = true;
+//    }
+//    else{
+//        umbStow();
+//        deployStatus = false;
+//    }
     if(deployStatus){
-        umbDeploy();
+        umbTRDeploy();
         deployStatus = true;
     }
     else{
-        umbStow();
+        umbTRStow();
         deployStatus = false;
     }
 }

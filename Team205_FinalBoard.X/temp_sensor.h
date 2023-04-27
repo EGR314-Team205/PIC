@@ -20,7 +20,7 @@ extern "C" {
 #define TEMP_CONFIG 0x01
 #define TEMP_REG 0x00
     
-uint8_t tempRead(void);
+float tempRead(bool);
 
 
 #ifdef	__cplusplus

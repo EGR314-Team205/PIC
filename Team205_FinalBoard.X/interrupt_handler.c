@@ -7,14 +7,7 @@ void Interrupt_Handler_Initialize(void){
     timer_ms = 0;
     timer_s = 0;
     manualMode = false;
-    
-    INTERRUPT_GlobalInterruptEnable();     // Enable the Global Interrupts
-    INTERRUPT_PeripheralInterruptEnable();     // Enable the Peripheral Interrupts
-
-    TMR2_SetInterruptHandler(internal_clock);
-    TMR3_SetInterruptHandler(sensor_read);
-    IOCAF0_SetInterruptHandler(button_override); //button triggers manual override
-    EUSART1_SetRxInterruptHandler(Rx1_ISR);
+    threshCount = 0;
     
 }
 
@@ -35,13 +28,24 @@ void Rx1_ISR(void){
     EUSART1_Receive_ISR();
     if(EUSART1_is_rx_ready()){
         rxData = EUSART1_Read();
-        
+//        int rxSize = sizeof(rxData);
+        if(rxData == 0x46 && !tempConvert){ // "F"
+            sensorThresh[0] = sensorThresh[0]*(9/5)+32;
+            tempConvert = true;
+        }
+            
+        if(rxData == 0x43 && tempConvert){ // "C"
+            sensorThresh[0] =  (sensorThresh[0]-32)*(5/9);
+            tempConvert = false;
+        }
+
+    }
+
 //        if(EUSART1_is_tx_ready()){
 //            EUSART1_Write(rxData);
 //        }
         GPIO_OUT5_SetOpenDrain();
-        GPIO_OUT6_Toggle();
-    }          
+        GPIO_OUT6_Toggle();    
 }
 
 uint8_t Read_EUSART1_Buffer(void){

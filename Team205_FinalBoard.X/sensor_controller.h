@@ -16,17 +16,22 @@ extern "C" {
 #include <string.h>
 
 #include "mcc_generated_files/mcc.h"
+    
+#define THRESH_CUTOFF 5
+#define TRANSMIT_LENGTH 7
 
 uint8_t tempData;
 uint16_t hallRaw;
 double windSpeed;
 
-float tempCutoff;
-float windCutoff;
+int threshCount;
+float sensorThresh[2]; //{temp, wind speed} thresh value
 
-void sensor_read(void);
+void sensor_read(bool);
 
-void set_thresh(float*);
+void set_thresh(int, float);
+
+bool thresh_counter(void);
 
 void data_transmit(char);
 

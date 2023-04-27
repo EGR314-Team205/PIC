@@ -7,6 +7,10 @@
             <creation-uuid>067d81fd-3694-4561-8de5-894a98034a17</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
@@ -14,6 +18,10 @@
             <confList>
                 <confElem>
                     <name>default</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>Config_1</name>
                     <type>2</type>
                 </confElem>
             </confList>
