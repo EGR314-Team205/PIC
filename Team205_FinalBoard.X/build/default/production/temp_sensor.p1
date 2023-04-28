@@ -1322,8 +1322,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _data `uc ~T0 @X0 1 a ]
 [e = _data ( _I2C1_Read1ByteRegister (2 , -> -> 76 `i `uc -> -> 0 `i `uc ]
 "6
-[; ;temp_sensor.c: 6:     return (convert ? (float)data *(9/5) + 32 : (float)data);
-[e ) ? != -> _convert `i -> 0 `i : + * -> _data `f -> / -> 9 `i -> 5 `i `f -> -> 32 `i `f -> _data `f ]
+[; ;temp_sensor.c: 6:     return (convert ? (float)data*(1.8) + 32 : (float)data);
+[e ) -> ? != -> _convert `i -> 0 `i : + * -> -> _data `f `d .1.8 -> -> 32 `i `d -> -> _data `f `d `f ]
 [e $UE 1451  ]
 "7
 [; ;temp_sensor.c: 7: }

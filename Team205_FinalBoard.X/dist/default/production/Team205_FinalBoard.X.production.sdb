@@ -154,6 +154,7 @@ TMR4_ZCD_OUTPUT 10
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
+[v i2___flge __flge `(b  1 e 0 0 ]
 "15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flneg.c
 [v ___flneg __flneg `(d  1 e 4 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\float.c
@@ -176,8 +177,6 @@ TMR4_ZCD_OUTPUT 10
 [v _isspace isspace `(i  1 e 2 0 ]
 "1 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\labs.c
 [v _labs labs `(l  1 e 4 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\memcpy.c
 [v _memcpy memcpy `(*.39v  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nanf.c
@@ -197,6 +196,7 @@ TMR4_ZCD_OUTPUT 10
 [v i2___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
+[v i2___flsub __flsub `(d  1 e 4 0 ]
 "11 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
@@ -220,17 +220,17 @@ TMR4_ZCD_OUTPUT 10
 [v _hallRecord hallRecord `(v  1 e 1 0 ]
 "15
 [v _windSpeedCalc windSpeedCalc `(d  1 e 4 0 ]
-"22
+"26
 [v _hallInit hallInit `(v  1 e 1 0 ]
 "6 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
 [v _Interrupt_Handler_Initialize Interrupt_Handler_Initialize `(v  1 e 1 0 ]
 "14
 [v _internal_clock internal_clock `(v  1 e 1 0 ]
-"23
+"22
 [v _t_update t_update `(d  1 e 4 0 ]
-"27
+"26
 [v _Rx1_ISR Rx1_ISR `(v  1 e 1 0 ]
-"55
+"54
 [v _button_override button_override `(v  1 e 1 0 ]
 "61 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -471,9 +471,9 @@ TMR4_ZCD_OUTPUT 10
 "30
 [v _hall_time hall_time `[2]us  1 e 4 0 ]
 "19 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X/interrupt_handler.h
-[v _timer_ms timer_ms `us  1 e 2 0 ]
+[v _timer_ms timer_ms `d  1 e 4 0 ]
 "20
-[v _timer_s timer_s `us  1 e 2 0 ]
+[v _timer_s timer_s `d  1 e 4 0 ]
 "22
 [v _rxData rxData `VEuc  1 e 1 0 ]
 "24
@@ -484,7 +484,7 @@ TMR4_ZCD_OUTPUT 10
 "32 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X/motor_control.h
 [v _deployStatus deployStatus `a  1 e 1 0 ]
 "23 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X/sensor_controller.h
-[v _tempData tempData `uc  1 e 1 0 ]
+[v _tempData tempData `f  1 e 4 0 ]
 "24
 [v _hallRaw hallRaw `us  1 e 2 0 ]
 "25
@@ -639,7 +639,7 @@ TMR4_ZCD_OUTPUT 10
 [v _SLRCONB SLRCONB `VEuc  1 e 1 @3862 ]
 "8616
 [v _ODCONB ODCONB `VEuc  1 e 1 @3863 ]
-[s S2567 . 1 `uc 1 ODCB0 1 0 :1:0 
+[s S2309 . 1 `uc 1 ODCB0 1 0 :1:0 
 `uc 1 ODCB1 1 0 :1:1 
 `uc 1 ODCB2 1 0 :1:2 
 `uc 1 ODCB3 1 0 :1:3 
@@ -649,8 +649,8 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 ODCB7 1 0 :1:7 
 ]
 "8633
-[u S2576 . 1 `S2567 1 . 1 0 ]
-[v _ODCONBbits ODCONBbits `VES2576  1 e 1 @3863 ]
+[u S2318 . 1 `S2309 1 . 1 0 ]
+[v _ODCONBbits ODCONBbits `VES2318  1 e 1 @3863 ]
 "8678
 [v _WPUB WPUB `VEuc  1 e 1 @3864 ]
 "8740
@@ -671,7 +671,7 @@ TMR4_ZCD_OUTPUT 10
 [v _WPUE WPUE `VEuc  1 e 1 @3885 ]
 "15663
 [v _LATA LATA `VEuc  1 e 1 @3971 ]
-[s S2314 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S2335 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -681,7 +681,7 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LATA7 1 0 :1:7 
 ]
 "15690
-[s S2323 . 1 `uc 1 LA0 1 0 :1:0 
+[s S2344 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -690,11 +690,11 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S2332 . 1 `S2314 1 . 1 0 `S2323 1 . 1 0 ]
-[v _LATAbits LATAbits `VES2332  1 e 1 @3971 ]
+[u S2353 . 1 `S2335 1 . 1 0 `S2344 1 . 1 0 ]
+[v _LATAbits LATAbits `VES2353  1 e 1 @3971 ]
 "15775
 [v _LATB LATB `VEuc  1 e 1 @3972 ]
-[s S2588 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S2449 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -704,7 +704,7 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LATB7 1 0 :1:7 
 ]
 "15802
-[s S2597 . 1 `uc 1 LB0 1 0 :1:0 
+[s S2458 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -713,11 +713,11 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S2606 . 1 `S2588 1 . 1 0 `S2597 1 . 1 0 ]
-[v _LATBbits LATBbits `VES2606  1 e 1 @3972 ]
+[u S2467 . 1 `S2449 1 . 1 0 `S2458 1 . 1 0 ]
+[v _LATBbits LATBbits `VES2467  1 e 1 @3972 ]
 "15887
 [v _LATC LATC `VEuc  1 e 1 @3973 ]
-[s S2354 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S2375 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -727,7 +727,7 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LATC7 1 0 :1:7 
 ]
 "15914
-[s S2363 . 1 `uc 1 LC0 1 0 :1:0 
+[s S2384 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -736,15 +736,15 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S2372 . 1 `S2354 1 . 1 0 `S2363 1 . 1 0 ]
-[v _LATCbits LATCbits `VES2372  1 e 1 @3973 ]
+[u S2393 . 1 `S2375 1 . 1 0 `S2384 1 . 1 0 ]
+[v _LATCbits LATCbits `VES2393  1 e 1 @3973 ]
 "15999
 [v _TRISA TRISA `VEuc  1 e 1 @3976 ]
 "16121
 [v _TRISB TRISB `VEuc  1 e 1 @3977 ]
 "16243
 [v _TRISC TRISC `VEuc  1 e 1 @3978 ]
-[s S2394 . 1 `uc 1 RA0 1 0 :1:0 
+[s S2415 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -754,14 +754,14 @@ TMR4_ZCD_OUTPUT 10
 `uc 1 RA7 1 0 :1:7 
 ]
 "16389
-[s S2403 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S2424 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 `uc 1 . 1 0 :4:1 
 `uc 1 LVDIN 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 RJPU 1 0 :1:7 
 ]
-[u S2409 . 1 `S2394 1 . 1 0 `S2403 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES2409  1 e 1 @3981 ]
+[u S2430 . 1 `S2415 1 . 1 0 `S2424 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES2430  1 e 1 @3981 ]
 "16840
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @3986 ]
 "16860
@@ -1268,13 +1268,13 @@ TMR4_ZCD_OUTPUT 10
 "61 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"92
+"96
 } 0
 "15 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\sensor_controller.c
 [v _set_thresh set_thresh `(v  1 e 1 0 ]
 {
-[v set_thresh@temp temp `i  1 p 2 21 ]
-[v set_thresh@windSpeed windSpeed `f  1 p 4 23 ]
+[v set_thresh@temp temp `i  1 p 2 14 ]
+[v set_thresh@windSpeed windSpeed `f  1 p 4 16 ]
 "19
 } 0
 "7
@@ -1282,20 +1282,24 @@ TMR4_ZCD_OUTPUT 10
 {
 [v sensor_read@conv conv `a  1 a 1 wreg ]
 [v sensor_read@conv conv `a  1 a 1 wreg ]
-[v sensor_read@conv conv `a  1 a 1 152 ]
+[v sensor_read@conv conv `a  1 a 1 155 ]
 "13
 } 0
 "15 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\hall_effect.c
 [v _windSpeedCalc windSpeedCalc `(d  1 e 4 0 ]
 {
 "18
-[v windSpeedCalc@linearVel linearVel `d  1 a 4 4 ]
+[v windSpeedCalc@dt dt `d  1 a 4 212 ]
 "17
-[v windSpeedCalc@dw_dt dw_dt `d  1 a 4 0 ]
-"15
-[v windSpeedCalc@time time `d  1 p 4 144 ]
-[v windSpeedCalc@power power `f  1 p 4 148 ]
+[v windSpeedCalc@dw dw `d  1 a 4 208 ]
 "20
+[v windSpeedCalc@dw_dt dw_dt `d  1 a 4 204 ]
+"22
+[v windSpeedCalc@linearVel linearVel `d  1 a 4 188 ]
+"15
+[v windSpeedCalc@time time `d  1 p 4 137 ]
+[v windSpeedCalc@power power `f  1 p 4 141 ]
+"24
 } 0
 "53 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\powf.c
 [v _powf powf `JJ(f  1 e 4 0 ]
@@ -1306,9 +1310,9 @@ TMR4_ZCD_OUTPUT 10
 [v powf@t_h t_h `f  1 a 4 104 ]
 [v powf@t_l t_l `f  1 a 4 52 ]
 [v powf@s_l s_l `f  1 a 4 48 ]
-[u S3155 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
+[u S3194 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
 "59
-[v powf@__xc8_float_word __xc8_float_word `S3155  1 a 4 184 ]
+[v powf@__xc8_float_word __xc8_float_word `S3194  1 a 4 184 ]
 "55
 [v powf@z z `f  1 a 4 180 ]
 "56
@@ -1322,15 +1326,16 @@ TMR4_ZCD_OUTPUT 10
 "55
 [v powf@p_h p_h `f  1 a 4 156 ]
 "58
-[v powf@is is `l  1 a 4 148 ]
-[v powf@iy iy `l  1 a 4 144 ]
+[v powf@iy iy `l  1 a 4 152 ]
+[v powf@is is `l  1 a 4 144 ]
 "56
 [v powf@sn sn `f  1 a 4 136 ]
-[v powf@t1 t1 `f  1 a 4 132 ]
-"57
-[v powf@n n `l  1 a 4 128 ]
 "58
-[v powf@hy hy `l  1 a 4 124 ]
+[v powf@hy hy `l  1 a 4 132 ]
+"56
+[v powf@t1 t1 `f  1 a 4 128 ]
+"57
+[v powf@n n `l  1 a 4 124 ]
 "56
 [v powf@v v `f  1 a 4 120 ]
 [v powf@u u `f  1 a 4 116 ]
@@ -1356,40 +1361,40 @@ TMR4_ZCD_OUTPUT 10
 "56
 [v powf@t2 t2 `f  1 a 4 28 ]
 "53
-[v powf@x x `f  1 p 4 127 ]
-[v powf@y y `f  1 p 4 131 ]
+[v powf@x x `f  1 p 4 120 ]
+[v powf@y y `f  1 p 4 124 ]
 "268
 } 0
 "22 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sqrtf.c
 [v _sqrtf sqrtf `(f  1 e 4 0 ]
 {
 "26
-[v sqrtf@ix ix `l  1 a 4 123 ]
+[v sqrtf@ix ix `l  1 a 4 116 ]
 "27
-[v sqrtf@r r `ul  1 a 4 119 ]
+[v sqrtf@r r `ul  1 a 4 112 ]
 "26
-[v sqrtf@m m `l  1 a 4 115 ]
+[v sqrtf@m m `l  1 a 4 108 ]
 "24
-[v sqrtf@z z `f  1 a 4 111 ]
+[v sqrtf@z z `f  1 a 4 104 ]
 "26
-[v sqrtf@t t `l  1 a 4 107 ]
-[v sqrtf@q q `l  1 a 4 103 ]
-[u S3155 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
+[v sqrtf@t t `l  1 a 4 100 ]
+[v sqrtf@q q `l  1 a 4 96 ]
+[u S3194 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
 "28
-[v sqrtf@__xc8_float_word __xc8_float_word `S3155  1 a 4 99 ]
+[v sqrtf@__xc8_float_word __xc8_float_word `S3194  1 a 4 92 ]
 "26
-[v sqrtf@i i `l  1 a 4 95 ]
-[v sqrtf@s s `l  1 a 4 91 ]
+[v sqrtf@i i `l  1 a 4 88 ]
+[v sqrtf@s s `l  1 a 4 84 ]
 "22
-[v sqrtf@x x `f  1 p 4 82 ]
+[v sqrtf@x x `f  1 p 4 75 ]
 "89
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nanf.c
 [v _nanf nanf `(f  1 e 4 0 ]
 {
-[u S3243 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S3282 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "6
-[v nanf@u u `S3243  1 a 4 4 ]
+[v nanf@u u `S3282  1 a 4 4 ]
 "4
 [v nanf@s s `*.32Cuc  1 p 2 0 ]
 "9
@@ -1398,52 +1403,40 @@ TMR4_ZCD_OUTPUT 10
 [v _scalbnf scalbnf `(f  1 e 4 0 ]
 {
 "7
-[v scalbnf@y y `f  1 a 4 76 ]
-[u S3243 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[v scalbnf@y y `f  1 a 4 69 ]
+[u S3282 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "6
-[v scalbnf@u u `S3243  1 a 4 72 ]
+[v scalbnf@u u `S3282  1 a 4 65 ]
 "4
-[v scalbnf@x x `f  1 p 4 62 ]
-[v scalbnf@n n `i  1 p 2 66 ]
+[v scalbnf@x x `f  1 p 4 55 ]
+[v scalbnf@n n `i  1 p 2 59 ]
 "31
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fabsf.c
 [v _fabsf fabsf `(f  1 e 4 0 ]
 {
-[u S3243 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S3282 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "6
-[v fabsf@u u `S3243  1 a 4 4 ]
+[v fabsf@u u `S3282  1 a 4 4 ]
 "4
 [v fabsf@x x `f  1 p 4 0 ]
 "5
-[v fabsf@F465 F465 `S3243  1 s 4 F465 ]
+[v fabsf@F465 F465 `S3282  1 s 4 F465 ]
 "9
 } 0
 "7 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\hall_effect.c
 [v _hallRecord hallRecord `(v  1 e 1 0 ]
 {
-[v hallRecord@time time `*.39d  1 p 2 78 ]
+[v hallRecord@time time `*.39d  1 p 2 18 ]
 "13
-} 0
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"10
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"11
-[v ___lwdiv@counter counter `uc  1 a 1 4 ]
-"7
-[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
-"30
 } 0
 "21 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\sensor_controller.c
 [v _thresh_counter thresh_counter `(a  1 e 1 0 ]
 {
 "23
-[v thresh_counter@triggerReduce triggerReduce `a  1 a 1 83 ]
+[v thresh_counter@triggerReduce triggerReduce `a  1 a 1 76 ]
 "22
-[v thresh_counter@triggerAdd triggerAdd `a  1 a 1 82 ]
+[v thresh_counter@triggerAdd triggerAdd `a  1 a 1 75 ]
 "31
 } 0
 "4 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\temp_sensor.c
@@ -1451,10 +1444,10 @@ TMR4_ZCD_OUTPUT 10
 {
 [v tempRead@convert convert `a  1 a 1 wreg ]
 "5
-[v tempRead@data data `uc  1 a 1 67 ]
+[v tempRead@data data `uc  1 a 1 64 ]
 "4
 [v tempRead@convert convert `a  1 a 1 wreg ]
-[v tempRead@convert convert `a  1 a 1 66 ]
+[v tempRead@convert convert `a  1 a 1 59 ]
 "7
 } 0
 "33 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\sensor_controller.c
@@ -1462,85 +1455,70 @@ TMR4_ZCD_OUTPUT 10
 {
 [v data_transmit@delim delim `uc  1 a 1 wreg ]
 "35
-[v data_transmit@i i `i  1 a 2 85 ]
+[v data_transmit@i i `i  1 a 2 73 ]
 "34
-[v data_transmit@data data `[7]f  1 a 28 57 ]
+[v data_transmit@data data `[7]f  1 a 28 44 ]
 "33
 [v data_transmit@delim delim `uc  1 a 1 wreg ]
-[v data_transmit@delim delim `uc  1 a 1 56 ]
+[v data_transmit@delim delim `uc  1 a 1 72 ]
 "43
 } 0
-"23 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
+"22 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
 [v _t_update t_update `(d  1 e 4 0 ]
 {
-"25
-} 0
-"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-{
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-"13
-[v ___xxtofl@arg arg `ul  1 a 4 17 ]
-"12
-[v ___xxtofl@exp exp `uc  1 a 1 16 ]
-"10
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 7 ]
-"15
-[v ___xxtofl@sign sign `uc  1 a 1 15 ]
-"44
+"24
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.39v  1 a 2 146 ]
+[v printf@ap ap `[1]*.39v  1 a 2 151 ]
 "5
-[v printf@fmt fmt `*.32Cuc  1 p 2 50 ]
+[v printf@fmt fmt `*.32Cuc  1 p 2 145 ]
 "13
 } 0
 "1520 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
 "1523
-[v vfprintf@cfmt cfmt `*.32uc  1 a 2 144 ]
-[s S3279 _IO_FILE 0 ]
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 143 ]
+[s S3318 _IO_FILE 0 ]
 "1520
-[v vfprintf@fp fp `*.2S3279  1 p 2 44 ]
-[v vfprintf@fmt fmt `*.32Cuc  1 p 2 46 ]
-[v vfprintf@ap ap `*.39*.39v  1 p 2 48 ]
+[v vfprintf@fp fp `*.2S3318  1 p 2 137 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 139 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 141 ]
 "1543
 } 0
 "1007
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S3323 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
+[u S3362 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
 "1016
-[v vfpfcnvrt@convarg convarg `S3323  1 a 8 133 ]
+[v vfpfcnvrt@convarg convarg `S3362  1 a 8 126 ]
 "1009
-[v vfpfcnvrt@cp cp `*.32uc  1 a 2 142 ]
-[v vfpfcnvrt@c c `uc  1 a 1 141 ]
-[s S3279 _IO_FILE 0 ]
+[v vfpfcnvrt@cp cp `*.32uc  1 a 2 135 ]
+[v vfpfcnvrt@c c `uc  1 a 1 134 ]
+[s S3318 _IO_FILE 0 ]
 "1007
-[v vfpfcnvrt@fp fp `*.2S3279  1 p 2 124 ]
-[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 126 ]
-[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 128 ]
+[v vfpfcnvrt@fp fp `*.2S3318  1 p 2 117 ]
+[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 119 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 121 ]
 "1517
 } 0
 "506
 [v _efgtoa efgtoa `(v  1 s 1 efgtoa ]
 {
-[u S3292 flui 4 `d 1 f 4 0 `l 1 u 4 0 ]
+[u S3331 flui 4 `d 1 f 4 0 `l 1 u 4 0 ]
 "511
-[v efgtoa@u u `S3292  1 a 4 40 ]
-[v efgtoa@g g `S3292  1 a 4 34 ]
+[v efgtoa@u u `S3331  1 a 4 40 ]
+[v efgtoa@g g `S3331  1 a 4 36 ]
 "510
 [v efgtoa@l l `d  1 a 4 29 ]
 [v efgtoa@h h `d  1 a 4 25 ]
 "511
-[v efgtoa@ou ou `S3292  1 a 4 19 ]
+[v efgtoa@ou ou `S3331  1 a 4 19 ]
 "509
-[v efgtoa@n n `i  1 a 2 38 ]
+[v efgtoa@n n `i  1 a 2 34 ]
 [v efgtoa@i i `i  1 a 2 23 ]
 [v efgtoa@w w `i  1 a 2 17 ]
 [v efgtoa@e e `i  1 a 2 15 ]
@@ -1554,11 +1532,11 @@ TMR4_ZCD_OUTPUT 10
 [v efgtoa@nmode nmode `uc  1 a 1 10 ]
 [v efgtoa@mode mode `uc  1 a 1 9 ]
 [v efgtoa@pp pp `uc  1 a 1 8 ]
-[s S3279 _IO_FILE 0 ]
+[s S3318 _IO_FILE 0 ]
 "506
-[v efgtoa@fp fp `*.2S3279  1 p 2 115 ]
-[v efgtoa@f f `d  1 p 4 117 ]
-[v efgtoa@c c `uc  1 p 1 121 ]
+[v efgtoa@fp fp `*.2S3318  1 p 2 108 ]
+[v efgtoa@f f `d  1 p 4 110 ]
+[v efgtoa@c c `uc  1 p 1 114 ]
 "787
 } 0
 "3 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\strcpy.c
@@ -1579,9 +1557,9 @@ TMR4_ZCD_OUTPUT 10
 "135
 [v pad@w w `i  1 a 2 27 ]
 [v pad@i i `i  1 a 2 25 ]
-[s S3279 _IO_FILE 0 ]
+[s S3318 _IO_FILE 0 ]
 "133
-[v pad@fp fp `*.2S3279  1 p 2 18 ]
+[v pad@fp fp `*.2S3318  1 p 2 18 ]
 [v pad@buf buf `*.39uc  1 p 2 20 ]
 [v pad@p p `i  1 p 2 22 ]
 "164
@@ -1595,20 +1573,20 @@ TMR4_ZCD_OUTPUT 10
 [v fputs@c c `uc  1 a 1 15 ]
 "8
 [v fputs@s s `*.39Cuc  1 p 2 11 ]
-[u S3258 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S3261 _IO_FILE 11 `S3258 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.2S3261  1 p 2 13 ]
+[u S3297 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S3300 _IO_FILE 11 `S3297 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.2S3300  1 p 2 13 ]
 "19
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\memcpy.c
 [v _memcpy memcpy `(*.39v  1 e 2 0 ]
 {
 "8
-[v memcpy@s s `*.39Cuc  1 a 2 9 ]
+[v memcpy@s s `*.39Cuc  1 a 2 8 ]
 "7
-[v memcpy@d d `*.39uc  1 a 2 7 ]
+[v memcpy@d d `*.39uc  1 a 2 6 ]
 "9
-[v memcpy@tmp tmp `uc  1 a 1 6 ]
+[v memcpy@tmp tmp `uc  1 a 1 10 ]
 "4
 [v memcpy@d1 d1 `*.39v  1 p 2 0 ]
 [v memcpy@s1 s1 `*.39Cv  1 p 2 2 ]
@@ -1624,64 +1602,64 @@ TMR4_ZCD_OUTPUT 10
 "3 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\floorf.c
 [v _floorf floorf `(f  1 e 4 0 ]
 {
-[u S3243 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S3282 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "5
-[v floorf@u u `S3243  1 a 4 111 ]
+[v floorf@u u `S3282  1 a 4 104 ]
 "7
-[v floorf@m m `ul  1 a 4 105 ]
+[v floorf@m m `ul  1 a 4 98 ]
 "6
-[v floorf@e e `i  1 a 2 109 ]
+[v floorf@e e `i  1 a 2 102 ]
 "3
-[v floorf@x x `f  1 p 4 95 ]
+[v floorf@x x `f  1 p 4 88 ]
 "4
-[v floorf@F526 F526 `S3243  1 s 4 F526 ]
+[v floorf@F526 F526 `S3282  1 s 4 F526 ]
 "27
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\__fpclassifyf.c
 [v ___fpclassifyf __fpclassifyf `(i  1 e 2 0 ]
 {
-[u S3243 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S3282 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "6
-[v ___fpclassifyf@u u `S3243  1 a 4 10 ]
+[v ___fpclassifyf@u u `S3282  1 a 4 10 ]
 "7
 [v ___fpclassifyf@e e `i  1 a 2 8 ]
 "4
 [v ___fpclassifyf@x x `f  1 p 4 0 ]
 "5
-[v ___fpclassifyf@F465 F465 `S3243  1 s 4 F465 ]
+[v ___fpclassifyf@F465 F465 `S3282  1 s 4 F465 ]
 "11
 } 0
 "43 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
-[v ___fltol@exp1 exp1 `uc  1 a 1 77 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 76 ]
+[v ___fltol@exp1 exp1 `uc  1 a 1 9 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 8 ]
 "43
-[v ___fltol@f1 f1 `d  1 p 4 68 ]
+[v ___fltol@f1 f1 `d  1 p 4 0 ]
 "70
 } 0
 "245 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
 [v ___flsub __flsub `(d  1 e 4 0 ]
 {
-[v ___flsub@b b `d  1 p 4 62 ]
-[v ___flsub@a a `d  1 p 4 66 ]
+[v ___flsub@b b `d  1 p 4 55 ]
+[v ___flsub@a a `d  1 p 4 59 ]
 "250
 } 0
 "10
 [v ___fladd __fladd `(d  1 e 4 0 ]
 {
 "17
-[v ___fladd@grs grs `uc  1 a 1 36 ]
+[v ___fladd@grs grs `uc  1 a 1 29 ]
 "15
-[v ___fladd@bexp bexp `uc  1 a 1 35 ]
+[v ___fladd@bexp bexp `uc  1 a 1 28 ]
 "16
-[v ___fladd@aexp aexp `uc  1 a 1 34 ]
+[v ___fladd@aexp aexp `uc  1 a 1 27 ]
 "13
-[v ___fladd@signs signs `uc  1 a 1 33 ]
+[v ___fladd@signs signs `uc  1 a 1 26 ]
 "10
-[v ___fladd@b b `d  1 p 4 21 ]
-[v ___fladd@a a `d  1 p 4 25 ]
+[v ___fladd@b b `d  1 p 4 14 ]
+[v ___fladd@a a `d  1 p 4 18 ]
 "237
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flneg.c
@@ -1693,33 +1671,33 @@ TMR4_ZCD_OUTPUT 10
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S3020 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S3059 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S3025 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S3028 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3020 1 fAsBytes 4 0 `S3025 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S3028  1 a 4 56 ]
+[s S3064 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S3067 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3059 1 fAsBytes 4 0 `S3064 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S3067  1 a 4 49 ]
 "12
-[v ___flmul@grs grs `ul  1 a 4 51 ]
-[s S3096 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[v ___flmul@grs grs `ul  1 a 4 43 ]
+[s S3135 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S3099 . 2 `s 1 i 2 0 `us 1 n 2 0 `S3096 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S3099  1 a 2 60 ]
+[u S3138 . 2 `s 1 i 2 0 `us 1 n 2 0 `S3135 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3138  1 a 2 53 ]
 "10
-[v ___flmul@bexp bexp `uc  1 a 1 55 ]
+[v ___flmul@bexp bexp `uc  1 a 1 48 ]
 "11
-[v ___flmul@aexp aexp `uc  1 a 1 50 ]
+[v ___flmul@aexp aexp `uc  1 a 1 47 ]
 "9
-[v ___flmul@sign sign `uc  1 a 1 49 ]
+[v ___flmul@sign sign `uc  1 a 1 42 ]
 "8
-[v ___flmul@b b `d  1 p 4 37 ]
-[v ___flmul@a a `d  1 p 4 41 ]
+[v ___flmul@b b `d  1 p 4 30 ]
+[v ___flmul@a a `d  1 p 4 34 ]
 "205
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 {
-[v ___flge@ff1 ff1 `d  1 p 4 70 ]
-[v ___flge@ff2 ff2 `d  1 p 4 74 ]
+[v ___flge@ff1 ff1 `d  1 p 4 63 ]
+[v ___flge@ff2 ff2 `d  1 p 4 67 ]
 "19
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c
@@ -1733,20 +1711,20 @@ TMR4_ZCD_OUTPUT 10
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 {
 "21
-[v ___fldiv@grs grs `ul  1 a 4 89 ]
+[v ___fldiv@grs grs `ul  1 a 4 82 ]
 "22
-[v ___fldiv@rem rem `ul  1 a 4 82 ]
+[v ___fldiv@rem rem `ul  1 a 4 75 ]
 "20
-[v ___fldiv@new_exp new_exp `s  1 a 2 87 ]
+[v ___fldiv@new_exp new_exp `s  1 a 2 80 ]
 "19
-[v ___fldiv@aexp aexp `uc  1 a 1 94 ]
+[v ___fldiv@aexp aexp `uc  1 a 1 87 ]
 "18
-[v ___fldiv@bexp bexp `uc  1 a 1 93 ]
+[v ___fldiv@bexp bexp `uc  1 a 1 86 ]
 "16
-[v ___fldiv@sign sign `uc  1 a 1 86 ]
+[v ___fldiv@sign sign `uc  1 a 1 79 ]
 "11
-[v ___fldiv@b b `d  1 p 4 70 ]
-[v ___fldiv@a a `d  1 p 4 74 ]
+[v ___fldiv@b b `d  1 p 4 63 ]
+[v ___fldiv@a a `d  1 p 4 67 ]
 "185
 } 0
 "406 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
@@ -1755,9 +1733,9 @@ TMR4_ZCD_OUTPUT 10
 "408
 [v ctoa@w w `i  1 a 2 17 ]
 [v ctoa@l l `i  1 a 2 15 ]
-[s S3279 _IO_FILE 0 ]
+[s S3318 _IO_FILE 0 ]
 "406
-[v ctoa@fp fp `*.2S3279  1 p 2 11 ]
+[v ctoa@fp fp `*.2S3318  1 p 2 11 ]
 [v ctoa@c c `uc  1 p 1 13 ]
 "439
 } 0
@@ -1765,9 +1743,9 @@ TMR4_ZCD_OUTPUT 10
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 2 ]
-[u S3258 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S3261 _IO_FILE 11 `S3258 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.2S3261  1 p 2 4 ]
+[u S3297 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S3300 _IO_FILE 11 `S3297 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.2S3300  1 p 2 4 ]
 "24
 } 0
 "201 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\mcc_generated_files/eusart1.c
@@ -1819,10 +1797,25 @@ TMR4_ZCD_OUTPUT 10
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"22 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\hall_effect.c
+"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"26 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\hall_effect.c
 [v _hallInit hallInit `(v  1 e 1 0 ]
 {
-"25
+"29
 } 0
 "3
 [v _hallRead hallRead `(us  1 e 2 0 ]
@@ -2092,32 +2085,46 @@ TMR4_ZCD_OUTPUT 10
 "14 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
 [v _internal_clock internal_clock `(v  1 e 1 0 ]
 {
-"21
+"20
+} 0
+"245 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
+[v i2___flsub __flsub `(d  1 e 4 0 ]
+{
+[v i2___flsub@b b `d  1 p 4 41 ]
+[v i2___flsub@a a `d  1 p 4 45 ]
+"250
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\flge.c
+[v i2___flge __flge `(b  1 e 0 0 ]
+{
+[v i2___flge@ff1 ff1 `d  1 p 4 0 ]
+[v i2___flge@ff2 ff2 `d  1 p 4 4 ]
+"19
 } 0
 "225 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\mcc_generated_files/eusart1.c
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
 {
 "247
 } 0
-"27 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
+"26 C:\Users\DJMik\github\PIC\Team205_FinalBoard.X\interrupt_handler.c
 [v _Rx1_ISR Rx1_ISR `(v  1 e 1 0 ]
 {
-"49
+"48
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
 [v i2___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S3020 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S3059 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S3025 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S3028 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3020 1 fAsBytes 4 0 `S3025 1 fAsWords 4 0 ]
-[v i2___flmul@prod prod `S3028  1 a 4 19 ]
+[s S3064 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S3067 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3059 1 fAsBytes 4 0 `S3064 1 fAsWords 4 0 ]
+[v i2___flmul@prod prod `S3067  1 a 4 19 ]
 "12
 [v i2___flmul@grs grs `ul  1 a 4 13 ]
-[s S3096 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S3135 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S3099 . 2 `s 1 i 2 0 `us 1 n 2 0 `S3096 1 nAsBytes 2 0 ]
-[v i2___flmul@temp temp `S3099  1 a 2 23 ]
+[u S3138 . 2 `s 1 i 2 0 `us 1 n 2 0 `S3135 1 nAsBytes 2 0 ]
+[v i2___flmul@temp temp `S3138  1 a 2 23 ]
 "10
 [v i2___flmul@bexp bexp `uc  1 a 1 18 ]
 "11

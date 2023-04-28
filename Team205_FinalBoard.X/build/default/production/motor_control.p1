@@ -1513,9 +1513,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [; ;motor_control.c: 56:     motorTRFWD();
 [e ( _motorTRFWD ..  ]
-"57
-[; ;motor_control.c: 57:     _delay((unsigned long)((4000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 4000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "58
 [; ;motor_control.c: 58: }
 [e :UE 1460 ]
@@ -1532,9 +1529,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "62
 [; ;motor_control.c: 62:     motorTRFWD();
 [e ( _motorTRFWD ..  ]
-"63
-[; ;motor_control.c: 63:     _delay((unsigned long)((4000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 4000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "64
 [; ;motor_control.c: 64: }
 [e :UE 1461 ]

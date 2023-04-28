@@ -17255,7 +17255,7 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
-uint8_t tempData;
+float tempData;
 uint16_t hallRaw;
 double windSpeed;
 
@@ -17273,8 +17273,8 @@ void data_transmit(char);
 
 # 1 "./interrupt_handler.h" 1
 # 19 "./interrupt_handler.h"
-uint16_t timer_ms;
-uint16_t timer_s;
+double timer_ms;
+double timer_s;
 
 volatile uint8_t rxData;
 
@@ -17298,7 +17298,7 @@ uint8_t Read_EUSART1_Buffer(void);
 void sensor_read(_Bool conv){
         tempData = tempRead(conv);
         hallRaw = hallRead();
-        windSpeed = windSpeedCalc(t_update(),3);
+        windSpeed = windSpeedCalc(t_update(),1);
         thresh_counter();
         data_transmit(';');
 }

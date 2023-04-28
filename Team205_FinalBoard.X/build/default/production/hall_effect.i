@@ -17174,7 +17174,11 @@ void hallRecord(double *time){
 
 double windSpeedCalc(double time, float power){
    hallRecord(&time);
-   double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
+   double dw = ((double)hall_pos[1] - (double)hall_pos[0]);
+   double dt = ((double)hall_time[1] - (double)hall_time[0]);
+
+   double dw_dt = (dt>0 && dw >0)? dw/dt : 0;
+
    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power));
    return linearVel;
 }

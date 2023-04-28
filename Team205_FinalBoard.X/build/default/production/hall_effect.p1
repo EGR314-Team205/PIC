@@ -1369,34 +1369,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hall_effect.c: 16:    hallRecord(&time);
 [e ( _hallRecord (1 &U _time ]
 "17
-[; ;hall_effect.c: 17:    double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]);
-[v _dw_dt `d ~T0 @X0 1 a ]
-[e = _dw_dt -> / - -> *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui -> *U + &U _hall_pos * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `ui - -> *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui -> *U + &U _hall_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `ui `d ]
+[; ;hall_effect.c: 17:    double dw = ((double)hall_pos[1] - (double)hall_pos[0]);
+[v _dw `d ~T0 @X0 1 a ]
+[e = _dw - -> *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `d -> *U + &U _hall_pos * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux `d ]
 "18
-[; ;hall_effect.c: 18:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power));
+[; ;hall_effect.c: 18:    double dt = ((double)hall_time[1] - (double)hall_time[0]);
+[v _dt `d ~T0 @X0 1 a ]
+[e = _dt - -> *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `d -> *U + &U _hall_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _hall_time `ui `ux `d ]
+"20
+[; ;hall_effect.c: 20:    double dw_dt = (dt>0 && dw >0)? dw/dt : 0;
+[v _dw_dt `d ~T0 @X0 1 a ]
+[e = _dw_dt ? && > _dt -> -> 0 `i `d > _dw -> -> 0 `i `d : / _dw _dt -> -> 0 `i `d ]
+"22
+[; ;hall_effect.c: 22:    double linearVel = (dw_dt * 2.0 * 3.14159265358979323846 * 0.06) / (4096*powf(10,power));
 [v _linearVel `d ~T0 @X0 1 a ]
 [e = _linearVel / * * * _dw_dt .2.0 .3.14159265358979323846 .0.06 -> * -> -> 4096 `i `f ( _powf (2 , -> -> 10 `i `f _power `d ]
-"19
-[; ;hall_effect.c: 19:    return linearVel;
+"23
+[; ;hall_effect.c: 23:    return linearVel;
 [e ) _linearVel ]
 [e $UE 1453  ]
-"20
-[; ;hall_effect.c: 20: }
+"24
+[; ;hall_effect.c: 24: }
 [e :UE 1453 ]
 }
-"22
-[; ;hall_effect.c: 22: void hallInit(void){
+"26
+[; ;hall_effect.c: 26: void hallInit(void){
 [v _hallInit `(v ~T0 @X0 1 ef ]
 {
 [e :U _hallInit ]
 [f ]
-"23
-[; ;hall_effect.c: 23:     hall_pos[1] = hallRead();
+"27
+[; ;hall_effect.c: 27:     hall_pos[1] = hallRead();
 [e = *U + &U _hall_pos * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_pos `ui `ux ( _hallRead ..  ]
-"24
-[; ;hall_effect.c: 24:     hall_time[1] = 0;
+"28
+[; ;hall_effect.c: 28:     hall_time[1] = 0;
 [e = *U + &U _hall_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _hall_time `ui `ux -> -> 0 `i `us ]
-"25
-[; ;hall_effect.c: 25: }
+"29
+[; ;hall_effect.c: 29: }
 [e :UE 1454 ]
 }

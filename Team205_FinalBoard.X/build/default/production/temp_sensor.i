@@ -16782,5 +16782,5 @@ float tempRead(_Bool);
 
 float tempRead(_Bool convert){
     uint8_t data = I2C1_Read1ByteRegister(0x4C, 0x00);
-    return (convert ? (float)data *(9/5) + 32 : (float)data);
+    return (convert ? (float)data*(1.8) + 32 : (float)data);
 }

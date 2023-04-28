@@ -16855,13 +16855,13 @@ void umbStow(){
 void umbTRDeploy(){
     solTrigger();
     motorTRFWD();
-    _delay((unsigned long)((4000)*(16000000/4000.0)));
+
 }
 
 void umbTRStow(){
     solTrigger();
     motorTRFWD();
-    _delay((unsigned long)((4000)*(16000000/4000.0)));
+
 }
 
 void actionTrigger(void){

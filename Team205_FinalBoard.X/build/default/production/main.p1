@@ -59,7 +59,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32 ./sensor_controller.h
 [; ;./sensor_controller.h: 32: void set_thresh(int, float);
 [v _set_thresh `(v ~T0 @X0 0 ef2`i`f ]
-"30
+"8622 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8622:     struct {
+[s S477 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S477 . ODCB0 ODCB1 ODCB2 ODCB3 ODCB4 ODCB5 ODCB6 ODCB7 ]
+"8621
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8621: typedef union {
+[u S476 `S477 1 ]
+[n S476 . . ]
+"8633
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 8633: extern volatile ODCONBbits_t ODCONBbits __attribute__((address(0xF17)));
+[v _ODCONBbits `VS476 ~T0 @X0 0 e@3863 ]
+"30 ./sensor_controller.h
 [; ;./sensor_controller.h: 30: void sensor_read(_Bool);
 [v _sensor_read `(v ~T0 @X0 0 ef1`a ]
 "15669 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
@@ -107,6 +118,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16389
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 16389: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF8D)));
 [v _PORTAbits `VS818 ~T0 @X0 0 e@3981 ]
+"15781
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15781:     struct {
+[s S801 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S801 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"15791
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15791:     struct {
+[s S802 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S802 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
+"15780
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15780: typedef union {
+[u S800 `S801 1 `S802 1 ]
+[n S800 . . . ]
+"15802
+[; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 15802: extern volatile LATBbits_t LATBbits __attribute__((address(0xF84)));
+[v _LATBbits `VS800 ~T0 @X0 0 e@3972 ]
+[v F1101 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\builtins.h
+[v __delay `JF1101 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h
 [; ;C:/Users/DJMik/.mchp_packs/Microchip/PIC18F-K_DFP/1.8.249/xc8\pic\include\proc\pic18lf26k40.h: 54: __asm("RX2PPS equ 0E8Dh");
 [; <" RX2PPS equ 0E8Dh ;# ">
@@ -1424,11 +1454,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./motor_control.h: 32: _Bool deployStatus;
 [v _deployStatus `a ~T0 @X0 1 e ]
 "19 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 19: uint16_t timer_ms;
-[v _timer_ms `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 19: double timer_ms;
+[v _timer_ms `d ~T0 @X0 1 e ]
 "20
-[; ;./interrupt_handler.h: 20: uint16_t timer_s;
-[v _timer_s `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 20: double timer_s;
+[v _timer_s `d ~T0 @X0 1 e ]
 "22
 [; ;./interrupt_handler.h: 22: volatile uint8_t rxData;
 [v _rxData `Vuc ~T0 @X0 1 e ]
@@ -1437,8 +1467,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _manualMode `a ~T0 @X0 1 e ]
 [v _tempConvert `a ~T0 @X0 1 e ]
 "23 ./sensor_controller.h
-[; ;./sensor_controller.h: 23: uint8_t tempData;
-[v _tempData `uc ~T0 @X0 1 e ]
+[; ;./sensor_controller.h: 23: float tempData;
+[v _tempData `f ~T0 @X0 1 e ]
 "24
 [; ;./sensor_controller.h: 24: uint16_t hallRaw;
 [v _hallRaw `us ~T0 @X0 1 e ]
@@ -1485,35 +1515,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 "76
 [; ;main.c: 76:     TMR4_StartTimer();
 [e ( _TMR4_StartTimer ..  ]
-"80
-[; ;main.c: 80:     Interrupt_Handler_Initialize();
+"78
+[; ;main.c: 78:     Interrupt_Handler_Initialize();
 [e ( _Interrupt_Handler_Initialize ..  ]
-"81
-[; ;main.c: 81:     set_thresh(25, 0.5);
+"79
+[; ;main.c: 79:     set_thresh(25, 0.5);
 [e ( _set_thresh (2 , -> 25 `i -> .0.5 `f ]
+"81
+[; ;main.c: 81:     do { ODCONBbits.ODCB2 = 1; } while(0);
+[e :U 1455 ]
+{
+[e = . . _ODCONBbits 0 2 -> -> 1 `i `uc ]
+}
+[e :U 1454 ]
 "83
 [; ;main.c: 83:     while (1){
-[e :U 1454 ]
+[e :U 1457 ]
 {
 "86
 [; ;main.c: 86:     sensor_read(tempConvert);
 [e ( _sensor_read (1 _tempConvert ]
 "88
 [; ;main.c: 88:         LATAbits.LATA7 = (tempData >= sensorThresh[0]);
-[e = . . _LATAbits 0 7 -> -> >= -> -> _tempData `i `f *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `i `uc ]
+[e = . . _LATAbits 0 7 -> -> >= _tempData *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `i `uc ]
 "89
-[; ;main.c: 89:         LATAbits.LATA6 = (windSpeed >= sensorThresh[1]);
-[e = . . _LATAbits 0 6 -> -> >= _windSpeed -> *U + &U _sensorThresh * -> -> -> 1 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `d `i `uc ]
+[; ;main.c: 89:         LATAbits.LATA6 = (hallRaw >= 4096/2);
+[e = . . _LATAbits 0 6 -> -> >= -> _hallRaw `ui -> / -> 4096 `i -> 2 `i `ui `i `uc ]
 "90
 [; ;main.c: 90:         LATCbits.LATC0 = !PORTAbits.RA0;
 [e = . . _LATCbits 0 0 -> -> ! != -> . . _PORTAbits 0 0 `i -> 0 `i `i `uc ]
 "91
-[; ;main.c: 91:     }
+[; ;main.c: 91:         LATBbits.LATB3 = tempConvert;
+[e = . . _LATBbits 0 3 -> _tempConvert `uc ]
+"93
+[; ;main.c: 93:         _delay((unsigned long)((100)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"95
+[; ;main.c: 95:     }
 }
-[e :U 1453 ]
-[e $U 1454  ]
-[e :U 1455 ]
-"92
-[; ;main.c: 92: }
+[e :U 1456 ]
+[e $U 1457  ]
+[e :U 1458 ]
+"96
+[; ;main.c: 96: }
 [e :UE 1452 ]
 }

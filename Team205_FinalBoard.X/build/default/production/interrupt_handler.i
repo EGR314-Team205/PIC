@@ -16771,8 +16771,8 @@ void I2C1_ReadDataBlock(i2c1_address_t address, uint8_t reg, uint8_t *data, size
 # 17 "./interrupt_handler.h" 2
 
 
-uint16_t timer_ms;
-uint16_t timer_s;
+double timer_ms;
+double timer_s;
 
 volatile uint8_t rxData;
 
@@ -16888,7 +16888,7 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
-uint8_t tempData;
+float tempData;
 uint16_t hallRaw;
 double windSpeed;
 
@@ -16919,7 +16919,6 @@ void internal_clock(void){
     if (timer_ms>=1000){
         timer_ms-=1000;
         timer_s++;
-
     }
 }
 
@@ -16933,17 +16932,17 @@ void Rx1_ISR(void){
         rxData = EUSART1_Read();
 
         if(rxData == 0x46 && !tempConvert){
-            sensorThresh[0] = sensorThresh[0]*(9/5)+32;
+            sensorThresh[0] = (sensorThresh[0]*(1.8))+32;
             tempConvert = 1;
         }
 
         if(rxData == 0x43 && tempConvert){
-            sensorThresh[0] = (sensorThresh[0]-32)*(5/9);
+            sensorThresh[0] = (sensorThresh[0]-32)*(0.55555555555);
             tempConvert = 0;
         }
+        rxData = ' ';
 
     }
-
 
 
 

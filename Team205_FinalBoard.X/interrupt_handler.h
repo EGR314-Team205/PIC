@@ -16,8 +16,8 @@ extern "C" {
 #include "mcc_generated_files/mcc.h"
 #include "mcc_generated_files/examples/i2c1_master_example.h"
 
-uint16_t timer_ms;
-uint16_t timer_s;
+double timer_ms;
+double timer_s;
 
 volatile uint8_t rxData;
 

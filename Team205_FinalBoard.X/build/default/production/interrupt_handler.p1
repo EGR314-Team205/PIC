@@ -1346,11 +1346,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "213 ./mcc_generated_files/examples/../i2c1_master.h
 [v _MSSP1_InterruptHandler `*F10035 ~T0 @X0 1 e ]
 "19 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 19: uint16_t timer_ms;
-[v _timer_ms `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 19: double timer_ms;
+[v _timer_ms `d ~T0 @X0 1 e ]
 "20
-[; ;./interrupt_handler.h: 20: uint16_t timer_s;
-[v _timer_s `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 20: double timer_s;
+[v _timer_s `d ~T0 @X0 1 e ]
 "22
 [; ;./interrupt_handler.h: 22: volatile uint8_t rxData;
 [v _rxData `Vuc ~T0 @X0 1 e ]
@@ -1362,8 +1362,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./motor_control.h: 32: _Bool deployStatus;
 [v _deployStatus `a ~T0 @X0 1 e ]
 "23 ./sensor_controller.h
-[; ;./sensor_controller.h: 23: uint8_t tempData;
-[v _tempData `uc ~T0 @X0 1 e ]
+[; ;./sensor_controller.h: 23: float tempData;
+[v _tempData `f ~T0 @X0 1 e ]
 "24
 [; ;./sensor_controller.h: 24: uint16_t hallRaw;
 [v _hallRaw `us ~T0 @X0 1 e ]
@@ -1384,10 +1384,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "7
 [; ;interrupt_handler.c: 7:     timer_ms = 0;
-[e = _timer_ms -> -> 0 `i `us ]
+[e = _timer_ms -> -> 0 `i `d ]
 "8
 [; ;interrupt_handler.c: 8:     timer_s = 0;
-[e = _timer_s -> -> 0 `i `us ]
+[e = _timer_s -> -> 0 `i `d ]
 "9
 [; ;interrupt_handler.c: 9:     manualMode = 0;
 [e = _manualMode -> -> 0 `i `a ]
@@ -1406,132 +1406,135 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "15
 [; ;interrupt_handler.c: 15:     timer_ms++;
-[e ++ _timer_ms -> -> 1 `i `us ]
+[e ++ _timer_ms -> -> 1 `i `d ]
 "16
 [; ;interrupt_handler.c: 16:     if (timer_ms>=1000){
-[e $ ! >= -> _timer_ms `ui -> -> 1000 `i `ui 1454  ]
+[e $ ! >= _timer_ms -> -> 1000 `i `d 1454  ]
 {
 "17
 [; ;interrupt_handler.c: 17:         timer_ms-=1000;
-[e =- _timer_ms -> -> 1000 `i `us ]
+[e =- _timer_ms -> -> 1000 `i `d ]
 "18
 [; ;interrupt_handler.c: 18:         timer_s++;
-[e ++ _timer_s -> -> 1 `i `us ]
-"20
-[; ;interrupt_handler.c: 20:     }
+[e ++ _timer_s -> -> 1 `i `d ]
+"19
+[; ;interrupt_handler.c: 19:     }
 }
 [e :U 1454 ]
-"21
-[; ;interrupt_handler.c: 21: }
+"20
+[; ;interrupt_handler.c: 20: }
 [e :UE 1453 ]
 }
-"23
-[; ;interrupt_handler.c: 23: double t_update(void){
+"22
+[; ;interrupt_handler.c: 22: double t_update(void){
 [v _t_update `(d ~T0 @X0 1 ef ]
 {
 [e :U _t_update ]
 [f ]
-"24
-[; ;interrupt_handler.c: 24:     return (double)timer_s + (double)timer_ms /1000;
-[e ) + -> _timer_s `d / -> _timer_ms `d -> -> 1000 `i `d ]
+"23
+[; ;interrupt_handler.c: 23:     return (double)timer_s + (double)timer_ms /1000;
+[e ) + _timer_s / _timer_ms -> -> 1000 `i `d ]
 [e $UE 1455  ]
-"25
-[; ;interrupt_handler.c: 25: }
+"24
+[; ;interrupt_handler.c: 24: }
 [e :UE 1455 ]
 }
-"27
-[; ;interrupt_handler.c: 27: void Rx1_ISR(void){
+"26
+[; ;interrupt_handler.c: 26: void Rx1_ISR(void){
 [v _Rx1_ISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _Rx1_ISR ]
 [f ]
-"28
-[; ;interrupt_handler.c: 28:     EUSART1_Receive_ISR();
+"27
+[; ;interrupt_handler.c: 27:     EUSART1_Receive_ISR();
 [e ( _EUSART1_Receive_ISR ..  ]
-"29
-[; ;interrupt_handler.c: 29:     if(EUSART1_is_rx_ready()){
+"28
+[; ;interrupt_handler.c: 28:     if(EUSART1_is_rx_ready()){
 [e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 1457  ]
 {
-"30
-[; ;interrupt_handler.c: 30:         rxData = EUSART1_Read();
+"29
+[; ;interrupt_handler.c: 29:         rxData = EUSART1_Read();
 [e = _rxData ( _EUSART1_Read ..  ]
-"32
-[; ;interrupt_handler.c: 32:         if(rxData == 0x46 && !tempConvert){
+"31
+[; ;interrupt_handler.c: 31:         if(rxData == 0x46 && !tempConvert){
 [e $ ! && == -> _rxData `i -> 70 `i ! != -> _tempConvert `i -> 0 `i 1458  ]
 {
+"32
+[; ;interrupt_handler.c: 32:             sensorThresh[0] = (sensorThresh[0]*(1.8))+32;
+[e = *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux -> + * -> *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `d .1.8 -> -> 32 `i `d `f ]
 "33
-[; ;interrupt_handler.c: 33:             sensorThresh[0] = sensorThresh[0]*(9/5)+32;
-[e = *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux + * *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux -> / -> 9 `i -> 5 `i `f -> -> 32 `i `f ]
-"34
-[; ;interrupt_handler.c: 34:             tempConvert = 1;
+[; ;interrupt_handler.c: 33:             tempConvert = 1;
 [e = _tempConvert -> -> 1 `i `a ]
-"35
-[; ;interrupt_handler.c: 35:         }
+"34
+[; ;interrupt_handler.c: 34:         }
 }
 [e :U 1458 ]
-"37
-[; ;interrupt_handler.c: 37:         if(rxData == 0x43 && tempConvert){
+"36
+[; ;interrupt_handler.c: 36:         if(rxData == 0x43 && tempConvert){
 [e $ ! && == -> _rxData `i -> 67 `i != -> _tempConvert `i -> 0 `i 1459  ]
 {
+"37
+[; ;interrupt_handler.c: 37:             sensorThresh[0] = (sensorThresh[0]-32)*(0.55555555555);
+[e = *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux -> * -> - *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux -> -> 32 `i `f `d .0.55555555555 `f ]
 "38
-[; ;interrupt_handler.c: 38:             sensorThresh[0] = (sensorThresh[0]-32)*(5/9);
-[e = *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux * - *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux -> -> 32 `i `f -> / -> 5 `i -> 9 `i `f ]
-"39
-[; ;interrupt_handler.c: 39:             tempConvert = 0;
+[; ;interrupt_handler.c: 38:             tempConvert = 0;
 [e = _tempConvert -> -> 0 `i `a ]
-"40
-[; ;interrupt_handler.c: 40:         }
+"39
+[; ;interrupt_handler.c: 39:         }
 }
 [e :U 1459 ]
+"40
+[; ;interrupt_handler.c: 40:         rxData = ' ';
+[e = _rxData -> -> 32 `ui `uc ]
 "42
 [; ;interrupt_handler.c: 42:     }
 }
 [e :U 1457 ]
-"47
-[; ;interrupt_handler.c: 47:         do { ODCONBbits.ODCB4 = 1; } while(0);
+"46
+[; ;interrupt_handler.c: 46:         do { ODCONBbits.ODCB4 = 1; } while(0);
 [e :U 1462 ]
 {
 [e = . . _ODCONBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1461 ]
-"48
-[; ;interrupt_handler.c: 48:         do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
+"47
+[; ;interrupt_handler.c: 47:         do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0);
 [e :U 1465 ]
 {
 [e = . . _LATBbits 0 5 -> ~ -> . . _LATBbits 0 5 `i `uc ]
 }
 [e :U 1464 ]
-"49
-[; ;interrupt_handler.c: 49: }
+"48
+[; ;interrupt_handler.c: 48: }
 [e :UE 1456 ]
 }
-"51
-[; ;interrupt_handler.c: 51: uint8_t Read_EUSART1_Buffer(void){
+"50
+[; ;interrupt_handler.c: 50: uint8_t Read_EUSART1_Buffer(void){
 [v _Read_EUSART1_Buffer `(uc ~T0 @X0 1 ef ]
 {
 [e :U _Read_EUSART1_Buffer ]
 [f ]
-"52
-[; ;interrupt_handler.c: 52:     return rxData;
+"51
+[; ;interrupt_handler.c: 51:     return rxData;
 [e ) _rxData ]
 [e $UE 1466  ]
-"53
-[; ;interrupt_handler.c: 53: }
+"52
+[; ;interrupt_handler.c: 52: }
 [e :UE 1466 ]
 }
-"55
-[; ;interrupt_handler.c: 55: void button_override(void){
+"54
+[; ;interrupt_handler.c: 54: void button_override(void){
 [v _button_override `(v ~T0 @X0 1 ef ]
 {
 [e :U _button_override ]
 [f ]
-"56
-[; ;interrupt_handler.c: 56:     manualMode = !manualMode;
+"55
+[; ;interrupt_handler.c: 55:     manualMode = !manualMode;
 [e = _manualMode -> -> ! != -> _manualMode `i -> 0 `i `i `a ]
-"57
-[; ;interrupt_handler.c: 57:     actionTrigger();
+"56
+[; ;interrupt_handler.c: 56:     actionTrigger();
 [e ( _actionTrigger ..  ]
-"58
-[; ;interrupt_handler.c: 58: }
+"57
+[; ;interrupt_handler.c: 57: }
 [e :UE 1467 ]
 }

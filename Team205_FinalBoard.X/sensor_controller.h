@@ -20,7 +20,7 @@ extern "C" {
 #define THRESH_CUTOFF 5
 #define TRANSMIT_LENGTH 7
 
-uint8_t tempData;
+float tempData;
 uint16_t hallRaw;
 double windSpeed;
 

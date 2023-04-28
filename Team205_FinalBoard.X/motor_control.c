@@ -54,13 +54,13 @@ void umbStow(){
 void umbTRDeploy(){
     solTrigger();
     motorTRFWD(); //motor pivots umbrella forward
-    __delay_ms(4000);  
+//    __delay_ms(4000);  
 }
 
 void umbTRStow(){
     solTrigger();
-    motorTRFWD(); //motor pivots umbrella forward
-    __delay_ms(4000);  
+    motorTRFWD(); //motor pivots umbrella backward
+//    __delay_ms(4000);  
 }
 
 void actionTrigger(void){

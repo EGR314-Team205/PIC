@@ -1338,8 +1338,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hall_effect.h: 30: uint16_t hall_time[2];
 [v _hall_time `us ~T0 @X0 -> 2 `i e ]
 "23 ./sensor_controller.h
-[; ;./sensor_controller.h: 23: uint8_t tempData;
-[v _tempData `uc ~T0 @X0 1 e ]
+[; ;./sensor_controller.h: 23: float tempData;
+[v _tempData `f ~T0 @X0 1 e ]
 "24
 [; ;./sensor_controller.h: 24: uint16_t hallRaw;
 [v _hallRaw `us ~T0 @X0 1 e ]
@@ -1353,11 +1353,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./sensor_controller.h: 28: float sensorThresh[2];
 [v _sensorThresh `f ~T0 @X0 -> 2 `i e ]
 "19 ./interrupt_handler.h
-[; ;./interrupt_handler.h: 19: uint16_t timer_ms;
-[v _timer_ms `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 19: double timer_ms;
+[v _timer_ms `d ~T0 @X0 1 e ]
 "20
-[; ;./interrupt_handler.h: 20: uint16_t timer_s;
-[v _timer_s `us ~T0 @X0 1 e ]
+[; ;./interrupt_handler.h: 20: double timer_s;
+[v _timer_s `d ~T0 @X0 1 e ]
 "22
 [; ;./interrupt_handler.h: 22: volatile uint8_t rxData;
 [v _rxData `Vuc ~T0 @X0 1 e ]
@@ -1374,13 +1374,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "8
 [; ;sensor_controller.c: 8:         tempData = tempRead(conv);
-[e = _tempData -> ( _tempRead (1 _conv `uc ]
+[e = _tempData ( _tempRead (1 _conv ]
 "9
 [; ;sensor_controller.c: 9:         hallRaw = hallRead();
 [e = _hallRaw ( _hallRead ..  ]
 "10
-[; ;sensor_controller.c: 10:         windSpeed = windSpeedCalc(t_update(),3);
-[e = _windSpeed ( _windSpeedCalc (2 , ( _t_update ..  -> -> 3 `i `f ]
+[; ;sensor_controller.c: 10:         windSpeed = windSpeedCalc(t_update(),1);
+[e = _windSpeed ( _windSpeedCalc (2 , ( _t_update ..  -> -> 1 `i `f ]
 "11
 [; ;sensor_controller.c: 11:         thresh_counter();
 [e ( _thresh_counter ..  ]
@@ -1418,7 +1418,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22
 [; ;sensor_controller.c: 22:     _Bool triggerAdd = tempData >= sensorThresh[0] && windSpeed < sensorThresh[1];
 [v _triggerAdd `a ~T0 @X0 1 a ]
-[e = _triggerAdd -> -> && >= -> -> _tempData `i `f *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux < _windSpeed -> *U + &U _sensorThresh * -> -> -> 1 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `d `i `a ]
+[e = _triggerAdd -> -> && >= _tempData *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux < _windSpeed -> *U + &U _sensorThresh * -> -> -> 1 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux `d `i `a ]
 "23
 [; ;sensor_controller.c: 23:     _Bool triggerReduce = windSpeed >= sensorThresh[1];
 [v _triggerReduce `a ~T0 @X0 1 a ]
@@ -1474,7 +1474,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 [v _data `f ~T0 @X0 -> 7 `i a ]
 [e = _data F10895 ]
-[e ; = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> _tempData `f ; = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux ; = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux -> _windSpeed `f ; = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux *U + &U _sensorThresh * -> -> -> 1 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux ; = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> _threshCount `f ; = *U + &U _data * -> -> -> 5 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 5 `i `f = *U + &U _data * -> -> -> 6 `i `ui `ux -> -> # *U &U _data `ui `ux -> ( _t_update ..  `f ]
+[e ; = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux _tempData ; = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux *U + &U _sensorThresh * -> -> -> 0 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux ; = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux -> _windSpeed `f ; = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux *U + &U _sensorThresh * -> -> -> 1 `i `ui `ux -> -> # *U &U _sensorThresh `ui `ux ; = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> _threshCount `f ; = *U + &U _data * -> -> -> 5 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 5 `i `f = *U + &U _data * -> -> -> 6 `i `ui `ux -> -> # *U &U _data `ui `ux -> ( _t_update ..  `f ]
 "35
 [; ;sensor_controller.c: 35:     for(int i=0; i<7; i++){
 {

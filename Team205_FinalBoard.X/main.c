@@ -78,13 +78,19 @@ void main(void){
     Interrupt_Handler_Initialize();
     set_thresh(25, 0.5); // set temp and wind speed cutoffs [default = (25, 0.5)]
     
+    GPIO_OUT3_SetOpenDrain();
+    
     while (1){
 //        motorTRFWD(); //debug motor
 //        solTrigger(); //debug solenoid
     sensor_read(tempConvert);
         /*  Threshold LED Indicators    */
         LED_DEBUG1_LAT = (tempData >= sensorThresh[0]);
-        LED_DEBUG2_LAT = (windSpeed >= sensorThresh[1]);      
+        LED_DEBUG2_LAT = (hallRaw >= TICKS_PER_REV/2);      
         LED_DEBUG3_LAT = !PUSH_BUTTON_GetValue();
+        GPIO_OUT4_LAT = tempConvert;
+        
+        __delay_ms(100);
+
     }
 }

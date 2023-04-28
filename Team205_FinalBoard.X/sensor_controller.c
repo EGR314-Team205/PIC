@@ -7,7 +7,7 @@
 void sensor_read(bool conv){
         tempData = tempRead(conv);
         hallRaw = hallRead();
-        windSpeed = windSpeedCalc(t_update(),3); // ms = s * 10^-3
+        windSpeed = windSpeedCalc(t_update(),1); // ms = s * 10^-3
         thresh_counter();
         data_transmit(';');
 }

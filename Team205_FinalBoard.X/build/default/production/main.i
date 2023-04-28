@@ -17257,8 +17257,8 @@ float tempRead(_Bool);
 
 # 1 "./interrupt_handler.h" 1
 # 19 "./interrupt_handler.h"
-uint16_t timer_ms;
-uint16_t timer_s;
+double timer_ms;
+double timer_s;
 
 volatile uint8_t rxData;
 
@@ -17280,7 +17280,7 @@ uint8_t Read_EUSART1_Buffer(void);
 
 # 1 "./sensor_controller.h" 1
 # 23 "./sensor_controller.h"
-uint8_t tempData;
+float tempData;
 uint16_t hallRaw;
 double windSpeed;
 
@@ -17313,10 +17313,10 @@ void main(void){
     TMR2_StartTimer();
     TMR4_StartTimer();
 
-
-
     Interrupt_Handler_Initialize();
     set_thresh(25, 0.5);
+
+    do { ODCONBbits.ODCB2 = 1; } while(0);
 
     while (1){
 
@@ -17324,7 +17324,11 @@ void main(void){
     sensor_read(tempConvert);
 
         LATAbits.LATA7 = (tempData >= sensorThresh[0]);
-        LATAbits.LATA6 = (windSpeed >= sensorThresh[1]);
+        LATAbits.LATA6 = (hallRaw >= 4096/2);
         LATCbits.LATC0 = !PORTAbits.RA0;
+        LATBbits.LATB3 = tempConvert;
+
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+
     }
 }

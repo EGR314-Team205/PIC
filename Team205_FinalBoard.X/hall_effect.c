@@ -14,7 +14,11 @@ void hallRecord(double *time){
 
 double windSpeedCalc(double time, float power){ 
    hallRecord(&time);
-   double dw_dt = (hall_pos[1] - hall_pos[0]) / (hall_time[1] - hall_time[0]); // measure angular change per unit time
+   double dw = ((double)hall_pos[1] - (double)hall_pos[0]); // measure angular change per unit time
+   double dt = ((double)hall_time[1] - (double)hall_time[0]);
+   
+   double dw_dt = (dt>0 && dw >0)? dw/dt : 0;
+ 
    double linearVel = (dw_dt * 2.0 * M_PI * WIND_CUP_RADIUS) / (TICKS_PER_REV*pow(10, power)); // convert encoder ticks to Linear velocity
    return linearVel;
 }

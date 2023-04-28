@@ -16,7 +16,6 @@ void internal_clock(void){
     if (timer_ms>=1000){
         timer_ms-=1000;
         timer_s++;
-//        IO_RE0_Toggle();
     }
 }
 
@@ -30,17 +29,17 @@ void Rx1_ISR(void){
         rxData = EUSART1_Read();
 //        int rxSize = sizeof(rxData);
         if(rxData == 0x46 && !tempConvert){ // "F"
-            sensorThresh[0] = sensorThresh[0]*(9/5)+32;
+            sensorThresh[0] = (sensorThresh[0]*(1.8))+32;
             tempConvert = true;
         }
             
         if(rxData == 0x43 && tempConvert){ // "C"
-            sensorThresh[0] =  (sensorThresh[0]-32)*(5/9);
+            sensorThresh[0] =  (sensorThresh[0]-32)*(0.55555555555);
             tempConvert = false;
         }
+        rxData = ' ';
 
     }
-
 //        if(EUSART1_is_tx_ready()){
 //            EUSART1_Write(rxData);
 //        }
